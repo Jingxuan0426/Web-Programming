@@ -15,7 +15,7 @@ body{
     }
 }
 
-.nav-item .nav-link{
+/*.nav-item .nav-link{
     color: white;
     text-align: center;
     font-size: 20px;
@@ -48,9 +48,9 @@ body{
 
 * {
     box-sizing: border-box;
-}
+}*/
 
-.ul {
+/*.ul {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -67,7 +67,7 @@ body{
     transition: 0.5s ease;
     cursor: pointer;
     font-family: "Orbitron", sans-serif;
-}
+}*/
 /* navbar end */
 
 #carouselExampleCaptions .carousel-item img{
@@ -114,7 +114,7 @@ body{
     filter: brightness(50%);
     transform: translateY(-10px)
 }
-#category h2 .btn{
+/*#category h2 .btn{
     visibility: hidden;
     opacity: 0%;
     transition: visibility 0s, opacity 0.5s linear;
@@ -128,7 +128,7 @@ body{
     font-size: 20px;
     margin-left: 38%;
     font-family: "Orbitron", sans-serif;
-}
+}*/
 
 /* category end */
 
