@@ -1,0 +1,182 @@
+*{
+      font-family: "Orbitron", sans-serif;
+}
+
+body{
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* navbar start */
+
+@media screen and (max-width: 991px) {
+    .navigation-menu {
+        margin-top: 80px;
+    }
+}
+
+.nav-item .nav-link{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: normal;
+    transition: 0.5s;
+    justify-content:end
+}
+
+.nav-item .dropdown-menu{
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: normal;
+    justify-content:center
+}
+
+.nav-item{
+    z-index: 10;
+    margin-bottom: 0;
+    margin-right: 30px;
+    padding-left: 0;
+    position: relative;
+}
+
+.list-unstyled{
+    list-style: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+#navbar .btn{
+    background-color: rgb(0, 0, 0);
+    color: darkred;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-family: "Orbitron", sans-serif;
+}
+/* navbar end */
+
+#carouselExampleCaptions .carousel-item img{
+    filter: brightness(50%);
+}
+
+#carouselExampleCaptions .carousel-item .h1{
+    text-align: center;
+    justify-content: center;
+    display: block;
+}
+
+#category{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+}
+.category .container{
+    margin-top: 20px;
+}
+#category .card{
+    width: 100%; 
+    height: 25rem;
+    margin-top: 100px;
+    transition: 0.5s;
+    cursor: pointer;
+    background: none;
+    border: 0.2rem solid;
+    border-color: darkred;
+    border-radius: 0%;
+}
+#category .card img{
+    opacity: 90%;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px grey;
+    transition: 0.4s linear all;
+    border-radius: 0%;
+}
+#category .card:hover{
+    filter: brightness(50%);
+    transform: translateY(-10px)
+}
+#category h2 .btn{
+    visibility: hidden;
+    opacity: 0%;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+#category .h2 .btn:hover{
+    visibility:visible;
+    opacity: 100%;
+    width: 25%;
+    height: 10%;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 38%;
+    font-family: "Orbitron", sans-serif;
+}
+
+/* category end */
+
+/* #footer{
+    width: 100%;
+    height: auto;
+    background: darkred;
+}
+#footer .container{
+    padding-top: 5px;
+}
+#footer .footer{
+    margin-left: 25%;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+#footer .media{
+    color: black;
+    font-size: 1rem;
+}
+#footer .media img{
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    cursor: pointer;
+} */
+
+
+.footer {
+    background-color:rgb(177, 5, 50);
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.social-icons {
+    margin-top: 0px;
+  }
+.social-icons .fab {
+    margin: 0 10px;
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+  }
+
+.contact-icons {
+    text-align: left;
+}
+
+/* footer end */
+
