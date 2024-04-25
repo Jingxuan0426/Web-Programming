@@ -51,8 +51,8 @@ body{
     width: auto;
     height: auto;
     text-align: center;
-    margin-left: 35%;
-    margin-top: 35%;
+    justify-content: center;
+    margin-top: 30%;
     background-color: rgb(161, 13, 60); 
     font-size: 2rem;
     border: 3px solid;
