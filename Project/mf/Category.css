@@ -15,12 +15,17 @@ body{
     }
 }
 
-/*.nav-item .nav-link{
+.nav-item{
+    z-index: 10;
+    margin-bottom: 0;
+    margin-right: 20px;
+    padding-left: 0;
+    position: relative;
+}
+
+.nav-item .nav-link{
     color: white;
-    text-align: center;
-    font-size: 20px;
-    font-family: "Orbitron", sans-serif;
-    letter-spacing: normal;
+    font-size: 1.5rem;
     transition: 0.5s;
     justify-content:end
 }
@@ -28,47 +33,36 @@ body{
 .nav-item .dropdown-menu{
     color: white;
     text-align: left;
-    font-size: 20px;
-    font-family: "Orbitron", sans-serif;
-    letter-spacing: normal;
-    justify-content:center
+    font-size: 1rem;
 }
 
-.nav-item{
-    z-index: 10;
-    margin-bottom: 0;
-    margin-right: 30px;
-    padding-left: 0;
-    position: relative;
-}
-
-.list-unstyled{
-    list-style: none;
-}
-
-* {
-    box-sizing: border-box;
-}*/
-
-/*.ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    unicode-bidi: isolate;
-}
-
-#navbar .btn{
-    background-color: rgb(0, 0, 0);
-    color: darkred;
+.navbar-nav .btn-nav{
+    color: rgb(255, 26, 77); 
+    background-color: black;
+    border-color: rgb(255, 26, 77);
+    font-size: 1.5rem;
+    border: 3px solid;
     transition: 0.5s ease;
     cursor: pointer;
-    font-family: "Orbitron", sans-serif;
-}*/
+}
+
+.btn-view{
+    opacity: 100%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: 35%;
+    background-color: rgb(161, 13, 60); 
+    font-size: 2rem;
+    border: 3px solid;
+    border-color: rgb(161, 13, 60); 
+    transition: 0.5s ease;
+    cursor: pointer;
+    color: white
+}
 /* navbar end */
+
 
 #carouselExampleCaptions .carousel-item img{
     filter: brightness(50%);
@@ -87,12 +81,12 @@ body{
     background-color: black;
 }
 .category .container{
-    margin-top: 20px;
+    margin-top: 5rem;
 }
 #category .card{
     width: 100%; 
     height: 25rem;
-    margin-top: 100px;
+    margin-top: 5rem;
     transition: 0.5s;
     cursor: pointer;
     background: none;
@@ -114,21 +108,17 @@ body{
     filter: brightness(50%);
     transform: translateY(-10px)
 }
-/*#category h2 .btn{
-    visibility: hidden;
+
+#category .btn .btn-view{
+    /* visibility: hidden;
     opacity: 0%;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s linear; */
+    display: none;
 }
-#category .h2 .btn:hover{
-    visibility:visible;
-    opacity: 100%;
-    width: 25%;
-    height: 10%;
-    text-align: center;
-    font-size: 20px;
-    margin-left: 38%;
-    font-family: "Orbitron", sans-serif;
-}*/
+#category .btn .btn-view:hover{
+    /* visibility:visible; */
+    display: block;
+}
 
 /* category end */
 
