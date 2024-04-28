@@ -36,7 +36,7 @@ body{
     font-size: 1rem;
 }
 
-.navbar-nav .btn-nav{
+.navbar-nav a .btn-nav{
     color: rgb(255, 26, 77); 
     background-color: black;
     border-color: rgb(255, 26, 77);
