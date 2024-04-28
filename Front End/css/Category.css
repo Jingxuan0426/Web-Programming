@@ -30,16 +30,32 @@ body{
     justify-content:end
 }
 
-.nav-item .dropdown-menu{
-    color: white;
+.nav-item .dropdown-menu a{
+    color: black;
     text-align: left;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.nav-item .dropdown-menu:hover a{
+    color: rgb(255, 26, 77); 
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .navbar-nav a .btn-nav{
     color: rgb(255, 26, 77); 
     background-color: black;
     border-color: rgb(255, 26, 77);
+    font-size: 1.5rem;
+    border: 3px solid;
+}
+
+.navbar-nav a:hover .btn-nav{
+    color: black;
+    background-color: rgb(255, 26, 77); 
+    border-color: black;
     font-size: 1.5rem;
     border: 3px solid;
     transition: 0.5s ease;
