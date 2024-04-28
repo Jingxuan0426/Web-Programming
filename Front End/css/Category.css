@@ -94,6 +94,9 @@ body{
     border-color: darkred;
     border-radius: 0%;
 }
+#category .card:hover{
+    transform: translateY(-10px)
+}
 #category .card img{
     opacity: 90%;
     color: black;
@@ -104,18 +107,17 @@ body{
     transition: 0.4s linear all;
     border-radius: 0%;
 }
-#category .card:hover{
+#category .card:hover img{
     filter: brightness(50%);
-    transform: translateY(-10px)
 }
 
-#category .btn .btn-view{
+#category .card .btn-view{
     /* visibility: hidden;
     opacity: 0%;
     transition: visibility 0s, opacity 0.5s linear; */
     display: none;
 }
-#category .btn .btn-view:hover{
+#category .card:hover .btn-view{
     /* visibility:visible; */
     display: block;
 }
