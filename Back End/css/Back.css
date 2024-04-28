@@ -1,0 +1,76 @@
+* {
+    font-family: "Orbitron", sans-serif;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.front h1 {
+    color: rgb(255, 26, 77);
+    font-size: 5rem;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.front .form-control {
+    margin-top: 1.5rem;
+    margin-left: 500px;
+    font-size: 1.5rem;
+    color: black;
+    background-color: rgb(255, 26, 77);
+    border: solid;
+}
+
+.front .form-control:hover {
+    margin-top: 1.5rem;
+    margin-left: 500px;
+    font-size: 1.5rem;
+    color: rgb(255, 26, 77);
+    background-color: black;
+    border: solid;
+}
+
+.front a h3 {
+    font-family: "Unica One", sans-serif;
+    color: rgb(255, 26, 77);
+    font-size: 1rem;
+    margin-left: 500px;
+    filter: brightness(90%);
+}
+
+.btn-login {
+    color: rgb(255, 26, 77);
+    background-color: black;
+    border-color: rgb(255, 26, 77);
+    font-size: 1.5rem;
+    border: 3px solid;
+    margin-top: 3rem;
+    margin-bottom: 9.3rem;
+    margin-left: 700px;
+}
+
+.footer {
+    background-color: rgb(177, 5, 50);
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.social-icons {
+    margin-top: 0px;
+}
+
+.social-icons .fab {
+    margin: 0 20px;
+    color: rgb(255, 255, 255);
+    font-size: 3.5rem;
+}
+
+.contact-icons {
+    text-align: left;
+}
+
+/* footer end */
