@@ -69,7 +69,7 @@ width: auto;
 height: auto;
 text-align: center;
 justify-content: center;
-margin-top: 30%;
+margin-top: 231px; margin-bottom: 126px;
 background-color: rgb(161, 13, 60); 
 font-size: 2rem;
 border: 3px solid;
@@ -83,19 +83,34 @@ color: white
 .main {
     margin-left: auto;margin-right: auto;
     /* Same as the width of the sidenav */
-    font-size: 30px;
+    font-size: 58px;
     /* Increased text to enable scrolling */
     padding: 0px 30px;
     color: rgb(255, 26, 77);
+    text-align: center;
 }
 
 .main2 {
-  margin-left: 250px;
+  margin-left: 116px; margin-right:116px;
   /* Same as the width of the sidenav */
-  font-size: 30px;
+  font-size: 32px;
   /* Increased text to enable scrolling */
   padding: 0px 30px;
-  color: rgb(255, 26, 77);
+  color: rgb(255, 26, 77); 
+}
+
+.main2 form .form-control{
+  border-color: white;
+  background-color: transparent;
+  color: white;
+  border-radius:0;
+  height:50px;
+}
+
+.form-control::placeholder{
+  color:rgb(255, 26, 77) !important ;
+  font-size: 32px;
+  line-height: inherit;
 }
 
 .center{
@@ -122,6 +137,22 @@ color: white
   font-size: 1.5em; color:white;
   font-family: "Unica One", sans-serif;
 }
+
+.browse{
+  opacity: 100%;
+  padding: 0px 60px;
+  width: auto;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  background-color: transparent; 
+  font-size: 2rem;
+  border: 3px solid;
+  border-color:#ff1a4d; 
+  transition: 0.5s ease;
+  cursor: pointer;
+  color: #ff1a4d;      
+  }
 
 #carouselExampleCaptions .carousel-item img{
 filter: brightness(50%);
@@ -153,9 +184,11 @@ border: 0.2rem solid;
 border-color: darkred;
 border-radius: 0%;
 }
+
 #category .card:hover{
 transform: translateY(-10px)
 }
+
 #category .card img{
 opacity: 90%;
 color: black;
