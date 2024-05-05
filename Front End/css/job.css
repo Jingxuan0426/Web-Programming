@@ -85,6 +85,8 @@ color: white;
 /* navbar end */
 
 .main {
+  display: flex;
+  justify-content: center;
     margin-left: auto;margin-right: auto;
     /* Same as the width of the sidenav */
     font-size: 58px;
@@ -281,4 +283,3 @@ text-align: left;
 }
 
 /* footer end */
-
