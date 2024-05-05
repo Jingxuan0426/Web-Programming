@@ -170,3 +170,26 @@ img {
 #project-video-border{
     border: 3px solid #a10d3c;
 }
+
+.footer {
+    background-color:rgb(177, 5, 50);
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    margin-top: 5rem;
+}
+
+.social-icons {
+    margin-top: 0px;
+  }
+.social-icons .fab {
+    margin: 0 10px;
+    color:rgb(255, 255, 255);
+    font-size: 30px;
+  }
+
+.contact-icons {
+    text-align: left;
+}
