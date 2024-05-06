@@ -10,10 +10,10 @@ if(isset($_POST["login"])){
     $pwd = $_POST["pwd"];
     
     //2) Select record that matches inputs from the form
-    $sql = $connection->prepare("SELECT * FROM user WHERE user_email = ?");
+    $sql = $connection->prepare("INSERT INTO user(user_email, user_password) VALUES(?,?)");
     
     //3) Execute the SQL statement
-    $sql->execute([$email]);
+    $result = $sql->execute([$email, $e_pwd]);
     
     //4) Collect the record from SQL
     $result = $sql->fetch();
@@ -69,8 +69,8 @@ if(isset($_POST["login"])){
 
             <a href="" target="_blank">
             <h3>FORGOT PASSWORD?</h3>
-        </a>
-        <a href="/Back End/html/User Manage.html"><button type="button" class="btn-login" value="login" name="login" id="login">LOG IN</button></a>
+            </a>
+            <a href="/Back End/html/User Manage.html"><button type="button" class="btn-login" value="login" name="login" id="login">LOG IN</button></a>
 
             <?php echo $message; ?>
         </form> 
