@@ -86,10 +86,10 @@ color: white;
 
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
     margin-left: auto;margin-right: auto;
     /* Same as the width of the sidenav */
-    font-size: 58px;
+    font-size: 24px;
     /* Increased text to enable scrolling */
     padding: 0px 30px;
     color: rgb(255, 26, 77);
@@ -174,6 +174,7 @@ color: white;
   color: #ff1a4d;      
   }
 
+  
 #carouselExampleCaptions .carousel-item img{
 filter: brightness(50%);
 }
