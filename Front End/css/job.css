@@ -117,7 +117,10 @@ color: white;
   line-height: inherit;
 }
 
-
+.image-row {
+  display: flex;
+  justify-content: space-between; /* this will add equal space between each image */
+}
 
 .center{
   display:block;
@@ -150,6 +153,18 @@ color: white;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+ 
+.jcolumn{
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .project-meta-content {
