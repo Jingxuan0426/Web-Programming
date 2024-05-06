@@ -117,9 +117,8 @@ color: white;
   line-height: inherit;
 }
 
-.image-row {
-  display: flex;
-  justify-content: space-between; /* this will add equal space between each image */
+.img{
+  col- py-3 py-md-0 border: 5px #ff1a4d; columns: 4;
 }
 
 .center{
@@ -155,11 +154,15 @@ color: white;
   transform: translate(-50%, -50%);
 }
  
-/*.jcolumn{
+.jcolumn{
   float: left;
   width: 50%;
 }
-*/
+
+.row{
+  float: left;
+  width: 200%;
+}
 
 /* Clear floats after the columns */
 .row:after {
