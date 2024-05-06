@@ -155,10 +155,11 @@ color: white;
   transform: translate(-50%, -50%);
 }
  
-.jcolumn{
+/*.jcolumn{
   float: left;
   width: 50%;
 }
+*/
 
 /* Clear floats after the columns */
 .row:after {
