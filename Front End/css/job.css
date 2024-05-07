@@ -179,6 +179,7 @@ margin-top: 57px;
 }
 
 .bordered-button{
+  position: relative;
 display: inline-block;
 padding: 0px; /* Adjust padding as needed */
 background-color: transparent; /* Make background transparent */
@@ -208,8 +209,9 @@ margin-bottom: 46px;
 
 .button-text {
 position: absolute;
-bottom: 0px; /* Adjust as needed */
-left: 100px; /* Adjust as needed */
+bottom: 0; /* Adjust as needed */
+left: 0; /* Adjust as needed */
+margin:5px;
 color: white; /* Text color */
 font-size: 14px; /* Adjust as needed */
 text-align: left; /* Align text to the left */
