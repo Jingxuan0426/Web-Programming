@@ -160,10 +160,17 @@ color: white;
   width: 50%;
 }
 
+.container{
+display: flex;
+justify-content: center; /* Center content horizontally */
+align-items: center; /* Center content vertically */
+margin-top: 57px;
+
+}
+
 .row{
-  float: left;
-  width: 10 0%;
-  margin-left: auto;margin-right: ;
+  float:left;
+  width: 200%;
 }
 
 /* Clear floats after the columns */
@@ -179,10 +186,11 @@ background-color: #ff1a4d;
 
 .button-container{
   display: flex;
+  justify-content: center;
 }
 
 .button-container .button {
-  margin-right: 10px; /* Adjust the spacing between buttons */
+  margin-right: 50px;margin-left: 50px; /* Adjust the spacing between buttons */
 }
 
 .project-meta-content {
