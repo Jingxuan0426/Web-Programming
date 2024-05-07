@@ -180,8 +180,20 @@ margin-top: 57px;
   clear: both;
 }
 
-.button{
-background-color: #ff1a4d;
+.bordered-button{
+padding: 0px; /* Adjust padding as needed */
+background-color: transparent; /* Make background transparent */
+cursor: pointer;
+border: 2px solid #ff1a4d;
+overflow:hidden;
+margin-left: 40px;margin-right: 40px; 
+margin-bottom: 46px;
+}
+
+.bordered-button img {
+  display: block; /* Ensure the image takes up the full size of the button */
+  max-width: 100%; 
+  margin:0;
 }
 
 .button-container{
@@ -190,7 +202,8 @@ background-color: #ff1a4d;
 }
 
 .button-container .button {
-  margin-right: 50px;margin-left: 50px; /* Adjust the spacing between buttons */
+  margin-right: 40px;
+  margin-left: 40px; /* Adjust the spacing between buttons */
 }
 
 .project-meta-content {
