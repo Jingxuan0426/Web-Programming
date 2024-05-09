@@ -1,3 +1,7 @@
+<?php
+include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -27,6 +31,47 @@
     <!-- navbar end -->
 
     <div class="main3">
+        <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem;">User Management</h2>
+        <a href="/Back End/html/Submit User.html"><button type="submit" class="btn-add px-md-4">Add User+</button></a>
+        <a href="/Back End/html/Ban User.html"><button type="submit" class="btn-ban px-md-4">Banned User</button></a>
+    
+        <?php 
+            $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
+            $username = "root"; // Change to your MySQL username
+            $password = ""; // Change to your MySQL password
+            $database = "phpmyadmin"; // Change to your MySQL database name
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            // Check connection
+            if ($conn->connect_error) { 
+                echo "Connect failed";
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // SQL query to fetch data from the profile table
+            $sql = "SELECT user_id, user_name, user_email, user_contact, user_location FROM profile";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='card' style='width: 75rem;'>";
+                echo "<div class='card-body'>";
+                echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
+                echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
+                echo "<p>Email: " . $row['user_email'] . "</p>";
+                echo "<p>Contact: " . $row['user_contact'] . "</p>";
+                echo "</div>";
+                echo "</div>";
+                echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
+                echo "<button type='submit' class='btn-user'>Ban User</button>";
+            }
+
+            $conn->close();
+        ?>
+    </div>
+
+    <!-- <div class="main3">
         <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem;">User Management</h2>
         <a href="/Back End/html/Submit User.html"><button type="submit" class="btn-add px-md-4">Add User+</button></a>
         <a href="/Back End/html/Ban User.html"><button type="submit" class="btn-ban px-md-4">Banned User</button></a>
@@ -65,10 +110,8 @@
         
 
 
-    </div>
-
-
-
+    </div> -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

@@ -209,16 +209,34 @@ margin-bottom: 46px;
 
 .button-text {
 position: absolute;
-bottom: 0; /* Adjust as needed */
-left: 0; /* Adjust as needed */
+bottom: 10px; /* Adjust as needed */
+left: 20px; /* Adjust as needed */
 margin:5px;
 color: white; /* Text color */
 font-size: 14px; /* Adjust as needed */
 text-align: left; /* Align text to the left */
 line-height: 1.2; /* Adjust line height */
-background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
 padding: 5px 10px; /* Padding around text */
 box-sizing: border-box;
+color: #ff1a4d; /* Text color */
+
+  
+}
+
+.outlined-text {
+  font-weight: 800;
+  -webkit-text-stroke-width: 0.7px; /* Width of the outline */
+  -webkit-text-stroke-color: black; /* Color of the outline */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
 }
 
 .project-meta-content {
@@ -243,7 +261,110 @@ box-sizing: border-box;
   color: #ff1a4d;      
   }
 
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.5;
+  }
   
+  .wrapper {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .main {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .side-panel-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+  
+    color: #ffffff;
+    background: #009578;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .side-panel-toggle:hover {
+    background: #007960;
+  }
+  
+  .sp-icon-close {
+    display: none !important;
+  }
+  
+  .side-panel {
+    display: none;
+    width: 200px;
+    flex-shrink: 0;
+    padding: 20px;
+    color: #ffffff;
+    background: #009578;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+  
+  .side-panel-open .side-panel {
+    display: initial;
+  }
+  
+  .side-panel-open .sp-icon-open {
+    display: none !important;
+  }
+  
+  .side-panel-open .sp-icon-close {
+    display: initial !important;
+  }
+
+  
+  /* .container {
+    position: relative;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially position the pop-up outside the viewport 
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding: 20px;
+    transition: right 0.5s ease-in-out; /* Add a transition effect 
+  }
+  
+  .popup-content {
+    color: white;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .close:hover {
+    color: red;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 20px;
+  }
+  
+  .content {
+    margin-right: 270px; /* Adjust to accommodate the width of the pop-up 
+  } */
+
 #carouselExampleCaptions .carousel-item img{
 filter: brightness(50%);
 }
