@@ -15,6 +15,8 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="overflow-x-hidden" style="background-color: black;">
@@ -32,20 +34,24 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
  <div class="main3">
   <div class="row">
-    <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem;">Projects 
-    <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4">Add User+</button></a> 
+    <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects 
+    <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
   </h2>
-        
-        <a href="/Back End/html/Ban User.html"><button type="submit" >Banned User</button></a>
-  </div>
-  </div>
 
-  <div class="main3">    
-    <div class="row-mb-3" style="margin-top: 274px;">
-      <a style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem;font-weight:bold;" class="btn-ban px-md-4">Full Time</a> 
-      <button style="font-size:30px;">Part Time</button> 
-      <button class="btn-view" style="font-size:30px;">Freelance</button>    
-    </div>
+ <div>
+  <div class="row" style="align-items: center;">
+  <img src="/Front End/images/Jobs/machi.png" style="max-width: 500px;" class="col-md-5">
+  <span class="col-md-7">
+  <h1 style="color:white; font-weight:normal">Subway Scuffle </h1>
+  <h2 class="byyear">By: Machi</h2>
+  <h3 class="byyear">Year: 2024</he>
+  <h4>
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
+</h4>
+
+</span>
   </div>
+ </div>
 
 </body>
