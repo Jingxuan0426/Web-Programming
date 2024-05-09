@@ -34,7 +34,7 @@
             <div class="card-body">
               <h1 class="card-title">User 1</h1>
               <p class="card-text">Name: Ochibala</p>
-              <p>Email:    ochi12@gmail.com</p>
+              <p>Email: ochi12@gmail.com</p>
               <p>Contact: 014-556 7947</p>
             </div>
         </div>
