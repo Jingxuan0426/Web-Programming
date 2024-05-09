@@ -123,6 +123,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type='text' class='form-control' id='inputLocation3' name='user_location' value='$user_location'>
                     </div>
                 </div>
+                <div class='row mb-3'>
+                    <label for='inputField3' class='col-sm-10 col-form-label'>Specialized Field</label>
+                    
+                        <input type='text' class='form-control' id='inputField3' name='job_field' value='$job_specialized_field'>
+                    </div>
+                </div>
+                <div class='row mb-3'>
+                <label for='inputField3' class='col-sm-10 col-form-label'>Specialized Field</label>
+                    
+                <input type='text' class='form-control' id='inputField3' name='job_field' value='$job_specialized_field'>
+                    </div>
+                </div>
+                <div class='row mb-3'>
+                <label for='inputField3' class='col-sm-10 col-form-label'>Specialized Field</label>
+                    
+                <input type='text' class='form-control' id='inputField3' name='job_field' value='$job_specialized_field'>
+                    </div>
+                </div>
                 <button type='submit' class='btn-view'>Save</button>
             </form>";
         } else {
