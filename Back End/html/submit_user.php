@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // SQL query to update user details
     $sql = "UPDATE profile SET user_name='$user_name', user_email='$user_email', user_contact='$user_contact', user_location='$user_location' WHERE user_id=$user_id";
+    $sql = "UPDATE job SET job_specialized_field='$job_specialized_field', job_position='$job_position', job_type='$job_type' WHERE user_id=$user_id";
 
     if ($conn->query($sql) === TRUE) {
         echo "User details updated successfully";
@@ -39,13 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Submit User</title>
     <link rel="stylesheet" href="/Back End/css/User Details.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -67,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <!-- navbar end -->
 
-    <div class="main">
+<div class="main">
         <h2 style="font-size: 3rem; margin-top: 5rem;">User Details</h2>
         <?php
         // MySQL connection parameters
@@ -89,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // SQL query to fetch user details based on user ID
         $sql = "SELECT user_name, user_email, user_contact, user_location FROM profile WHERE user_id = $user_id";
+        $sql = "SELECT job_specialized_field, job_position, job_type, FROM job WHERE user_id = $user_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -147,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type='text' class='form-control' id='inputType3' name='job_type' value='$job_type'>
                     </div>
                 </div>
-                <button type='submit' class='btn-view'>Save</button>
+                <button type='submit' class='btn-view'>Submit</button>
             </form>";
         } else {
             echo "No user found.";
@@ -157,6 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
         ?>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
