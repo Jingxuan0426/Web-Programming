@@ -103,6 +103,16 @@ body {
     background-color: white;
 }
 
+.bottom-right {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left:1000px;
+    padding: 10px; /* Optional: Add padding for spacing */
+    background-color: #f00; /* Optional: Background color */
+    color: #fff; /* Optional: Text color */
+  }
+
 .btn-edit {
     color: rgb(255, 26, 77);
     background-color: black;
@@ -131,6 +141,12 @@ body {
 
 .btn-user:hover {
     color: white;
+}
+
+.prtitle{
+color:white;
+font-weight:normal; 
+font-size:50px;
 }
 
 .byyear{

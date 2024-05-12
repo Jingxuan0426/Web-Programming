@@ -42,7 +42,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
   <div class="row" style="align-items: center;">
   <img src="/Front End/images/Jobs/machi.png" style="max-width: 500px;" class="col-md-5">
   <span class="col-md-7">
-  <h1 style="color:white; font-weight:normal">Subway Scuffle </h1>
+  <h1 class=prtitle style="color:white; font-weight:normal; font-size:50px;">Subway Scuffle </h1>
   <h2 class="byyear">By: Machi</h2>
   <h3 class="byyear">Year: 2024</he>
   <h4>
@@ -53,5 +53,9 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 </span>
   </div>
  </div>
+
+ <div class="bottom-right">
+  This is at the bottom right corner.
+</div>
 
 </body>
