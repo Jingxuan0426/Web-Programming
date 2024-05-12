@@ -1,0 +1,183 @@
+.container {
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.bordered-box {
+  border: 1px solid #000000; /* Adjust border properties as needed */
+  padding: 10px;
+}
+
+.image {
+  flex: 0 0 auto; /* Prevent image from growing */
+}
+
+.image img {
+  max-width: 100%;
+  height: auto; /* Ensure image maintains aspect ratio */
+}
+
+.content {
+  flex: 1; /* Allow content to grow */
+  padding-left: 10px; /* Adjust spacing between image and text */
+}
+
+.content p {
+  margin: 0; /* Remove default margin */
+}
+
+* {
+  font-family: "Orbitron", sans-serif;
+}
+
+body {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* navbar start */
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(161, 13, 60);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+/* navbar end */
+
+.main3 {
+  margin-left: 250px;
+  /* Same as the width of the sidenav */
+  font-size: 30px;
+  /* Increased text to enable scrolling */
+  padding: 0px 30px;
+  color: rgb(255, 26, 77);
+width: 100%;
+max-width: 1200px; /* Adjust as needed */
+margin: 0 auto;
+
+}
+.main3 .card{
+  background-color: rgb(255, 26, 77);
+  padding: 0px 10px;
+  border-radius: none;
+}
+.card p {
+  font-size: 25px;
+  color:black
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+      padding-top: 15px;
+  }
+
+  .sidenav a {
+      font-size: 18px;
+  }
+}
+
+.btn-add {
+  opacity: 100%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  align-items: top;
+  margin-bottom: 2rem;
+  margin-right: 40px;
+  padding: 10px 60px;
+  background-color:transparent;
+  font-size: 40px;
+  border: 3px solid;
+  border-color: rgb(255, 26, 77);
+  cursor: pointer;
+  color: rgb(255, 26, 77);
+}
+
+.btn-add:hover {
+  background-color: black;
+}
+
+.btn-ban {
+  opacity: 100%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-left: 60px;
+  background-color: rgb(255, 26, 77);
+  font-size: 1.8rem;
+  border: 3px solid;
+  border-color: black;
+  transition: 0.5s ease;
+  cursor: pointer;
+  color: black;
+}
+
+.btn-ban:hover {
+  background-color: white;
+}
+
+.bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left:1000px;
+  padding: 10px; /* Optional: Add padding for spacing */
+  background-color: #f00; /* Optional: Background color */
+  color: #fff; /* Optional: Text color */
+}
+
+.btn-edit {
+  color: rgb(255, 26, 77);
+  background-color: black;
+  border-color: rgb(255, 26, 77);
+  font-size: 1.5rem;
+  border: 3px solid;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 900px;
+}
+
+.btn-edit:hover {
+  color: white;
+}
+
+.btn-user {
+  color: rgb(255, 26, 77);
+  background-color: black;
+  border-color: rgb(255, 26, 77);
+  font-size: 1.5rem;
+  border: 3px solid;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 10px;
+}
+
+.btn-user:hover {
+  color: white;
+}

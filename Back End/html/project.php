@@ -37,19 +37,49 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects 
     <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
   </h2>
+</div>
 
  <div>
-  <div class="row" style="align-items: center;">
+  <div class="row" style="align-items: center; margin-bottom: 90px;">
   <img src="/Front End/images/Jobs/machi.png" style="max-width: 500px;" class="col-md-5">
   <span class="col-md-7">
-  <h1 class=prtitle style="color:white; font-weight:normal; font-size:50px;">Subway Scuffle </h1>
+  <h1 class="prtitle">Subway Scuffle </h1>
   <h2 class="byyear">By: Machi</h2>
-  <h3 class="byyear">Year: 2024</he>
+  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</he>
   <h4>
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
 </h4>
+</span>
+  </div>
+ </div>
 
+ <div>
+  <div class="row" style="align-items: center; margin-bottom: 90px;">
+  <img src="/Front End/images/Jobs/taylor.png" style="max-width: 500px;" class="col-md-5">
+  <span class="col-md-7">
+  <h1 class="prtitle">Train</h1>
+  <h2 class="byyear">By: TaylorYingshi</h2>
+  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2020</he>
+  <h4>
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
+</h4>
+</span>
+  </div>
+ </div>
+
+ <div>
+  <div class="row" style="align-items: center; margin-bottom: 90px;">
+  <img src="/Front End/images/Jobs/syarawi.png" style="max-width: 500px;" class="col-md-5">
+  <span class="col-md-7">
+  <h1 class="prtitle">Coffee Machine </h1>
+  <h2 class="byyear">By: Syarawi</h2>
+  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2023</he>
+  <h4>
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
+</h4>
 </span>
   </div>
  </div>
