@@ -30,25 +30,21 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
         <a href="/Back End/html/Back.html">Log Out</a>
     </div>
 
+    <!-- navbar end -->
+    
 <div class="main3">
   <div class="row">
     <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects </h2>
 </div>
 
-<div class="container">
+<div class="insert">
   <div class="row">
-    <div class="bordered-box">
-      <!-- Content of the bordered box goes here -->
-      This is a bordered box.
-    </div>
-    <div class="image">
-      <img src="your-image-url.jpg" alt="Image">
-    </div>
-    <div class="content">
-      <p>Your text goes here...</p>
-    </div>
-  </div>
+<button class="image-button">
+        <img src="" alt="">
+    Project Cover Picture
+    </button>
+</div>
 </div>
 
-    <!-- navbar end -->
+
 </body>

@@ -7,30 +7,9 @@
 .row {
   display: flex;
   flex-direction: row;
+  
 }
 
-.bordered-box {
-  border: 1px solid #000000; /* Adjust border properties as needed */
-  padding: 10px;
-}
-
-.image {
-  flex: 0 0 auto; /* Prevent image from growing */
-}
-
-.image img {
-  max-width: 100%;
-  height: auto; /* Ensure image maintains aspect ratio */
-}
-
-.content {
-  flex: 1; /* Allow content to grow */
-  padding-left: 10px; /* Adjust spacing between image and text */
-}
-
-.content p {
-  margin: 0; /* Remove default margin */
-}
 
 * {
   font-family: "Orbitron", sans-serif;
@@ -180,4 +159,38 @@ margin: 0 auto;
 
 .btn-user:hover {
   color: white;
+}
+
+.insert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-color: transparent;
+}
+
+.image-button {
+  display: flex;
+  align-items: center;
+  max-height: 250px;
+  padding: 10px 20px;
+  border: 10px solid #007BFF;
+  border-radius: 50px;
+  background-color:transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #007BFF;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.image-button img {
+  margin-right: 10px;
+  width: 24px;
+  height:713px;
+}
+
+.image-button:hover {
+  background-color: #007BFF;
+  color: #ffffff;
 }
