@@ -8,8 +8,8 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Overview</title>
-  <link rel="stylesheet" href="/Front End/css/overview.css">
+  <title>About Us</title>
+  <link rel="stylesheet" href="/Front End/css/Aboutus.css">
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -97,7 +97,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
       <div class="carousel-item active">
         <img src="/Front End/images/3D Illustration/a1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption justify-content-center d-flex">
-          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">Overview</h1>
+          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">About Us</h1>
         </div>
       </div>
     </div>
@@ -105,87 +105,50 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <div class="container">
       <p class="project-meta-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
     </div> 
+  
+<div class=" container">
+  <div class="row"> 
+      <div class="col-md-4 py-5 py-md-5 col-12">
+        <h1 class="type">MISSION</h1>
+      </div>  
 
-    <div class="container">
-      <div class="row" style="margin-top: 5rem;margin-bottom: 5rem;">
-      
-      <div class="col-md-12 ">
-        <div class="card" 
-        style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/category_digitalillustration.html">
-          <img src="/Front End/images/3D Illustration/aa.jpg" class="card-img" alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title">Digital ILLUSTRATION</h1>
-          </div>
-          </a>
+      <div class="col-md-8 py-5 py-md-5 col-12">
+        <p class="type2">MISSION">Let's CHILL Cafe ia a premier and authentic cafe that has been proudly serving Jalan Batai and beyong since
+          October 2015. Since then, our mission has been to provide delicious high-quality food, speciality coffee and
+          comfortable environment for all those that wish to combine fun and enjoyable ambiance with skillful cooking
+          into one extraordinary dining experience.</p>
+      </div> 
+    </div> 
+  </div>
+</div>
+
+<div class="container">
+  <div class="row"> 
+
+  <div class="container">
+    <div class="row">   
+      <h4 style="color: red;">_________________________________________________________________</h4>
+    </div> 
+    </div>
+
+        <div class="col-md-8 py-5 py-md-5 col-12">
+          <p class="type2">MISSION">Let's CHILL Cafe ia a premier and authentic cafe that has been proudly serving Jalan Batai and beyong since
+            October 2015. Since then, our mission has been to provide delicious high-quality food, speciality coffee and
+            comfortable environment for all those that wish to combine fun and enjoyable ambiance with skillful cooking
+            into one extraordinary dining experience.</p>
+        </div> 
+
+        <div class="col-md-4 py-5 py-md-5 col-12">
+          <h1 class="type">VISION</h1>
         </div>
-      </div>
-      
-      <div class="col-md-6 py-0 py-md-4 col-12">
-        <div class="card" 
-        style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/category_animation.html">
-          <img src="/Front End/images/2D Animation/c5.jpg" class="card-img" alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title3">Animation</h1>
-          </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 py-0 py-md-4 col-12">
-        <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Graphic Design.html">
-          <img src="/Front End/images/Graphic Design/e12.jpg" class="card-img"  alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title3">Graphic Design</h1>
-          </div>
-          </a>
-        </div>
-      </div>
-
-      
-      <div class="col-md-4 py-3 py-md-0 col-12">
-        <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Photography.html">
-          <img src="/Front End/images/Photography/e33.jpg" class="card-img" alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title2">Photography</h1>
-          </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-4 py-3 py-md-0 col-12">
-        <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Videography.html">
-          <img src="/Front End/images/Videography/e48.jpg" class="card-img" alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title2">Videography</h1>
-          </div>
-          </a>
-      </div>
-      </div>
-
-      <div class="col-md-4 py-3 py-md-0 col-12">
-        <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Sculpture.html">
-          <img src="/Front End/images/Sculpture/e19.jpg" class="card-img" alt="..." 
-          style="opacity: 0.5;">
-          <div class="card-img-overlay">
-            <h1 class="card-title2">Sculpture</h1>
-          </div>
-          </a>
-      </div>
+      </div> 
+    </div>
+   
       </div>
     </div>
-    </div>
+  </section>
   <!-- category end -->
+
 
   <footer class="footer">
     <div class="container">
@@ -206,6 +169,8 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     </div>
   </footer>
   <!-- footer end -->
+
+
 
   
 
