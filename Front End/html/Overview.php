@@ -1,3 +1,7 @@
+<?php
+include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
