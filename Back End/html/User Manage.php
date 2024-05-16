@@ -51,7 +51,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
             }
 
             // SQL query to fetch data from the profile table
-            $sql = "SELECT user_id, user_name, user_email, user_contact, user_location FROM profile";
+            $sql = "SELECT * FROM user";
             $result = $conn->query($sql);
 
             while ($row = $result->fetch_assoc()) {
@@ -60,7 +60,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
                 echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
                 echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
                 echo "<p>Email: " . $row['user_email'] . "</p>";
-                echo "<p>Contact: " . $row['user_contact'] . "</p>";
+                // echo "<p>Contact: " . $row['user_contact'] . "</p>";
                 echo "</div>";
                 echo "</div>";
                 echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
