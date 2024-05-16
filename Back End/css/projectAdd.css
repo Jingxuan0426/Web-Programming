@@ -57,7 +57,7 @@ body {
   color: rgb(255, 26, 77);
 width: 100%;
 max-width: 1200px; /* Adjust as needed */
-margin: 0 auto;
+margin: 0 auto; 
 
 }
 .main3 .card{
@@ -165,32 +165,135 @@ margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  background-color: transparent;
+  height: 300px;
+  background-color: black;
+  margin-left: 250;
 }
 
 .image-button {
   display: flex;
   align-items: center;
-  max-height: 250px;
-  padding: 10px 20px;
-  border: 10px solid #007BFF;
-  border-radius: 50px;
-  background-color:transparent;
+  text-align: center;
+  padding: 150px 550px;
+  border: 2px solid white;
+  background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 64px;
   font-weight: bold;
-  color: #007BFF;
+  color: rgb(255, 26, 77);
   transition: background-color 0.3s, color 0.3s;
+  height: 50px; /* Set the desired height here */;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .image-button img {
   margin-right: 10px;
   width: 24px;
-  height:713px;
+  height: 24px;
+}
+
+.image-button span {
+  position: absolute;
+  align-items: center;
+  bottom: 10px; /* Adjust as necessary to control spacing */
+  left: 50%;
+    transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  font-size: 60px;
+  font-weight: normal;
+  color: rgb(255, 26, 77);
+  box-sizing: border-box;
 }
 
 .image-button:hover {
   background-color: #007BFF;
   color: #ffffff;
+}
+
+.main {
+  margin-top: 40px;
+  margin-left: 25 0px;
+  /* Same as the width of the sidenav */
+  font-size: 40px;
+  /* Increased text to enable scrolling */
+  padding: 0px 30px;
+  color: rgb(255, 26, 77);
+  margin: 0 auto; 
+
+}
+
+
+
+label {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  background-color: transparent; /* Set the form background to transparent */
+  border-radius: 0px;
+}
+
+.main3 form .form-control{
+  border-color: white;
+  background-color: transparent;
+  color: white;
+}
+
+.year{
+    display: flex;
+    width: 200%;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+max-width: px; /* Adjust as needed */
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-color: black;
+  margin-left: 250;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 150px 550px;
+  border: 2px solid white;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 64px;
+  font-weight: bold;
+  color: rgb(255, 26, 77);
+  transition: background-color 0.3s, color 0.3s;
+  height: 50px; /* Set the desired height here */;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.upload-button img {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.upload-button span {
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: 60px;
+  font-weight: normal;
+  color: rgb(255, 26, 77);
+  box-sizing: border-box;
 }

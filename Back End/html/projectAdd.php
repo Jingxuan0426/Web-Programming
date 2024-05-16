@@ -8,7 +8,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project-Add</title>
-    <link rel="stylesheet" href="/Back End/css/projectBackend.css">
+    <link rel="stylesheet" href="/Back End/css/projectAdd.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -37,14 +37,69 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects </h2>
 </div>
 
+
 <div class="insert">
-  <div class="row">
-<button class="image-button">
-        <img src="" alt="">
-    Project Cover Picture
-    </button>
-</div>
+ <button class="image-button">
+        <img src="path_to_your_image.jpg" alt="">
+        <span>Project Cover Picture</span>
+    </button>  
+ </div>
 </div>
 
+<div class="main3">
+<form>
+ <div class="mb-3 col-sm-12" style="margin-top: 40px;margin-bottom:50px;">
+    <label for="project" class="form-label" >Project Title</label>
+    <input type="text" class="form-control" id="projectTitle" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px; ">
+ </div>
+
+ <div class="mb-3 col-sm-12" style="margin-top: 40px;margin-bottom:50px;">
+    <label for="project" class="form-label" >Creator</label>
+    <input type="text" class="form-control" id="creator" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px; ">
+ </div>
+
+
+ <div class="mb-3 col-sm-12" style="margin-top: 40px;margin-bottom:50px;">
+    <label for="project" class="form-label" >Project Title</label>
+    <input type="text" class="form-control" id="projectTitle" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px; ">
+ </div>
+
+ <div class="year">
+    <div class="mb-3 col-sm-5" style="margin-right:190px;">
+    <label for="project" class="form-label" >Year</label>
+      <input type="text" class="form-control" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px; margin-right: 50px;" placeholder="First name">
+    </div>
+    <div class="mb-3 col-sm-5">
+    <label for="project" class="form-label" >Category</label>
+      <input type="text" class="form-control" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px;" placeholder="Last name">
+    </div>
+  </div>
+
+  <div class="mb-3 col-sm-12" style="margin-top: 40px;margin-bottom:50px;">
+    <label for="project" class="form-label" >Tags</label>
+    <input type="text" class="form-control" id="projectTitle" style="background-color: transparent; border: 2px solid white;
+    border-radius:0px; ">
+ </div>
+
+ <div class="mb-3 col-sm-12" style="margin-top: 40px;margin-bottom:50px;">
+    <label for="project" class="form-label" >Pictures/Videos</label>
+    <div class="upload" >
+        <button class="upload-button">
+        <img src="path_to_your_image.jpg" alt="">
+        <span>+Add</span>
+    </button>  
+ </div>
+ </div>
+
+</div>
+
+</form>
+
+</div>
 
 </body>
