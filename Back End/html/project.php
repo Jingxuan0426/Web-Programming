@@ -102,8 +102,8 @@ $result = $conn->query($sql);
 while ($row = $result->fetch_assoc()) {
     echo "<div class='row' style='align-items: center; margin-bottom: 90px;'>";
     echo "<img src=,/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
-    echo "<div class='card-body'>";
-    echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
+    echo "<span class='col-md-7'>";
+    echo "<h1 class='prtitle'>Title: " . $row['user_id'] . "</h1>";
     echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
     echo "<p>Email: " . $row['user_email'] . "</p>";
     echo "<p>Contact: " . $row['user_contact'] . "</p>";
@@ -112,6 +112,13 @@ while ($row = $result->fetch_assoc()) {
     echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
     echo "<button type='submit' class='btn-user'>Ban User</button>";
 }
+
+<h1 class="prtitle">Subway Scuffle </h1>
+  <h2 class="byyear">By: Machi</h2>
+  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</h>
+  <h4>
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
+  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
 
 $conn->close();
 
