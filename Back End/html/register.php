@@ -18,9 +18,21 @@ $name = $_POST['username'];
 // $password = $_POST['password'];
 $email = $_POST['email'];
 // $role = $_POST['role'];
+$contact = $_POST['contact'];
+$location = $_POST['location'];
+$field = $_POST['field'];
+$occupation = $_POST['occupation'];
+$job = $_POST['job'];
 
-$sql = "INSERT INTO `user`(`user_name`, `user_password`, `user_email`, `user_role`)
- VALUES ('$name','123','$email','123')";
+
+$sql = "INSERT INTO `profile`(`user_name`, `user_email`, `user_contact`, `user_location`) 
+VALUES ('?,?,?,?')";
+
+// $sql = "INSERT INTO `user`(`user_name`, `user_password`, `user_email`, `user_role`)
+//  VALUES ('$name','123','$email','123')";
+
+$sql2 = "INSERT INTO `job`(`job_specialized_field`, `job_position`, `job_type`) 
+VALUES ('?,?,?')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
