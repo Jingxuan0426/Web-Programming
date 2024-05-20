@@ -19,16 +19,17 @@ $sql = "SELECT user_id, user_name, user_email, user_contact, user_location FROM 
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
-    echo "<div class='card' style='width: 75rem;'>";
-    echo "<div class='card-body'>";
-    echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
-    echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
-    echo "<p>Email: " . $row['user_email'] . "</p>";
-    echo "<p>Contact: " . $row['user_contact'] . "</p>";
-    echo "</div>";
-    echo "</div>";
-    echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
-    echo "<button type='submit' class='btn-user'>Ban User</button>";
+  echo "<div class='row' style='align-items: center; margin-bottom: 90px; margin-left:250px;'>";
+  echo "<img src=,/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
+  echo "<span class='col-md-12'>";
+  echo "<h1 class='prtitle'>Title: " . $row['imall_name'] . "</h1>";
+  echo "<h2 class='byyear'>Name: " . $row['imall_date_created'] . "</h2>";
+  echo "<h3 class='byyear' style='margin-bottom: 40px;'></h3>";
+  echo "<h4>";
+  echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Edit </button></a>";
+  echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Delete </button></a>"; 
+  echo "</h4>";
+  echo "</div>";
 }
 
 $conn->close();
@@ -81,7 +82,7 @@ $portfolioItems = array(
     <!-- navbar end -->
 
 <?php
-    $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
+$servername = "localhost"; // Change if your MySQL server is hosted elsewhere
 $username = "root"; // Change to your MySQL username
 $password = ""; // Change to your MySQL password
 $database = "phpmyadmin"; // Change to your MySQL database name
@@ -100,25 +101,25 @@ $sql = "SELECT * FROM imageall";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
-    echo "<div class='row' style='align-items: center; margin-bottom: 90px;'>";
+    echo "<div class='row' style='align-items: center; margin-bottom: 90px; margin-left:250px;'>";
     echo "<img src=,/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
-    echo "<span class='col-md-7'>";
-    echo "<h1 class='prtitle'>Title: " . $row['user_id'] . "</h1>";
-    echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
-    echo "<p>Email: " . $row['user_email'] . "</p>";
-    echo "<p>Contact: " . $row['user_contact'] . "</p>";
+    echo "<span class='col-md-12'>";
+    echo "<h1 class='prtitle'>Title: " . $row['imall_name'] . "</h1>";
+    echo "<h2 class='byyear'>Name: " . $row['imall_date_created'] . "</h2>";
+    echo "<h3 class='byyear' style='margin-bottom: 40px;'></h3>";
+    echo "<h4>";
+    echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Edit </button></a>";
+    echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Delete </button></a>"; 
+    echo "</h4>";
     echo "</div>";
-    echo "</div>";
-    echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
-    echo "<button type='submit' class='btn-user'>Ban User</button>";
 }
 
-<h1 class="prtitle">Subway Scuffle </h1>
-  <h2 class="byyear">By: Machi</h2>
-  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</h>
-  <h4>
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
+// <h1 class="prtitle">Subway Scuffle </h1>
+//   <h2 class="byyear">By: Machi</h2>
+//   <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</h>
+//   <h4>
+//   <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
+//   <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
 
 $conn->close();
 
