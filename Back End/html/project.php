@@ -7,7 +7,7 @@ $database = "phpmyadmin"; // Change to your MySQL database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
-
+ 
 // Check connection
 if ($conn->connect_error) { 
     echo "Connect failed";
@@ -96,7 +96,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to fetch data from the profile table
-$sql = "SELECT user_id, user_name, user_email, user_contact, user_location FROM profile";
+$sql = "SELECT * FROM imageall";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
