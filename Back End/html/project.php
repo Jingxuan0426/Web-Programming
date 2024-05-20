@@ -90,7 +90,7 @@ $database = "phpmyadmin"; // Change to your MySQL database name
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
-if ($conn->connect_error) { 
+if ($conn->connect_error) {   
     echo "Connect failed";
     die("Connection failed: " . $conn->connect_error);
 }
