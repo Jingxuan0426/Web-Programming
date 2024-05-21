@@ -22,7 +22,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
-      <img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo">
+      <a href="/Back End/html/login.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -30,34 +30,34 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/Front End/html/Videography.html">Videography</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Sculpture.html">Sculpture</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Graphic Design.html">Graphic Design</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.html">Digital Illustration</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
-                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.html">2D Illustration</a></li>
-                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.html">3D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-              <li><a class="dropdown-item" href="/Front End/html/category_animation.html">Animation</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
-                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.html">2D Animation</a></li>
-                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.html">3D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-              <li><a class="dropdown-item" href="/Front End/html/Photography.html">Photography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Job.html">Jobs</a>
+            <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
           </li>
-          <a href="/Front End/html/Upload.html" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
         </ul>
       </div>
     </div>
@@ -133,7 +133,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
             <div class="card-img-overlay">
               <h1 class="card-title"></h1>
               <h2 class="card-body text-center">
-                <a href="/Front End/html/project_photography.html" target="_blank"><button type="button" class="btn-view mx-auto">Explore</button></a>
+                <a href="/Front End/html/project_photography.php" target="_blank"><button type="button" class="btn-view mx-auto">Explore</button></a>
               </h2>
             </div>
           </div>
