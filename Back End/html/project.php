@@ -20,7 +20,7 @@ $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
   echo "<div class='row' style='align-items: center; margin-bottom: 90px; margin-left:250px;'>";
-  echo "<img src=,/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
+  echo "<img src='/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
   echo "<span class='col-md-12'>";
   echo "<h1 class='prtitle'>Title: " . $row['imall_name'] . "</h1>";
   echo "<h2 class='byyear'>Name: " . $row['imall_date_created'] . "</h2>";
@@ -37,7 +37,7 @@ $conn->close();
 // Define an array of portfolio items
 $portfolioItems = array(
   array(
-      'image' => 'image1.jpg',
+      'image' => 'machi.jpg',
       'title' => 'Project 1',
       'description' => 'Description of Project 1',
       'link' => 'project1.php'
