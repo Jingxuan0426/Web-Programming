@@ -14,8 +14,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query to fetch data from the profile table
-$sql = "SELECT user_id, user_name, user_email, user_contact, user_location FROM profile";
+echo "Connected Successfully";
+// SQL query to fetch data from the imageall table
+$sql = "SELECT * FROM imageall";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
