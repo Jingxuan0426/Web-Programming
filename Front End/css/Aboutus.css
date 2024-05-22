@@ -2,6 +2,10 @@
   font-family: "Orbitron", sans-serif;
 }
 
+.description{
+  font-family: "Unica One", sans-serif;
+}
+
 body{
 background-size: cover;
 background-attachment: fixed;
@@ -16,82 +20,102 @@ background-attachment: fixed;
 }
 
 
-
-.nav-link:hover{
-color: red !important;
-text-decoration: line-through;
+.navbar{
+  font-family: "Orbitron", sans-serif;
 }
 
 .nav-item{
-z-index: 10;
-margin-bottom: 0;
-margin-right: 20px;
-padding-left: 0;
-position: relative;
+  z-index: 10;
+  margin-bottom: 0;
+  margin-right: 20px;
+  padding-left: 0;
+  position: relative;
+  
 }
 
 .nav-item .nav-link{
-color: white;
-font-size: 1.5rem;
-transition: 0.5s;
-justify-content:end
+  color: white;
+  font-size: 1.5rem;
+  transition: 0.5s;
+  justify-content:end
 }
 
 .nav-item .dropdown-menu a{
-color: black;
-text-align: left;
-font-size: 1rem;
-cursor: pointer;
+  color: black;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .nav-item .dropdown-menu:hover a{
-color: rgb(255, 26, 77); 
-text-align: left;
-font-size: 1rem;
-cursor: pointer;
+  color: rgb(255, 26, 77); 
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .navbar-nav a .btn-nav{
-color: rgb(255, 26, 77); 
-background-color: black;
-border-color: rgb(255, 26, 77);
-font-size: 1.5rem;
-border: 3px solid;
+  color: rgb(255, 26, 77); 
+  background-color: black;
+  border-color: rgb(255, 26, 77);
+  font-size: 1.5rem;
+  border: 3px solid;
 }
 
 .navbar-nav a:hover .btn-nav{
-color: black;
-background-color: rgb(255, 26, 77); 
-border-color: black;
-font-size: 1.5rem;
-border: 3px solid;
-transition: 0.5s ease;
-cursor: pointer;
+  color: black;
+  background-color: rgb(255, 26, 77); 
+  border-color: black;
+  font-size: 1.5rem;
+  border: 3px solid;
+  transition: 0.5s ease;
+  cursor: pointer;
 }
 
 /* navbar end */
 
 .container{
-margin-top: 5rem;
-margin-bottom: 5rem;
+/* margin-top: 5rem;
+margin-bottom: 5rem; */
+
 }
+
 
 
 .type{
   font-size: 65px;
   font-weight: semibold;
   text-align: center; 
-  margin: 4rem;
-  color: aliceblue;"
+  margin: 2rem;
+  color: aliceblue;
 }
 
 .type2{
   font-size: 20px;
   font-weight: normal;
   text-align: justify;
-  margin: 1rem;
+  margin-left: 4rem;
+  color: aliceblue;
+}
+
+.type3{
+  font-size: 65px;
+  font-weight: semibold;
+  text-align: center; 
+  margin: 3rem;
+  margin-left: 0rem;
   color: aliceblue;
 
+}
+
+.type4{
+  font-size: 20px;
+  font-weight: normal;
+  text-align: justify;
+  margin-right: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  color: aliceblue;
 }
 
 .project-meta-content {
@@ -99,6 +123,35 @@ margin-bottom: 5rem;
   text-align:center;
   font-size: 1.4em; 
   color:white;
+  font-family: "Unica One", sans-serif;
+}
+
+.flex-row.project-meta-container {
+  margin-bottom: 120px;
+}
+
+.flex-row {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.project-meta-header {
+  margin-bottom: 10px;
+}
+
+h3 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+
+.project-meta-content2 {
+  font-size: 1.5em;
   font-family: "Unica One", sans-serif;
 }
 
@@ -132,8 +185,8 @@ margin-bottom: 5rem;
 .footer {
   background-color:rgb(177, 5, 50);
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
   color: white;
 }
 
