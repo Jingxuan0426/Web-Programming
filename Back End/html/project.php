@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 
 echo "Connected Successfully";
 // SQL query to fetch data from the imageall table
-$sql = "SELECT * FROM imageall";
+$sql = "SELECT * FROM image";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
@@ -98,7 +98,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to fetch data from the profile table
-$sql = "SELECT * FROM imageall";
+$sql = "SELECT * FROM image";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
