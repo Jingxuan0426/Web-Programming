@@ -1,57 +1,3 @@
-<?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
-$servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-$username = "root"; // Change to your MySQL username
-$password = ""; // Change to your MySQL password
-$database = "phpmyadmin"; // Change to your MySQL database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
- 
-// Check connection
-if ($conn->connect_error) { 
-    echo "Connect failed";
-    die("Connection failed: " . $conn->connect_error);
-}
-
-echo "Connected Successfully";
-// SQL query to fetch data from the imageall table
-$sql = "SELECT * FROM image";
-$result = $conn->query($sql);
-
-while ($row = $result->fetch_assoc()) {
-  echo "<div class='row' style='align-items: center; margin-bottom: 90px; margin-left:250px;'>";
-  echo "<img src='/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
-  echo "<span class='col-md-12'>";
-  echo "<h1 class='prtitle'>Title: " . $row['imall_name'] . "</h1>";
-  echo "<h2 class='byyear'>Name: " . $row['imall_date_created'] . "</h2>";
-  echo "<h3 class='byyear' style='margin-bottom: 40px;'></h3>";
-  echo "<h4>";
-  echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Edit </button></a>";
-  echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Delete </button></a>"; 
-  echo "</h4>";
-  echo "</div>";
-}
-
-$conn->close();
-
-// Define an array of portfolio items
-$portfolioItems = array(
-  array(
-      'image' => 'machi.jpg',
-      'title' => 'Project 1',
-      'description' => 'Description of Project 1',
-      'link' => 'project1.php'
-  ),
-  array(
-      'image' => 'image2.jpg',
-      'title' => 'Project 2',
-      'description' => 'Description of Project 2',
-      'link' => 'project2.php'
-  ),
-  // Add more portfolio items as needed
-);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,123 +28,62 @@ $portfolioItems = array(
     </div>
     <!-- navbar end -->
 
-<?php
-$servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-$username = "root"; // Change to your MySQL username
-$password = ""; // Change to your MySQL password
-$database = "phpmyadmin"; // Change to your MySQL database name
+    <div class="main3">
+        <div class="row">
+            <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects
+                <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add px-md-4"> Add </button></a>
+            </h2>
+        </div>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+        <?php
+        // Database connection
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "phpmyadmin";
 
-// Check connection
-if ($conn->connect_error) {   
-    echo "Connect failed";
-    die("Connection failed: " . $conn->connect_error);
-}
+        $conn = new mysqli($servername, $username, $password, $database);
 
-// SQL query to fetch data from the profile table
-$sql = "SELECT * FROM image";
-$result = $conn->query($sql);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-while ($row = $result->fetch_assoc()) {
-    echo "<div class='row' style='align-items: center; margin-bottom: 90px; margin-left:250px;'>";
-    echo "<img src=,/Front End/images/Jobs/machi.png' style='max-width: 500px;' class='col-md-5'>";
-    echo "<span class='col-md-12'>";
-    echo "<h1 class='prtitle'>Title: " . $row['imall_name'] . "</h1>";
-    echo "<h2 class='byyear'>Name: " . $row['imall_date_created'] . "</h2>";
-    echo "<h3 class='byyear' style='margin-bottom: 40px;'></h3>";
-    echo "<h4>";
-    echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Edit </button></a>";
-    echo "<a href='/Back End/html/projectAdd.html'><button type='submit' class='btn-add'> Delete </button></a>"; 
-    echo "</h4>";
-    echo "</div>";
-}
+        // SQL query to fetch projects data
+        $sql = "SELECT * FROM projects";
+        $result = $conn->query($sql);
 
-// <h1 class="prtitle">Subway Scuffle </h1>
-//   <h2 class="byyear">By: Machi</h2>
-//   <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</h>
-//   <h4>
-//   <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
-//   <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
+        // Check if there are any projects
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                // Display project information
+                echo '<div>
+                        <div class="row" style="align-items: center; margin-bottom: 90px;">
+                            <img src="/Front End/images/Upload/' . $row["project_cover_pic"] . '" style="max-width: 1000px;" class="col-md-5">
+                            <span class="col-md-7">
+                                <h1 class="prtitle">' . $row["project_title"] . '</h1>
+                                <h2 class="byyear">By: ' . $row["creator"] . '</h2>
+                                <h3 class="byyear" style="margin-bottom: 40px;">Year: ' . $row["year"] . '</h3>
+                                <h4>
+                                    <a href="/Back End/html/projectEdit.php?project_id=' .$row['project_id'] . '"><button type="submit" class="btn-add"> Edit </button></a>
+                                    <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add"> Delete </button></a>
+                                </h4>
+                            </span>
+                        </div>
+                    </div>';
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
 
-$conn->close();
-
-// Define an array of portfolio items
-$portfolioItems = array(
-  array(
-      'image' => 'image1.jpg',
-      'title' => 'Project 1',
-      'description' => 'Description of Project 1',
-      'link' => 'project1.php'
-  ),
-  array(
-      'image' => 'image2.jpg',
-      'title' => 'Project 2',
-      'description' => 'Description of Project 2',
-      'link' => 'project2.php'
-  ),
-  // Add more portfolio items as needed
-);
-?>
-
-<!--end here-->
-
-
- <div class="main3">
-  <div class="row">
-    <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects 
-    <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add px-md-4"> Add </button></a> 
-  </h2>
-</div>
-
- <div>
-  <div class="row" style="align-items: center; margin-bottom: 90px;">
-  <img src="/Front End/images/Jobs/machi.png" style="max-width: 500px;" class="col-md-5">
-  <span class="col-md-7">
-  <h1 class="prtitle">Subway Scuffle </h1>
-  <h2 class="byyear">By: Machi</h2>
-  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2024</he>
-  <h4>
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
-</h4>
-</span>
-  </div>
- </div>
-
- <div>
-  <div class="row" style="align-items: center; margin-bottom: 90px;">
-  <img src="/Front End/images/Jobs/taylor.png" style="max-width: 500px;" class="col-md-5">
-  <span class="col-md-7">
-  <h1 class="prtitle">Train</h1>
-  <h2 class="byyear">By: TaylorYingshi</h2>
-  <h3 class="byyear" style="margin-bottom: 40px;">Year: 2020</he>
-  <h4>
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
-</h4>
-</span>
-  </div>
- </div>
-
- <div>
-  <div class="row" style="align-items: center; margin-bottom: 90px;">
-  <img src="/Front End/images/Jobs/syarawi.png" style="max-width: 500px;" class="col-md-5">
-  <span class="col-md-7">
-  <h1 class="prtitle">Coffee Machine </h1>
-  <h2 class="byyear">By: Syarawi</h2>
-  <h3 class="byyear" style="margin-bottom: 40px;">Year:   2023</he>
-  <h4>
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Edit </button></a> 
-  <a href="/Back End/html/projectAdd.html"><button type="submit" class="btn-add"> Delete </button></a> 
-</h4>
-</span>
-  </div>
- </div>
-
- <div class="bottom-right">
-  This is at the bottom right corner.
-</div>
+        <div class="bottom-right">
+            This is at the bottom right corner.
+        </div>
+    </div>
 
 </body>
+
+</html>
