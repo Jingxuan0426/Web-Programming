@@ -245,11 +245,6 @@ color: #ff1a4d; /* Text color */
   background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
 }
 
-.project-meta-content {
-  margin-top:165px; text-align:center;
-  font-size: 1.5em; color:white;
-  font-family: "Unica One", sans-serif;
-}
 
 .browse{
   opacity: 100%;
@@ -337,6 +332,30 @@ color: #ff1a4d; /* Text color */
   cursor: pointer;
 }
 
+.flex-row.project-meta-container {
+  margin-bottom: 120px;
+}
+
+.flex-row {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+
+
+.project-meta-header {
+  margin-bottom: 10px;
+}
+
+.project-meta-content {
+  font-size: 1.5em;
+  font-family: "Unica One", sans-serif;
+}
+
+.jobcon{
+  font-family: "Unica One", sans-serif;
+}
+
 
 /* category end */
 
@@ -387,3 +406,5 @@ text-align: left;
 }
 
 /* footer end */
+
+
