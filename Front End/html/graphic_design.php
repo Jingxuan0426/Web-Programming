@@ -1,6 +1,48 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection
+  $host = "localhost"; // Your host
+  $username = "root"; // Your database username
+  $password = ""; // Your database password
+  $dbname = "project_database"; // Your database name
+
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Connection failed: " . $e->getMessage());
+  }
+
+// Define the SQL query
+$query = "SELECT project.*, image.image_location 
+          FROM project 
+          INNER JOIN image ON image.project_id = project.project_id
+          WHERE project.approve_status = :approve_status
+          AND project.category_id = :category_id";
+
+// Prepare the statement
+$stmt = $pdo->prepare($query);
+
+// Bind parameters
+$approve_status = true; // Change to 1 if approval status is stored as integer
+$category_id = 4;
+$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+
+// Execute the query
+$stmt->execute();
+
+// Fetch all the results
+$data = $stmt->fetchAll();
+
+// Debug purpose
+// var_dump($data);
+// die();
+
+// Now you can use $data to display project details and associated images on your category page
+}
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -22,7 +64,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
-      <a href="/Back End/html/login.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
+      <a href="/Back End/html/login_page.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
       <a class="navbar-brand" href=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -124,120 +166,44 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
   <section id="category">
 
-    <div class="container">
-      <div class="row">
+  <div class="container">
+    <div class="row">
+    <?php
+            if(isset($data)) {
+                foreach ($data as $row) {
+                    ?>
+                    <div class="col-md-4 py-3 py-md-0 col-12">
+                        <div class="card">
+                            <img src="<?php echo $row['image_location']; ?>" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h1 class="card-title"><?php echo $row['project_name']; ?></h1>
+                                <h2 class="card-body text-center">
+                                    <a href="<?php echo $row['project_link']; ?>" target="_blank"><button type="button" class="btn-view mx-auto">View Project</button></a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e1.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">SPARK</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e2.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">FLAASH</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e3.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Taiwan Exhibition</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e4.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Block Exhibition</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e5.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Solara Realty</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e6.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">AMA</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e7.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Startify</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e8.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">CCO</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card" style="margin-bottom: 5rem;">
-            <img src="/Front End/images/Graphic Design/e15.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="/Front End/html/project_graphicdesign.php" target="_blank"><button type="button" class="btn-view mx-auto">Detroit Design</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
+                    <div class="col-md-4 py-3 py-md-0 col-12">
+                        <div class="card">
+                            <!-- Corrected the image source -->
+                            <img src="<?php echo $row['image_location']; ?>" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <!-- Corrected the project name -->
+                                <h1 class="card-title"><?php echo $row['project_name']; ?></h1>
+                                <h2 class="card-body text-center">
+                                    <a href="<?php echo $row['project_link']; ?>" target="_blank"><button type="button" class="btn-view mx-auto">View Project</button></a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
     </div>
+</div>
+
   </section>
   <!-- category end -->
 
