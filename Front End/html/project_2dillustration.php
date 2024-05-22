@@ -1,5 +1,6 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -103,10 +104,13 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
                     style="max-width: 100%; opacity: 0.5;">
             </div>
 
+            <!-- Loop -->
+            <!-- Replace Hardcode -->
+
             <div class="container" style="color: whitesmoke;">
                 <div class="flex-row project-meta-container">
                     <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">PROJECT TITLE</h3>
+                        <h3 class="project-meta-header">PROJECT TITLE</h3> <!-- $project title -->
                         <div class="project-meta-content"
                             style="padding-bottom: 3rem;">Hatred</div>
                         <h3 class="project-meta-header">CREATOR</h3>

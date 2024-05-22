@@ -1,5 +1,31 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
+/*
+
+SELECT project.*, image.image_location FROM project 
+INNER JOIN image ON image.project_id = project.project_id
+where project.approve_status = <true/1> and project.category_id = <depends on your category>;
+
+*/
+//In this case, the user and project details can be used in this page
+
+//Put this code to all category page
+
+// Query to project data
+
+// $query = "SELECT * FROM user WHERE username = :username";
+
+// $stmt = $pdo->prepare($query);
+// $stmt->bindParam(":username", $username);
+// $stmt->execute();
+
+// $data = $stmt->fetchAll();
+
+//Debug purpose
+ //var_dump($data);
+ //die();
+
 ?>
 
 <!doctype html>
@@ -177,19 +203,23 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
       <div class="container">
         <div class="row">
 
+          <!-- Loop -->
           <div class="col-md-4 py-3 py-md-0 col-12">
             <div class="card">
               <img src="/Front End/images/2D Illustration/bb1.jpg"
-                class="card-img" alt="...">
+                class="card-img" alt="..."> <!-- SQL Fetch Image Location -->
               <div class="card-img-overlay">
                 <h1 class="card-title"></h1>
                 <h2 class="card-body text-center">
                   <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">FRANCE</button></a>
+                      class="btn-view mx-auto">French</button></a> <!-- SQL Fetch project title -->
                 </h2>
               </div>
             </div>
           </div>
+
+          <!-- Loop -->
+
 
           <div class="col-md-4 py-3 py-md-0 col-12">
             <div class="card">

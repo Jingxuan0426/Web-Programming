@@ -1,5 +1,15 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+    include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
+    //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+    session_start();
+
+    if(!$_SESSION['loggedin']) {
+        header("location: login_page.php");
+    }
+    else if($_SESSION['role'] != "admin") {
+        header("location: /Front End/html/overview_page.php");
+    }
 ?>
 
 <!doctype html>
@@ -26,7 +36,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
         </a>
         <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
         <a href="#">Projects</a>
-        <a href="/Back End/html/Back.html">Log Out</a>
+        <a href="/Back End/html/logout.php">Log Out</a>
     </div>
     <!-- navbar end -->
 

@@ -1,38 +1,16 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+    session_start();
 
-$message = "";
-
-if(isset($_POST["login"])){
-    
-    //1) Collect Inputs from the form
-    $email = $_POST["email"];
-    $pwd = $_POST["pwd"];
-    
-    //2) Select record that matches inputs from the form
-    $sql = $connection->prepare("INSERT INTO user(user_email, user_password) VALUES(?,?)");
-    
-    //3) Execute the SQL statement
-    $result = $sql->execute([$email, $e_pwd]);
-    
-    //4) Collect the record from SQL
-    $result = $sql->fetch();
-    
-    if($result && password_verify($pwd, $result["user_password"])){
-        header("Location: User Manage.php");
+    if($_SESSION['loggedin']) {
+        header("location:javascript://history.go(-1)");
     }
-    else {
-        $message = "Byee";
-    }
-}
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/Back End/css/Back.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -44,7 +22,10 @@ if(isset($_POST["login"])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+    <!-- Include CSS and other necessary files -->
 </head>
+
+
 
 <body class="overflow-x-hidden" style="background-color: black;">
 
@@ -58,22 +39,28 @@ if(isset($_POST["login"])){
     <!-- navbar end -->
 
     <div class="front">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="login.php" method="POST">
             <h1>Spectrum Studio</h1>
-            <div class="mb-3 col-sm-4"><input class="form-control form-control-lg" type="email" id="email" name="email" placeholder="Email"
+            <div class="mb-3 col-sm-4">
+                <input class="form-control form-control-lg" id="username" name="username" placeholder="Username"
                     aria-label="Email">
             </div>
-            <div class="mb-2 col-sm-4"><input class="form-control form-control-lg" type="password" id="pwd" name="pwd" placeholder="Password"
+            <div class="mb-2 col-sm-4">
+                <input class="form-control form-control-lg" type="password" id="pwd" name="pwd" placeholder="Password"
                     aria-label="Password">
             </div>
-
             <a href="" target="_blank">
-            <h3>FORGOT PASSWORD?</h3>
+                <h3>FORGOT PASSWORD?</h3>
             </a>
-            <a href="/Back End/html/User Manage.html"><button type="button" class="btn-login" value="login" name="login" id="login">LOG IN</button></a>
-
-            <?php echo $message; ?>
-        </form> 
+            <div>
+            <button class="btn-login" type="submit"  value="login" name="login" id="login">Login</button>
+            </div>
+        </form>
+        <?php
+            if (isset($_GET['error'])) {
+                echo "<script>alert('".$_GET['error']."')</script>";
+            }
+        ?>
     </div>
 
     <footer class="footer">
@@ -97,11 +84,10 @@ if(isset($_POST["login"])){
         </div>
     </footer>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
+        crossorigin="anonymous">
+    </script>
 
+</body>
 </html>

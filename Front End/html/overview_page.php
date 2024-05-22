@@ -1,3 +1,12 @@
+<?php
+   //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+    session_start();
+
+    if(!$_SESSION['loggedin']) {
+        header("location: /Back End/html/login_page.php");
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -83,6 +92,8 @@
             </li>
             <a href="/Front End/html/Upload.html" target="_blank"><button
                 type="button" class="btn-nav">Upload</button></a>
+            <a href="/Back End/html/logout.php" target="_blank"><button
+                type="button" class="btn-nav">Logout</button></a>
           </ul>
         </div>
       </div>
