@@ -248,8 +248,7 @@
                     <a href="https://www.instagram.com/chill_cafe_97/"
                       target="_blank"><i class="fab fa-instagram"></i></a>
         
-                    <h5>@ spectrumstudio</h5>
-                    <h5>169 Jalan ABC
+                      <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
                       53300 Kuala Lumpur.</h5>
                     <h5>Email : spectrumstudio2024@gmail.com </h5>
                     <h5>Tel : 011-52645876</h5>

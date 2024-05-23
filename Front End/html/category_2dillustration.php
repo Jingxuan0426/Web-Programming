@@ -242,26 +242,24 @@ where project.approve_status = <true/1> and project.category_id = <depends on yo
     <!-- category end -->
 
     <footer class="footer">
-      <div class="container">
+    <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="social-icons">
-              <a href="https://www.facebook.com/profile.php?id=100092615201359"
-                target="_blank"><i class="fab fa-facebook"></i></a>
-              <a href="https://www.instagram.com/chill_cafe_97/"
-                target="_blank"><i class="fab fa-instagram"></i></a>
-
-              <h5>@ spectrumstudio</h5>
-              <h5>169 Jalan ABC
+            <div class="col-12">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092615201359" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/chill_cafe_97/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                                       
+                <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
+                <h5>169 Jalan ABC
                 53300 Kuala Lumpur.</h5>
-              <h5>Email : spectrumstudio2024@gmail.com </h5>
-              <h5>Tel : 011-52645876</h5>
+                <h5>Email : spectrumstudio2024@gmail.com </h5>
+                <h5>Tel : 011-52645876</h5>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- footer end -->
+        </div>  
+    </div>
+  </footer>
+  <!-- footer end -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

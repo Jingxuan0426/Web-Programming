@@ -6,7 +6,7 @@
  if(!$_SESSION['loggedin']) {
      header("location: /Back End/html/login_page.php");
  }
- 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Database connection
   $host = "localhost"; // Your host
@@ -234,7 +234,7 @@ $data = $stmt->fetchAll();
                     <a href="https://www.facebook.com/profile.php?id=100092615201359" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/chill_cafe_97/" target="_blank"><i class="fab fa-instagram"></i></a>
                                                        
-                <h5>@ spectrumstudio</h5>
+                    <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
                 <h5>169 Jalan ABC
                 53300 Kuala Lumpur.</h5>
                 <h5>Email : spectrumstudio2024@gmail.com </h5>

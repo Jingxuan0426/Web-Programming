@@ -180,7 +180,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
                     <a href="https://www.instagram.com/chill_cafe_97/"
                       target="_blank"><i class="fab fa-instagram"></i></a>
         
-                    <h5>@ spectrumstudio</h5>
+                      <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
                     <h5>169 Jalan ABC
                       53300 Kuala Lumpur.</h5>
                     <h5>Email : spectrumstudio2024@gmail.com </h5>
