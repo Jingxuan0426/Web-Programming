@@ -1,8 +1,6 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
-
-
 /*
 
 SELECT project.*, image.image_location FROM project 
@@ -185,144 +183,55 @@ where project.approve_status = <true/1> and project.category_id = <depends on yo
 
     <section id="category">
 
-      <div class="container">
-        <div class="row">
+<div class="container">
+  <div class="row">
 
-          <!-- Loop -->
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb1.jpg"
-                class="card-img" alt="..."> <!-- SQL Fetch Image Location -->
+  <?php
+  // Assuming you have an array where each element contains an image path and a button name
+  $image_data = array(
+      array("path" => "/Front End/images/2D Illustration/bb1.jpg", "button_name" => "France"),
+      array("path" => "/Front End/images/2D Illustration/bb2.jpg", "button_name" => "Street wear"),
+      array("path" => "/Front End/images/2D Illustration/bb3.jpg", "button_name" => "Toaster"),
+      array("path" => "/Front End/images/2D Illustration/bb4.jpg", "button_name" => "Subway Scuffle"),
+      array("path" => "/Front End/images/2D Illustration/bb5.jpg", "button_name" => "Hatred"),
+      array("path" => "/Front End/images/2D Illustration/bb6.jpg", "button_name" => "Chinese Fuuu"),
+      array("path" => "/Front End/images/2D Illustration/bb7.jpg", "button_name" => "Demon Rider"),
+      array("path" => "/Front End/images/2D Illustration/bb8.jpg", "button_name" => "Future Look"),
+      array("path" => "/Front End/images/2D Illustration/bb9.jpg", "button_name" => "Galaxy"),
+      // Add more elements as needed
+  );
+
+  // Get the total number of images
+  $total_images = count($image_data);
+
+  // Loop through the array to generate HTML for each image and button
+  foreach ($image_data as $key => $data) {
+      ?>
+      <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+          <div class="card">
+              <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
               <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">French</button></a> <!-- SQL Fetch project title -->
-                </h2>
+                  <h1 class="card-title"></h1>
+                  <h2 class="card-body text-center">
+                  <?php if ($key == 4) { ?>
+                          <a href="project_2dillustration.php" target="_blank">
+                              <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                          </a>
+                      <?php } else { ?>
+                          <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                      <?php } ?>
+                  </h2>
               </div>
-            </div>
           </div>
-
-          <!-- Loop -->
-
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb2.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">STREET wear</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb3.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Toaster</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb4.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Subway Scuffle</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb5.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href="/Front End/html/project_2dillustration.html"
-                    target="_blank"><button type="button"
-                      class="btn-view mx-auto">Hatred</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb6.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Chinese Fuuu</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb7.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Demon Rider</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb8.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Future Look</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card" style="margin-bottom: 5rem;">
-              <img src="/Front End/images/2D Illustration/bb9.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href="/Front End/html/project_graphicdesign.html"
-                    target="_blank"><button type="button"
-                      class="btn-view mx-auto">Galaxy</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
-    </section>
+<?php
+}
+?>
+
+
+  </div>
+</div>
+</section>
     <!-- category end -->
 
     <footer class="footer">

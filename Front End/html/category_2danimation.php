@@ -1,46 +1,22 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Database connection
-  $host = "localhost"; // Your host
-  $username = "root"; // Your database username
-  $password = ""; // Your database password
-  $dbname = "project_database"; // Your database name
+include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
-  try {
-      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-      die("Connection failed: " . $e->getMessage());
-  }
+//SELECT * FROM project INNER JOIN user ON project.user_id = user.user_id where project.approve_status = <true/1> and project.category_id = <depends on your category>;
+//In this case, the user and project details can be used in this page
 
-// Define the SQL query
-$query = "SELECT project.*, image.image_location 
-          FROM project 
-          INNER JOIN image ON image.project_id = project.project_id
-          WHERE project.approve_status = :approve_status
-          AND project.category_id = :category_id";
+//Put this code to all category page
 
-// Prepare the statement
-$stmt = $pdo->prepare($query);
+// Query to all the project data
 
-// Bind parameters
-$approve_status = true; // Change to 1 if approval status is stored as integer
-$category_id = 2;
-$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
-$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+// $query = "SELECT * FROM user WHERE username = :username";
 
-// Execute the query
-$stmt->execute();
+//  $stmt = $pdo->prepare($query);
+//  $stmt->bindParam(":username", $username);
+//  $stmt->execute();
 
-// Fetch all the results
-$data = $stmt->fetchAll();
+//  $data = $stmt->fetchAll();
 
-// Debug purpose
-// var_dump($data);
-// die();
 
-// Now you can use $data to display project details and associated images on your category page
-}
 ?>
 
 <!doctype html>
@@ -223,7 +199,7 @@ $data = $stmt->fetchAll();
               <div class="card-img-overlay">
                   <h1 class="card-title"></h1>
                   <h2 class="card-body text-center">
-                  <?php if ($key == 3) { ?>
+                  <?php if ($key == 2) { ?>
                           <a href="project_2danimation.php" target="_blank">
                               <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
                           </a>
