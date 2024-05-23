@@ -71,7 +71,7 @@ $data = $stmt->fetchAll();
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
-      <a href="/Back End/html/login.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
+      <a href="/Back End/html/login_page.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>

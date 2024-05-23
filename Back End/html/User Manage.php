@@ -7,9 +7,6 @@
     if(!$_SESSION['loggedin']) {
         header("location: login_page.php");
     }
-    else if($_SESSION['role'] != "admin") {
-        header("location: /Front End/html/overview_page.php");
-    }
 ?>
 
 <!doctype html>
