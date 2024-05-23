@@ -1,6 +1,5 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
-
 //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
  session_start();
 

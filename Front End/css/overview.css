@@ -10,7 +10,7 @@ body{
 /* navbar start */
 
 @media screen and (max-width: 991px) {
-  .navigation-menu {
+.navigation-menu {
       margin-top: 80px;
   }
 }
@@ -20,6 +20,11 @@ body{
 .nav-link:hover{
   color: red !important;
   text-decoration: line-through;
+}
+
+.nav-link:hover{
+  color: red !important;
+  text-decoration: none;
 }
 
 .nav-item{

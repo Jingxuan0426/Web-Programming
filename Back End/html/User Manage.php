@@ -34,7 +34,7 @@
         <a class="navbar-brand" href="#">
             <img src="/Back End/images/new logo red.png" alt="" width="90" height="90">
         </a>
-        <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
+        <a href="/Back End/html/User Manage.php" style="margin-top: 60px;">User Management</a>
         <a href="#">Projects</a>
         <a href="/Back End/html/logout.php">Log Out</a>
     </div>

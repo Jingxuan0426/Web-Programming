@@ -7,9 +7,6 @@ session_start();
 if(!$_SESSION['loggedin']) {
     header("location: login_page.php");
 }
-else if($_SESSION['role'] != "admin") {
-    header("location: /Front End/html/overview_page.php");
-}
 
 /*
 
@@ -77,7 +74,7 @@ where project.approve_status = <true/1> and project.category_id = <depends on yo
             <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
