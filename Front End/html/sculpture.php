@@ -78,10 +78,10 @@ $data = $stmt->fetchAll();
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -94,7 +94,7 @@ $data = $stmt->fetchAll();
                   <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
                   <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-              <li><a class="dropdown-item" href="/Front End/html/category_animation.html">Animation</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
                   <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
                   <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
