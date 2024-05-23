@@ -1,5 +1,22 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
+//SELECT * FROM project INNER JOIN user ON project.user_id = user.user_id where project.approve_status = <true/1> and project.category_id = <depends on your category>;
+//In this case, the user and project details can be used in this page
+
+//Put this code to all category page
+
+// Query to all the project data
+
+// $query = "SELECT * FROM user WHERE username = :username";
+
+//  $stmt = $pdo->prepare($query);
+//  $stmt->bindParam(":username", $username);
+//  $stmt->execute();
+
+//  $data = $stmt->fetchAll();
+
+
 ?>
 
 <!doctype html>
@@ -38,55 +55,38 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Aboutus.html">About
-                Us</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                data-bs-toggle="dropdown">Category</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Videography.html">Videography</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Sculpture.html">Sculpture</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Graphic Design.html">Graphic
-                    Design</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/category_digitalillustration.html">Digital
-                    Illustration</a></li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/Front End/html/Videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_2dillustration.html">2D
-                      Illustration</a></li>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_3dillustration.html">3D
-                      Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/category_animation.html">Animation</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_2danimation.html">2D
-                      Animation</a></li>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_3danimation.html">3D
-                      Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Photography.html">Photography</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Job.html">Jobs</a>
-            </li>
-            <a href="/Front End/html/Upload.html" target="_blank"><button
-                type="button" class="btn-nav">Upload</button></a>
+              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
+          </li>
+          <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
+
           </ul>
         </div>
       </div>
@@ -177,7 +177,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
       <div class="card"
         style="border: 3px solid #a10d3c; background-color: black;">
-        <a href="/Front End/html/category_2danimation.html">
+        <a href="/Front End/html/category_2danimation.php">
           <img src="/Front End/images/2D Animation/cc.jpg" class="card-img"
             style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -188,7 +188,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
       <div class="card"
         style="border: 3px solid #a10d3c; background-color: black;">
-        <a href="/Front End/html/category_3danimation.html">
+        <a href="/Front End/html/category_3danimation.php">
           <img src="/Front End/images/3D Animation/dd.jpg" class="card-img"
             style="opacity: 0.5;">
           <div class="card-img-overlay">
