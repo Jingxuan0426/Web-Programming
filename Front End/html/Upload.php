@@ -128,7 +128,7 @@
     </div>
  
  <div class="main2"  >
-      <form>
+      <form action="Upload_Backend.php" method="POST">
           <div class="row mb-3" style="margin-top: 78px;">
               <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
               <div class="col-sm-10" style="padding: auto;">

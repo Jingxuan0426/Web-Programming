@@ -1,40 +1,27 @@
 <?php
 
- //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
- session_start();
+//REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+session_start();
 
- if(!$_SESSION['loggedin']) {
-     header("location: /Back End/html/login_page.php");
- }
+if (!$_SESSION['loggedin']) {
+  header("location: /Back End/html/login_page.php");
+}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Database connection
-  $host = "localhost"; // Your host
-  $username = "root"; // Your database username
-  $password = ""; // Your database password
-  $dbname = "project_database"; // Your database name
-
-  try {
-      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-      die("Connection failed: " . $e->getMessage());
-  }
+// Database connection
+include "../../common/connection.php";
 
 // Define the SQL query
 $query = "SELECT project.*, image.image_location 
           FROM project 
           INNER JOIN image ON image.project_id = project.project_id
-          WHERE project.approve_status = :approve_status
-          AND project.category_id = :category_id";
+          WHERE project.category_id = :category_id
+          GROUP BY project.project_id";
 
 // Prepare the statement
 $stmt = $pdo->prepare($query);
 
 // Bind parameters
-$approve_status = true; // Change to 1 if approval status is stored as integer
 $category_id = 1;
-$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
 $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
 // Execute the query
@@ -47,8 +34,13 @@ $data = $stmt->fetchAll();
 // var_dump($data);
 // die();
 
+// foreach($data as $child_data) {
+//   var_dump($child_data['image_location']);
+//   die();
+// }
+
 // Now you can use $data to display project details and associated images on your category page
-}
+
 ?>
 
 <!doctype html>
@@ -179,45 +171,46 @@ $data = $stmt->fetchAll();
 
       <?php
       // Assuming you have an array where each element contains an image path and a button name
-      $image_data = array(
-          array("path" => "/Front End/images/Photography/e44.jpg", "button_name" => "Explore"),
-          array("path" => "/Front End/images/Photography/e31.jpg", "button_name" => "Astrophotography"),
-          array("path" => "/Front End/images/Photography/e32.jpg", "button_name" => "Spices"),
-          array("path" => "/Front End/images/Photography/e33.jpg", "button_name" => "The Street Photography Guide"),
-          array("path" => "/Front End/images/Photography/e34.jpg", "button_name" => "Cityscapes"),
-          array("path" => "/Front End/images/Photography/e35.jpg", "button_name" => "Breakfast Pastries"),
-          array("path" => "/Front End/images/Photography/e36.jpg", "button_name" => "Street Photography in India"),
-          array("path" => "/Front End/images/Photography/e37.jpg", "button_name" => "The Nature Photography Contest"),
-          array("path" => "/Front End/images/Photography/e38.jpg", "button_name" => "Creative Tricks"),
+      //$image_data = array(
+          //array("path" => "/Front End/images/Photography/e44.jpg", "button_name" => "Explore"),
+          //array("path" => "/Front End/images/Photography/e31.jpg", "button_name" => "Astrophotography"),
+          //array("path" => "/Front End/images/Photography/e32.jpg", "button_name" => "Spices"),
+          //array("path" => "/Front End/images/Photography/e33.jpg", "button_name" => "The Street Photography Guide"),
+          //array("path" => "/Front End/images/Photography/e34.jpg", "button_name" => "Cityscapes"),
+          //array("path" => "/Front End/images/Photography/e35.jpg", "button_name" => "Breakfast Pastries"),
+          //array("path" => "/Front End/images/Photography/e36.jpg", "button_name" => "Street Photography in India"),
+          //array("path" => "/Front End/images/Photography/e37.jpg", "button_name" => "The Nature Photography Contest"),
+          //array("path" => "/Front End/images/Photography/e38.jpg", "button_name" => "Creative Tricks"),
           // Add more elements as needed
-      );
+      //);
 
       // Get the total number of images
-      $total_images = count($image_data);
+      $total_images = count($data);
 
       // Loop through the array to generate HTML for each image and button
-      foreach ($image_data as $key => $data) {
+      foreach ($data as $key => $child_data) {
+        ?>
+        <div class="col-md-4 py-3 py-md-0 col-12 
+          <?php 
+            // echo ($key == $total_images - 1) ? 'mb-5' : '';
+            echo "mb-5"
           ?>
-          <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
-              <div class="card">
-                  <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
-                  <div class="card-img-overlay">
-                      <h1 class="card-title"></h1>
-                      <h2 class="card-body text-center">
-                      <?php if ($key == 0) { ?>
-                              <a href="project_photography.php" target="_blank">
-                                  <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
-                              </a>
-                          <?php } else { ?>
-                              <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
-                          <?php } ?>
-                      </h2>
-                  </div>
-              </div>
-          </div>
+        ">
+            <div class="card">
+                <img src="<?php echo $child_data['image_location']; ?>" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h1 class="card-title"></h1>
+                    <h2 class="card-body text-center">
+                      <a href="project_2dillustration.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
+                          <button type="button" class="btn-view mx-auto"><?php echo $child_data['project_title']; ?></button>
+                      </a>
+                    </h2>
+                </div>
+            </div>
+        </div>
     <?php
-}
-?>
+    }
+    ?>
 
 
       </div>

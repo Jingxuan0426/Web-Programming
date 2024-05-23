@@ -117,7 +117,7 @@ $data = $stmt->fetchAll();
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/Front End/images/2D Illustration/Project/2dill_cover.jpg" class="d-block w-100 col-12" alt="...">
+        <img src="/Front End/images/2D Illustration/minfei_project/2dill_cover.jpg" class="d-block w-100 col-12" alt="...">
         <div class="carousel-caption justify-content-center d-flex">
           <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">2D
             Illustration</h1>
@@ -185,29 +185,31 @@ $data = $stmt->fetchAll();
         // Get the total number of images
         $total_images = count($data);
 
-        die();
-
         // Loop through the array to generate HTML for each image and button
-        foreach ($data as $key => $child_data) {
-        ?>
-          <div class="col-md-4 py-3 py-md-0 col-12 
-            <?php
-            echo ($key == $total_images - 1) ? 'mb-5' : '';
-            ?>">
-            <div class="card">
-              <img src="<?php echo $child_data['image_location']; ?>" class="card-img" alt="...">
-              <div class="card-img-overlay">
+        // Loop through the array to generate HTML for each image and button
+  foreach ($data as $key => $child_data) {
+    ?>
+    <div class="col-md-4 py-3 py-md-0 col-12 
+      <?php 
+        // echo ($key == $total_images - 1) ? 'mb-5' : '';
+        echo "mb-5"
+      ?>
+    ">
+        <div class="card">
+            <img src="<?php echo $child_data['image_location']; ?>" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h1 class="card-title"></h1>
                 <h2 class="card-body text-center">
-                  <a href="project_3danimation.php" target="_blank">
-                    <button type="button" class="btn-view mx-auto">
-                      <?php echo $child_data['project_title']; ?>
-                    </button>
+                  <a href="project_2dillustration.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
+                      <button type="button" class="btn-view mx-auto"><?php echo $child_data['project_title']; ?></button>
                   </a>
                 </h2>
-              </div>
-
             </div>
-          <?php } ?>
+        </div>
+    </div>
+<?php
+}
+?>
           </div>
       </div>
   </section>

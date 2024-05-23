@@ -48,17 +48,16 @@ include "../../common/connection.php";
 
     <head>
         <meta charset="utf-8">
-        <title>Hatred by SILLY CHAOTIC</title>
+        <title>Detroit.Design. by Karl Nilsson</title>
         <link href="/Front End/css/projectstyle.css" rel="stylesheet">
         <link href="/Front End/css/bootstrap.css" rel="stylesheet">
         <script src="/Front End/js/bootstrap.bundle.js"></script>
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
             rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <link
             href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap"
             rel="stylesheet">
@@ -123,7 +122,7 @@ include "../../common/connection.php";
                     style="max-width: 100%; opacity: 0.5;">
             </div>
 
-            <!-- Loop -->
+           <!-- Loop -->
             <!-- Replace Hardcode -->
 
             <div class="container" style="color: whitesmoke;">
@@ -168,35 +167,32 @@ include "../../common/connection.php";
 
             </div>
 
-            
+
         </div>
 
         <footer class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="social-icons">
-                            <a
-                                href="https://www.facebook.com/profile.php?id=100092615201359"
-                                target="_blank"><i
-                                    class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/chill_cafe_97/"
-                                target="_blank"><i
-                                    class="fab fa-instagram"></i></a>
-
-                                    <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
-                            <h5>169 Jalan ABC
-                                53300 Kuala Lumpur.</h5>
-                            <h5>Email : spectrumstudio2024@gmail.com </h5>
-                            <h5>Tel : 011-52645876</h5>
-                        </div>
-                    </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092615201359"
+                      target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/chill_cafe_97/"
+                      target="_blank"><i class="fab fa-instagram"></i></a>
+        
+                      <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
+                    <h5>169 Jalan ABC
+                      53300 Kuala Lumpur.</h5>
+                    <h5>Email : spectrumstudio2024@gmail.com </h5>
+                    <h5>Tel : 011-52645876</h5>
+                  </div>
                 </div>
+              </div>
             </div>
-        </footer>
-        <!-- footer end -->
+          </footer>
+            <!-- footer end -->
 
-        <script>
+          <script>
             // Open the Modal
             function openModal() {
               document.getElementById("myModal").style.display = "block";
