@@ -1,4 +1,11 @@
 <?php
+ //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+ session_start();
+
+ if(!$_SESSION['loggedin']) {
+     header("location: /Back End/html/login_page.php");
+ }
+
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 ?>
 

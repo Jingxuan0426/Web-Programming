@@ -1,4 +1,12 @@
 <?php
+
+ //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+ session_start();
+
+ if(!$_SESSION['loggedin']) {
+     header("location: /Back End/html/login_page.php");
+ }
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Database connection
   $host = "localhost"; // Your host
