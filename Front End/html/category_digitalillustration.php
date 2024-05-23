@@ -1,13 +1,13 @@
 <?php
+ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
  //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
  session_start();
 
  if(!$_SESSION['loggedin']) {
      header("location: /Back End/html/login_page.php");
  }
-
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
-
+ 
 //SELECT * FROM project INNER JOIN user ON project.user_id = user.user_id where project.approve_status = <true/1> and project.category_id = <depends on your category>;
 //In this case, the user and project details can be used in this page
 
