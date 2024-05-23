@@ -4,7 +4,7 @@
 session_start();
 
 if(!$_SESSION['loggedin']) {
-    header("location: login_page.php");
+    header("location: /Back End/html/login_page.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

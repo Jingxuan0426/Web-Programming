@@ -5,33 +5,51 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 session_start();
 
 if(!$_SESSION['loggedin']) {
-    header("location: login_page.php");
+    header("location: /Back End/html/login_page.php");
 }
 
-/*
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection
+  $host = "localhost"; // Your host
+  $username = "root"; // Your database username
+  $password = ""; // Your database password
+  $dbname = "project_database"; // Your database name
 
-SELECT project.*, image.image_location FROM project 
-INNER JOIN image ON image.project_id = project.project_id
-where project.approve_status = <true/1> and project.category_id = <depends on your category>;
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Connection failed: " . $e->getMessage());
+  }
 
-*/
-//In this case, the user and project details can be used in this page
+// Define the SQL query
+$query = "SELECT project.*, image.image_location 
+          FROM project 
+          INNER JOIN image ON image.project_id = project.project_id
+          WHERE project.approve_status = :approve_status
+          AND project.category_id = :category_id";
 
-//Put this code to all category page
+// Prepare the statement
+$stmt = $pdo->prepare($query);
 
-// Query to project data
+// Bind parameters
+$approve_status = true; // Change to 1 if approval status is stored as integer
+$category_id = 2;
+$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
-// $query = "SELECT * FROM user WHERE username = :username";
+// Execute the query
+$stmt->execute();
 
-// $stmt = $pdo->prepare($query);
-// $stmt->bindParam(":username", $username);
-// $stmt->execute();
+// Fetch all the results
+$data = $stmt->fetchAll();
 
-// $data = $stmt->fetchAll();
+// Debug purpose
+// var_dump($data);
+// die();
 
-//Debug purpose
- //var_dump($data);
- //die();
+// Now you can use $data to display project details and associated images on your category page
+}
 
 ?>
 
