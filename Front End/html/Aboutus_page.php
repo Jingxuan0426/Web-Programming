@@ -29,7 +29,7 @@
     rel="stylesheet">
 </head>
 
-<body class="overflow-x-hidden" style="background-color: black;"></body>>
+<body class="overflow-x-hidden" style="background-color: black;">
 
   <!-- navbar start -->
 
