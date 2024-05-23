@@ -10,7 +10,7 @@ body{
 /* navbar start */
 
 @media screen and (max-width: 991px) {
-  .navigation-menu {
+.navigation-menu {
       margin-top: 80px;
   }
 }
@@ -20,6 +20,11 @@ body{
 .nav-link:hover{
   color: red !important;
   text-decoration: line-through;
+}
+
+.nav-link:hover{
+  color: red !important;
+  text-decoration: none;
 }
 
 .nav-item{
@@ -146,7 +151,6 @@ body{
     text-align: center;
     justify-content: center;
     font-size: 55px;
-    margin-top: ;
     color: #a10d3c !important; 
     -webkit-text-stroke-color: whitesmoke ;
     -webkit-text-stroke-width: 1px;

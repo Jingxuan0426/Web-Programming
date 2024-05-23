@@ -79,10 +79,10 @@ $data = $stmt->fetchAll();
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
+            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -256,7 +256,7 @@ $data = $stmt->fetchAll();
                     <a href="https://www.facebook.com/profile.php?id=100092615201359" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/chill_cafe_97/" target="_blank"><i class="fab fa-instagram"></i></a>
                                                        
-                <h5>@ spectrumstudio</h5>
+                    <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
                 <h5>169 Jalan ABC
                 53300 Kuala Lumpur.</h5>
                 <h5>Email : spectrumstudio2024@gmail.com </h5>

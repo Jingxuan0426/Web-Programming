@@ -6,7 +6,7 @@
  if(!$_SESSION['loggedin']) {
      header("location: /Back End/html/login_page.php");
  }
- 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Database connection
   $host = "localhost"; // Your host
@@ -71,7 +71,7 @@ $data = $stmt->fetchAll();
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
-      <a href="/Back End/html/login.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
+      <a href="/Back End/html/login_page.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -79,10 +79,10 @@ $data = $stmt->fetchAll();
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
+            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -234,7 +234,7 @@ $data = $stmt->fetchAll();
                     <a href="https://www.facebook.com/profile.php?id=100092615201359" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/chill_cafe_97/" target="_blank"><i class="fab fa-instagram"></i></a>
                                                        
-                <h5>@ spectrumstudio</h5>
+                    <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
                 <h5>169 Jalan ABC
                 53300 Kuala Lumpur.</h5>
                 <h5>Email : spectrumstudio2024@gmail.com </h5>

@@ -1,31 +1,55 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
 //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
 session_start();
 
 if(!$_SESSION['loggedin']) {
-    header("location: login_page.php");
-}
-else if($_SESSION['role'] != "admin") {
-    header("location: /Front End/html/overview_page.php");
+    header("location: /Back End/html/login_page.php");
 }
 
-//SELECT * FROM project INNER JOIN user ON project.user_id = user.user_id where project.approve_status = <true/1> and project.category_id = <depends on your category>;
-//In this case, the user and project details can be used in this page
 
-//Put this code to all category page
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection
+  $host = "localhost"; // Your host
+  $username = "root"; // Your database username
+  $password = ""; // Your database password
+  $dbname = "project_database"; // Your database name
 
-// Query to all the project data
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Connection failed: " . $e->getMessage());
+  }
 
-// $query = "SELECT * FROM user WHERE username = :username";
+// Define the SQL query
+$query = "SELECT project.*, image.image_location 
+          FROM project 
+          INNER JOIN image ON image.project_id = project.project_id
+          WHERE project.approve_status = :approve_status
+          AND project.category_id = :category_id";
 
-//  $stmt = $pdo->prepare($query);
-//  $stmt->bindParam(":username", $username);
-//  $stmt->execute();
+// Prepare the statement
+$stmt = $pdo->prepare($query);
 
-//  $data = $stmt->fetchAll();
+// Bind parameters
+$approve_status = true; // Change to 1 if approval status is stored as integer
+$category_id = 2;
+$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
+// Execute the query
+$stmt->execute();
+
+// Fetch all the results
+$data = $stmt->fetchAll();
+
+// Debug purpose
+// var_dump($data);
+// die();
+
+// Now you can use $data to display project details and associated images on your category page
+}
 
 ?>
 
@@ -65,10 +89,10 @@ else if($_SESSION['role'] != "admin") {
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -245,7 +269,7 @@ else if($_SESSION['role'] != "admin") {
               <a href="https://www.instagram.com/chill_cafe_97/"
                 target="_blank"><i class="fab fa-instagram"></i></a>
 
-              <h5>@ spectrumstudio</h5>
+                <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
               <h5>169 Jalan ABC
                 53300 Kuala Lumpur.</h5>
               <h5>Email : spectrumstudio2024@gmail.com </h5>
