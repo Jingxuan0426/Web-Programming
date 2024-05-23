@@ -74,7 +74,7 @@ where project.approve_status = <true/1> and project.category_id = <depends on yo
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
