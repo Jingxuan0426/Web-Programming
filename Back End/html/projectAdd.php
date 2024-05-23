@@ -147,7 +147,7 @@
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
-                <label for="project_cover_pic" class="form-label">Project Cover Picture</label>
+                <label for="    _pic" class="form-label">Project Cover Picture</label>
                 <input type="file" class="form-control" id="project_cover_pic" name="project_cover_pic">
                 <div id="coverPicPreview" class="preview"></div>
             </div>

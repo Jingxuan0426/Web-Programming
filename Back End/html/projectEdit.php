@@ -62,42 +62,42 @@ if(isset($_GET['project_id'])) {
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
-        $project_title = $_POST['projectTitle'];
-        $creator = $_POST['creator'];
-        $year = $_POST['year'];
+        $project_title = $_POST['project_title'];
+        $author_name = $_POST['author_name'];
+        $year_created = $_POST['year_created'];
         $category = $_POST['category'];
 
         // Handle project cover picture update
-        if ($_FILES['projectCoverPic']['name'] != '') {
+        if ($_FILES['project_cover_pic']['name'] != '') {
             // Handle project cover picture upload
             $target_dir = "/xampp/htdocs/Web-Programming/Front End/images/Upload/";
-            $target_file = $target_dir . basename($_FILES['projectCoverPic']['name']);
-            move_uploaded_file($_FILES['projectCoverPic']['tmp_name'], $target_file);
+            $target_file = $target_dir . basename($_FILES['project_cover_pic']['name']);
+            move_uploaded_file($_FILES['project_cover_pic']['tmp_name'], $target_file);
 
             // Update project cover picture path in the database
-            $project_cover_pic = basename($_FILES['projectCoverPic']['name']);
-            $update_cover_pic_sql = "UPDATE projects SET project_cover_pic = '$project_cover_pic' WHERE project_id = $project_id";
+            $project_cover_pic = basename($_FILES['project_cover_pic']['name']);
+            $update_cover_pic_sql = "UPDATE project SET project_cover_pic = '$project_cover_pic' WHERE project_id = $project_id";
             $conn->query($update_cover_pic_sql);
         }
 
         // Handle additional pictures/videos update
-        if ($_FILES['projectPics']['name'][0] != '') {
+        if ($_FILES['project_pics']['name'][0] != '') {
             $additional_pics = '';
-            foreach ($_FILES['projectPics']['name'] as $key => $file_name) {
+            foreach ($_FILES['project_pics']['name'] as $key => $file_name) {
                 // Handle additional picture/video upload
                 $target_dir = "/xampp/htdocs/Web-Programming/Front End/images/Upload/";
                 $target_file = $target_dir . basename($file_name);
-                move_uploaded_file($_FILES['projectPics']['tmp_name'][$key], $target_file);
+                move_uploaded_file($_FILES['project_pics']['tmp_name'][$key], $target_file);
 
                 // Update additional pictures/videos paths in the database
                 $additional_pics .= ($additional_pics != '' ? ',' : '') . basename($file_name);
             }
-            $update_additional_pics_sql = "UPDATE projects SET project_pics = CONCAT(project_pics, '$additional_pics') WHERE project_id = $project_id";
+            $update_additional_pics_sql = "UPDATE project SET project_pics = CONCAT(project_pics, '$additional_pics') WHERE project_id = $project_id";
             $conn->query($update_additional_pics_sql);
         }
 
         // Update other project details in the database
-        $update_project_details_sql = "UPDATE projects SET project_title = '$project_title', creator = '$creator', year = $year, category = '$category' WHERE project_id = $project_id";
+        $update_project_details_sql = "UPDATE project SET project_title = '$project_title', author_name = '$author_name', year = $year, category = '$category' WHERE project_id = $project_id";
         $conn->query($update_project_details_sql);
 
         // Redirect to a success page or reload the current page after updating
@@ -106,7 +106,7 @@ if(isset($_GET['project_id'])) {
     }
 
     // Query to select project data by ID
-    $sql = "SELECT * FROM projects WHERE project_id = $project_id";
+    $sql = "SELECT * FROM project WHERE project_id = $project_id";
     echo $sql;
     $result = $conn->query($sql);
 
