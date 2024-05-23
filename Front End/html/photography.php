@@ -25,7 +25,7 @@ $stmt = $pdo->prepare($query);
 
 // Bind parameters
 $approve_status = true; // Change to 1 if approval status is stored as integer
-$category_id = 4;
+$category_id = 1;
 $stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
 $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
