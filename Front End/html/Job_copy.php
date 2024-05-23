@@ -76,6 +76,33 @@
     <div class="row">
       <div class="button-container">
         <button class="bordered-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+          <img src="/Front End/images/Jobs/kungking.png" alt="Button 1" style="max-width: 680px;">
+          <div class="overlay"></div>
+          <span class="button-text">
+            <h1 class="outlined-text" style="font-size:40px;color:#ff1a4d;font-weight: bold;">KungKingKingKang</h1> 
+            <h2 class="outlined-text" style="font-size: 20px;">Illustration, Character Design, Photography</h2>
+            <h3 class="outlined-text">Character Designer</h3>
+            <h4 class="outlined-text" style="color: white; margin-top: 50px;">Updated 6 Days ago</h4>
+          </span>
+        </button>
+        <button class="bordered-button">
+          <img src="/Front End/images/Jobs/machi.png" alt="Button 2" style="max-width: 680px;">
+          <div class="overlay"></div>
+          <span class="button-text">
+            <h1 class="outlined-text" style="font-size:40px;color:#ff1a4d;font-weight: bold;">MACHI</h1> 
+            <h2 class="outlined-text" style="font-size: 20px;">2D Illustration </h2>
+            <h3 class="outlined-text">Manga Artist</h3>
+            <h4 class="outlined-text" style="color: white; margin-top: 50px;">Updated 2 Hours ago</h4>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="button-container">
+        <button class="bordered-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
           <img src="/Front End/images/Jobs/syarawi.png" alt="Button 1" style="max-width: 680px;">
           <div class="overlay"></div>
           <span class="button-text">

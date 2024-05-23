@@ -50,7 +50,7 @@ if(isset($_GET['project_id'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "phpmyadmin";
+    $database = "project_database";
 
     $conn = new mysqli($servername, $username, $password, $database);
 

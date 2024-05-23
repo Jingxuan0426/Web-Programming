@@ -147,24 +147,24 @@
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
-                <label for="projectCoverPic" class="form-label">Project Cover Picture</label>
-                <input type="file" class="form-control" id="projectCoverPic" name="projectCoverPic">
+                <label for="project_cover_pic" class="form-label">Project Cover Picture</label>
+                <input type="file" class="form-control" id="project_cover_pic" name="project_cover_pic">
                 <div id="coverPicPreview" class="preview"></div>
             </div>
 
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
-                <label for="projectTitle" class="form-label">Project Title</label>
-                <input type="text" class="form-control" id="projectTitle" name="projectTitle" maxlength="50" required>
+                <label for="project_title" class="form-label">Project Title</label>
+                <input type="text" class="form-control" id="project_title" name="project_title" maxlength="50" required>
             </div>
 
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
                 <label for="creator" class="form-label">Creator</label>
-                <input type="text" class="form-control" id="creator" name="creator" maxlength="50" required>
+                <input type="text" class="form-control" id="author_name" name="author_name" maxlength="50" required>
             </div>
 
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
                 <label for="year" class="form-label">Year</label>
-                <input type="number" class="form-control" id="year" name="year" min="1000" max="9999" required>
+                <input type="number" class="form-control" id="year_created" name="year_created" min="1000" max="9999" required>
             </div>
 
             <div class="mb-3 col-sm-12" style="margin-top: 40px; margin-bottom: 50px;">
@@ -192,7 +192,7 @@
               $servername = "localhost"; // Change if your database is on a different server
               $username = "root";
               $password = "";
-              $database = "phpmyadmin";
+              $database = "project_database";
 
               $conn = new mysqli($servername, $username, $password, $database);
 
@@ -204,22 +204,22 @@
                   return mysqli_real_escape_string($conn, htmlspecialchars($data));
               }
 
-              $projectTitle = sanitizeInput($conn, $_POST["projectTitle"]);
-              $creator = sanitizeInput($conn, $_POST["creator"]);
-              $year = sanitizeInput($conn, $_POST["year"]);
+              $project_title = sanitizeInput($conn, $_POST["project_title"]);
+              $author_name = sanitizeInput($conn, $_POST["author_name"]);
+              $year_created = sanitizeInput($conn, $_POST["year_created"]);
               $category = sanitizeInput($conn, $_POST["category"]);
 
               // File upload handling for project_cover_pic
-              $projectCoverPic = ""; // Initialize variable to store file name
-              if (isset($_FILES['projectCoverPic'])) {
-                  $file = $_FILES['projectCoverPic'];
+              $project_cover_pic = ""; // Initialize variable to store file name
+              if (isset($_FILES['project_cover_pic'])) {
+                  $file = $_FILES['project_cover_pic'];
                   $fileName = $file['name'];
                   $fileTmpName = $file['tmp_name'];
                   $fileError = $file['error'];
                   if ($fileError === 0) {
                       // Specify the upload directory path
                       $uploadDirectory = 'C:/xampp/htdocs/Web-Programming/Front End/images/Upload/';
-                      $projectCoverPic = uniqid('', true) . '_' . $fileName; // Generate unique file name
+                      $project_cover_pic = uniqid('', true) . '_' . $fileName; // Generate unique file name
                       // Move the uploaded file to the upload directory
                       if (move_uploaded_file($fileTmpName, $uploadDirectory . $projectCoverPic)) {
                       } else {
@@ -229,9 +229,9 @@
 
               // File upload handling for project_pics
               $projectPics = ""; // Initialize variable to store file names
-              if (isset($_FILES['projectPics'])) {
+              if (isset($_FILES['project_pics'])) {
                   $projectPicsArray = array();
-                  $files = $_FILES['projectPics'];
+                  $files = $_FILES['project_pics'];
                   $fileCount = count($files['name']);
                   for ($i = 0; $i < $fileCount; $i++) {
                       $fileName = $files['name'][$i];
@@ -240,10 +240,10 @@
                       if ($fileError === 0) {
                           // Specify the upload directory path
                           $uploadDirectory = 'C:/xampp/htdocs/Web-Programming/Front End/images/Upload/';
-                          $projectPic = uniqid('', true) . '_' . $fileName; // Generate unique file name
+                          $project_pics = uniqid('', true) . '_' . $fileName; // Generate unique file name
                           // Move the uploaded file to the upload directory
                           if (move_uploaded_file($fileTmpName, $uploadDirectory . $projectPic)) {
-                              $projectPicsArray[] = $projectPic;
+                              $projectPicsArray[] = $project_pics;
                           } else {
                           }
                       }
@@ -251,13 +251,14 @@
                   $projectPics = implode(',', $projectPicsArray); // Convert array to comma-separated string
                 }
               // Insert data into database
-              $sql = "INSERT INTO projects (project_cover_pic, project_title, creator, year, category, project_pics) 
-                      VALUES ('$projectCoverPic', '$projectTitle', '$creator', '$year', '$category', '$projectPics')";
+              $sql = "INSERT INTO project (project_cover_pic, project_title, author_name, year_created, project_pics) 
+                      VALUES ('$project_cover_pic', '$project_title', '$author_name', '$year_created', '$project_pics')";
 
               $conn->query($sql);
+              echo '<script>window.location.href = "project.php";</script>';
               $conn->close();
           }
-        ?>
+    ?>
     </div>
 
 <script>
@@ -304,11 +305,11 @@
         addNewInput(previewContainer);
     }
 
-    document.getElementById('projectCoverPic').addEventListener('change', function () {
+    document.getElementById('project_cover_pic').addEventListener('change', function () {
         previewFiles(this, document.getElementById('coverPicPreview'));
     });
 
-    document.getElementById('projectPics').addEventListener('change', handleProjectPicsChange);
+    document.getElementById('project_pics').addEventListener('change', handleProjectPicsChange);
 </script>
 </body>
 </html>

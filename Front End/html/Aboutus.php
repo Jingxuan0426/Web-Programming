@@ -83,9 +83,9 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Jobs</a>
+              <a class="nav-link" href="/Front End/html/jobCopy.php">Jobs</a>
             </li>
-            <a href="/Front End/html/Upload.html" target="_blank"><button
+            <a href="/Front End/html/Upload.html" target  ="_blank"><button
                 type="button" class="btn-nav">Upload</button></a>
           </ul>
         </div>

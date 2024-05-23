@@ -18,14 +18,14 @@
 
 <body class="overflow-x-hidden" style="background-color: black;">
 
-    <div class="sidenav">
+    <!-- <div class="sidenav">
         <a class="navbar-brand" href="#">
             <img src="/Back End/images/new logo red.png" alt="" width="90" height="90">
         </a>
         <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
-        <a href="#">Projects</a>
+        <a href="/Back End/html/project.php">Projects</a>
         <a href="/Back End/html/Back.html">Log Out</a>
-    </div>
+    </div> -->
     <!-- navbar end -->
 
     <div class="main3">
@@ -40,7 +40,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "phpmyadmin";
+        $database = "project_database";
 
         $conn = new mysqli($servername, $username, $password, $database);
 
@@ -50,7 +50,8 @@
         }
 
         // SQL query to fetch projects data
-        $sql = "SELECT * FROM projects";
+        $sql = "SELECT * FROM project";
+        //SELECT * FROM user WHERE job_xxx_xxx = $job_xx_xx
         $result = $conn->query($sql);
 
         // Check if there are any projects
@@ -63,8 +64,8 @@
                             <img src="/Front End/images/Upload/' . $row["project_cover_pic"] . '" style="max-width: 1000px;" class="col-md-5">
                             <span class="col-md-7">
                                 <h1 class="prtitle">' . $row["project_title"] . '</h1>
-                                <h2 class="byyear">By: ' . $row["creator"] . '</h2>
-                                <h3 class="byyear" style="margin-bottom: 40px;">Year: ' . $row["year"] . '</h3>
+                                <h2 class="byyear">By: ' . $row["author_name"] . '</h2>
+                                <h3 class="byyear" style="margin-bottom: 40px;">Year: ' . $row["year_created"] . '</h3>
                                 <h4>
                                     <a href="/Back End/html/projectEdit.php?project_id=' .$row['project_id'] . '"><button type="submit" class="btn-add"> Edit </button></a>
                                     <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add"> Delete </button></a>
