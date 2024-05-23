@@ -58,6 +58,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
             <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
           </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
@@ -127,113 +128,47 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <div class="container">
       <div class="row">
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e44.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Family Films</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+      <?php
+      // Assuming you have an array where each element contains an image path and a button name
+      $image_data = array(
+          array("path" => "/Front End/images/Videography/e44.jpg", "button_name" => "Family Films"),
+          array("path" => "/Front End/images/Videography/e45.jpg", "button_name" => "LOST - PACIFIC NORTH WEST"),
+          array("path" => "/Front End/images/Videography/e46.jpg", "button_name" => "Dell - Multiverse"),
+          array("path" => "/Front End/images/Videography/e58.jpg", "button_name" => "Seasons"),
+          array("path" => "/Front End/images/Videography/e48.jpg", "button_name" => "Prudential"),
+          array("path" => "/Front End/images/Videography/e49.jpg", "button_name" => "Maui, Hawaii"),
+          array("path" => "/Front End/images/Videography/e50.jpg", "button_name" => "WINE & DINE"),
+          array("path" => "/Front End/images/Videography/e51.jpg", "button_name" => "SUMMIT One Vanderbilt"),
+          array("path" => "/Front End/images/Videography/e52.jpg", "button_name" => "Idaho Wedding"),
+          // Add more elements as needed
+      );
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e45.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">LOST - PACIFIC NORTH WEST</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+      // Get the total number of images
+      $total_images = count($image_data);
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e46.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Dell - Multiverse</button></a>
-              </h2>
-            </div>
+      // Loop through the array to generate HTML for each image and button
+      foreach ($image_data as $key => $data) {
+          ?>
+          <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+              <div class="card">
+                  <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
+                  <div class="card-img-overlay">
+                      <h1 class="card-title"></h1>
+                      <h2 class="card-body text-center">
+                      <?php if ($key == 3) { ?>
+                              <a href="project_videography.php" target="_blank">
+                                  <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                              </a>
+                          <?php } else { ?>
+                              <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                          <?php } ?>
+                      </h2>
+                  </div>
+              </div>
           </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e58.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="/Front End/html/project_videography.php" target="_blank"><button type="button" class="btn-view mx-auto">Seasons</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e48.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Prudential</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e49.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Maui, Hawaii</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e50.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">WINE & DINE</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e51.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">SUMMIT One Vanderbilt</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card" style="margin-bottom: 5rem;">
-            <img src="/Front End/images/Videography/e52.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Idaho Wedding</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+    <?php
+}
+?>
 
 
       </div>

@@ -100,6 +100,7 @@ $data = $stmt->fetchAll();
             <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
           </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
@@ -183,24 +184,56 @@ $data = $stmt->fetchAll();
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 py-3 py-md-0 col-12">
-                        <div class="card">
-                            <!-- Corrected the image source -->
-                            <img src="<?php echo $row['image_location']; ?>" class="card-img" alt="...">
-                            <div class="card-img-overlay">
-                                <!-- Corrected the project name -->
-                                <h1 class="card-title"><?php echo $row['project_name']; ?></h1>
-                                <h2 class="card-body text-center">
-                                    <a href="<?php echo $row['project_link']; ?>" target="_blank"><button type="button" class="btn-view mx-auto">View Project</button></a>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
                     <?php
                 }
             }
             ?>
+
+
+    <?php
+    // Assuming you have an array where each element contains an image path and a button name
+    $image_data = array(
+        array("path" => "/Front End/images/Graphic Design/e1.jpg", "button_name" => "SPARK"),
+        array("path" => "/Front End/images/Graphic Design/e2.jpg", "button_name" => "FLAASH"),
+        array("path" => "/Front End/images/Graphic Design/e3.jpg", "button_name" => "Taiwan Exhibition"),
+        array("path" => "/Front End/images/Graphic Design/e4.jpg", "button_name" => "Block Exhibition"),
+        array("path" => "/Front End/images/Graphic Design/e5.jpg", "button_name" => "Solara Realty"),
+        array("path" => "/Front End/images/Graphic Design/e6.jpg", "button_name" => "AMA"),
+        array("path" => "/Front End/images/Graphic Design/e7.jpg", "button_name" => "Startify"),
+        array("path" => "/Front End/images/Graphic Design/e8.jpg", "button_name" => "CCO"),
+        array("path" => "/Front End/images/Graphic Design/e15.jpg", "button_name" => "Detroit Design"),
+        // Add more elements as needed
+    );
+
+    // Get the total number of images
+    $total_images = count($image_data);
+
+    // Loop through the array to generate HTML for each image and button
+    foreach ($image_data as $key => $data) {
+        ?>
+        <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+            <div class="card">
+                <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h1 class="card-title"></h1>
+                    <h2 class="card-body text-center">
+                    <?php if ($key == $total_images - 1) { ?>
+                            <a href="project_graphicdesign.php" target="_blank">
+                                <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                            </a>
+                        <?php } else { ?>
+                            <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                        <?php } ?>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+
+
+
     </div>
 </div>
 
