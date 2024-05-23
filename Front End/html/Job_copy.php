@@ -129,7 +129,7 @@
   <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #5d063f; overflow-y: scroll;">
     <img src="/Front End/images/2D Illustration/Project/2dill_cover.jpg" class="job-cover" style="max-width: 100%;">
     <div class="offcanvas-header">
-      <button type="button" class="btn-close overlay" data-bs-dismiss="offcanvas" aria-label="Close" style="color: white; margin-left: 700px; margin-top: 20px;"></button>
+      <button type="button" class="btn-close overlay" data-bs-dismiss="offcanvas" aria-label="Close" style="margin-left: 700px; margin-top: 20px;"></button>
       <h5  style="color: white; margin-left: 215px; margin-right: auto; font-size: 35px;">SILLY CHAOTIC</h5>
     </div>
     <div class="jobcon" style="margin-top: -22px; margin-left: 280px; margin-right: auto; color: white;">Cheras, Kuala Lumpur</div>

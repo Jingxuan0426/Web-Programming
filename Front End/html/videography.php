@@ -1,5 +1,53 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+ //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+ session_start();
+
+ if(!$_SESSION['loggedin']) {
+     header("location: /Back End/html/login_page.php");
+ }
+ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection
+  $host = "localhost"; // Your host
+  $username = "root"; // Your database username
+  $password = ""; // Your database password
+  $dbname = "project_database"; // Your database name
+
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Connection failed: " . $e->getMessage());
+  }
+
+// Define the SQL query
+$query = "SELECT project.*, image.image_location 
+          FROM project 
+          INNER JOIN image ON image.project_id = project.project_id
+          WHERE project.approve_status = :approve_status
+          AND project.category_id = :category_id";
+
+// Prepare the statement
+$stmt = $pdo->prepare($query);
+
+// Bind parameters
+$approve_status = true; // Change to 1 if approval status is stored as integer
+$category_id = 2;
+$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+
+// Execute the query
+$stmt->execute();
+
+// Fetch all the results
+$data = $stmt->fetchAll();
+
+// Debug purpose
+// var_dump($data);
+// die();
+
+// Now you can use $data to display project details and associated images on your category page
+}
 ?>
 
 <!doctype html>
@@ -30,10 +78,10 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -58,6 +106,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
             <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
           </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
@@ -127,113 +176,47 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
     <div class="container">
       <div class="row">
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e44.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Family Films</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+      <?php
+      // Assuming you have an array where each element contains an image path and a button name
+      $image_data = array(
+          array("path" => "/Front End/images/Videography/e44.jpg", "button_name" => "Family Films"),
+          array("path" => "/Front End/images/Videography/e45.jpg", "button_name" => "LOST - PACIFIC NORTH WEST"),
+          array("path" => "/Front End/images/Videography/e46.jpg", "button_name" => "Dell - Multiverse"),
+          array("path" => "/Front End/images/Videography/e58.jpg", "button_name" => "Seasons"),
+          array("path" => "/Front End/images/Videography/e48.jpg", "button_name" => "Prudential"),
+          array("path" => "/Front End/images/Videography/e49.jpg", "button_name" => "Maui, Hawaii"),
+          array("path" => "/Front End/images/Videography/e50.jpg", "button_name" => "WINE & DINE"),
+          array("path" => "/Front End/images/Videography/e51.jpg", "button_name" => "SUMMIT One Vanderbilt"),
+          array("path" => "/Front End/images/Videography/e52.jpg", "button_name" => "Idaho Wedding"),
+          // Add more elements as needed
+      );
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e45.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">LOST - PACIFIC NORTH WEST</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+      // Get the total number of images
+      $total_images = count($image_data);
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e46.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Dell - Multiverse</button></a>
-              </h2>
-            </div>
+      // Loop through the array to generate HTML for each image and button
+      foreach ($image_data as $key => $data) {
+          ?>
+          <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+              <div class="card">
+                  <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
+                  <div class="card-img-overlay">
+                      <h1 class="card-title"></h1>
+                      <h2 class="card-body text-center">
+                      <?php if ($key == 3) { ?>
+                              <a href="project_videography.php" target="_blank">
+                                  <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                              </a>
+                          <?php } else { ?>
+                              <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                          <?php } ?>
+                      </h2>
+                  </div>
+              </div>
           </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e58.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="/Front End/html/project_videography.php" target="_blank"><button type="button" class="btn-view mx-auto">Seasons</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e48.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Prudential</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e49.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Maui, Hawaii</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e50.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">WINE & DINE</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Videography/e51.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">SUMMIT One Vanderbilt</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card" style="margin-bottom: 5rem;">
-            <img src="/Front End/images/Videography/e52.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Idaho Wedding</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+    <?php
+}
+?>
 
 
       </div>

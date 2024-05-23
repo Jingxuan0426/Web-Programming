@@ -1,6 +1,55 @@
 <?php
-include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+ //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+ session_start();
+
+ if(!$_SESSION['loggedin']) {
+     header("location: /Back End/html/login_page.php");
+ }
+ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Database connection
+  $host = "localhost"; // Your host
+  $username = "root"; // Your database username
+  $password = ""; // Your database password
+  $dbname = "project_database"; // Your database name
+
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      die("Connection failed: " . $e->getMessage());
+  }
+
+// Define the SQL query
+$query = "SELECT project.*, image.image_location 
+          FROM project 
+          INNER JOIN image ON image.project_id = project.project_id
+          WHERE project.approve_status = :approve_status
+          AND project.category_id = :category_id";
+
+// Prepare the statement
+$stmt = $pdo->prepare($query);
+
+// Bind parameters
+$approve_status = true; // Change to 1 if approval status is stored as integer
+$category_id = 4;
+$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+
+// Execute the query
+$stmt->execute();
+
+// Fetch all the results
+$data = $stmt->fetchAll();
+
+// Debug purpose
+// var_dump($data);
+// die();
+
+// Now you can use $data to display project details and associated images on your category page
+}
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -22,7 +71,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
-      <a href="/Back End/html/login.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
+      <a href="/Back End/html/login_page.php"><img src="/Front End/images/new logo black.png" width="100px" height="100px" alt="Logo"></a>
       <a class="navbar-brand" href=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -30,10 +79,10 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+            <a class="nav-link" href="/Front End/html/Overview.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -58,6 +107,7 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
             <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
           </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
@@ -124,120 +174,76 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
   <section id="category">
 
-    <div class="container">
-      <div class="row">
+  <div class="container">
+    <div class="row">
+    <?php
+            if(isset($data)) {
+                foreach ($data as $row) {
+                    ?>
+                    <div class="col-md-4 py-3 py-md-0 col-12">
+                        <div class="card">
+                            <img src="<?php echo $row['image_location']; ?>" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h1 class="card-title"><?php echo $row['project_name']; ?></h1>
+                                <h2 class="card-body text-center">
+                                    <a href="<?php echo $row['project_link']; ?>" target="_blank"><button type="button" class="btn-view mx-auto">View Project</button></a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
 
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e1.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">SPARK</button></a>
-              </h2>
+
+    <?php
+    // Assuming you have an array where each element contains an image path and a button name
+    $image_data = array(
+        array("path" => "/Front End/images/Graphic Design/e1.jpg", "button_name" => "SPARK"),
+        array("path" => "/Front End/images/Graphic Design/e2.jpg", "button_name" => "FLAASH"),
+        array("path" => "/Front End/images/Graphic Design/e3.jpg", "button_name" => "Taiwan Exhibition"),
+        array("path" => "/Front End/images/Graphic Design/e4.jpg", "button_name" => "Block Exhibition"),
+        array("path" => "/Front End/images/Graphic Design/e5.jpg", "button_name" => "Solara Realty"),
+        array("path" => "/Front End/images/Graphic Design/e6.jpg", "button_name" => "AMA"),
+        array("path" => "/Front End/images/Graphic Design/e7.jpg", "button_name" => "Startify"),
+        array("path" => "/Front End/images/Graphic Design/e8.jpg", "button_name" => "CCO"),
+        array("path" => "/Front End/images/Graphic Design/e15.jpg", "button_name" => "Detroit Design"),
+        // Add more elements as needed
+    );
+
+    // Get the total number of images
+    $total_images = count($image_data);
+
+    // Loop through the array to generate HTML for each image and button
+    foreach ($image_data as $key => $data) {
+        ?>
+        <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+            <div class="card">
+                <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h1 class="card-title"></h1>
+                    <h2 class="card-body text-center">
+                    <?php if ($key == $total_images - 1) { ?>
+                            <a href="project_graphicdesign.php" target="_blank">
+                                <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                            </a>
+                        <?php } else { ?>
+                            <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                        <?php } ?>
+                    </h2>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e2.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">FLAASH</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e3.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Taiwan Exhibition</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e4.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Block Exhibition</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e5.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Solara Realty</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e6.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">AMA</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e7.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">Startify</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card">
-            <img src="/Front End/images/Graphic Design/e8.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="" target="_blank"><button type="button" class="btn-view mx-auto">CCO</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 py-3 py-md-0 col-12">
-          <div class="card" style="margin-bottom: 5rem;">
-            <img src="/Front End/images/Graphic Design/e15.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h1 class="card-title"></h1>
-              <h2 class="card-body text-center">
-                <a href="/Front End/html/project_graphicdesign.php" target="_blank"><button type="button" class="btn-view mx-auto">Detroit Design</button></a>
-              </h2>
-            </div>
-          </div>
-        </div>
+        <?php
+    }
+    ?>
 
 
-      </div>
+
     </div>
+</div>
+
   </section>
   <!-- category end -->
 

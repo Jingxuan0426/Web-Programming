@@ -1,3 +1,14 @@
+<?php
+  include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+  
+  //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+    session_start();
+
+    if(!$_SESSION['loggedin']) {
+        header("location: /Back End/html/login_page.php");
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -36,46 +47,45 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+              <a class="nav-link" href="/Front End/html/Overview_page.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Aboutus.html">About
-                Us</a>
+              <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button"
                 data-bs-toggle="dropdown">Category</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item"
-                    href="/Front End/html/Videography.html">Videography</a></li>
+                    href="/Front End/html/videography.php">Videography</a></li>
                 <li><a class="dropdown-item"
-                    href="/Front End/html/Sculpture.html">Sculpture</a></li>
+                    href="/Front End/html/sculpture.php">Sculpture</a></li>
                 <li><a class="dropdown-item"
-                    href="/Front End/html/Graphic Design.html">Graphic
+                    href="/Front End/html/graphic_design.php">Graphic
                     Design</a></li>
                 <li><a class="dropdown-item"
-                    href="/Front End/html/category_digitalillustration.html">Digital
+                    href="/Front End/html/category_digitalillustration.php">Digital
                     Illustration</a></li>
                 <ul>
                   <li><a class="dropdown-item"
-                      href="/Front End/html/category_2dillustration.html">2D
+                      href="/Front End/html/category_2dillustration.php">2D
                       Illustration</a></li>
                   <li><a class="dropdown-item"
-                      href="/Front End/html/category_3dillustration.html">3D
+                      href="/Front End/html/category_3dillustration.php">3D
                       Illustration</a></li>
                 </ul>
                 <li><a class="dropdown-item"
-                    href="/Front End/html/category_animation.html">Animation</a></li>
+                    href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
                   <li><a class="dropdown-item"
-                      href="/Front End/html/category_2danimation.html">2D
+                      href="/Front End/html/category_2danimation.php">2D
                       Animation</a></li>
                   <li><a class="dropdown-item"
-                      href="/Front End/html/category_3danimation.html">3D
+                      href="/Front End/html/category_3danimation.php">3D
                       Animation</a></li>
                 </ul>
                 <li><a class="dropdown-item"
-                    href="/Front End/html/Photography.html">Photography</a></li>
+                    href="/Front End/html/photography.php">Photography</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -83,6 +93,8 @@
             </li>
             <a href="/Front End/html/Upload.html" target="_blank"><button
                 type="button" class="btn-nav">Upload</button></a>
+            <a href="/Back End/html/logout.php" target="_blank"><button
+                type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
           </ul>
         </div>
       </div>
@@ -108,7 +120,7 @@
       <div class="col-md-12 ">
         <div class="card" 
         style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/category_digitalillustration.html">
+          <a href="/Front End/html/category_digitalillustration.php">
           <img src="/Front End/images/3D Illustration/aa.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -121,7 +133,7 @@
       <div class="col-md-6 py-0 py-md-4 col-12">
         <div class="card" 
         style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/category_animation.html">
+          <a href="/Front End/html/category_animation.php">
           <img src="/Front End/images/2D Animation/c5.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -133,7 +145,7 @@
 
       <div class="col-md-6 py-0 py-md-4 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Graphic Design.html">
+          <a href="/Front End/html/graphic_design.php">
           <img src="/Front End/images/Graphic Design/e12.jpg" class="card-img"  alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -146,7 +158,7 @@
       
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Photography.html">
+          <a href="/Front End/html/photography.php">
           <img src="/Front End/images/Photography/e33.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -158,7 +170,7 @@
 
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Videography.html">
+          <a href="/Front End/html/videography.php">
           <img src="/Front End/images/Videography/e48.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
@@ -170,7 +182,7 @@
 
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
-          <a href="/Front End/html/Sculpture.html">
+          <a href="/Front End/html/sculpture.php">
           <img src="/Front End/images/Sculpture/e19.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">

@@ -1,42 +1,35 @@
 <?php
-// Check if the form is submitted
+// Set up PDO connection to your database
+$host = 'localhost';
+$dbname = 'project_database';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Set PDO to throw exceptions on error
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
-    $user_name = $_POST['user_name'];
-    $user_email = $_POST['user_email'];
-    $user_contact = $_POST['user_contact'];
-    $user_location = $_POST['user_location'];
-    $user_id = $_POST['user_id']; 
-    $job_specialized_field = $row['job_specialized_field'];
-    $job_position = $row['job_position'];
-    $job_type = $row['job_type']; // Assuming you pass user_id as a hidden input field in the form
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $location = $_POST['location'];
+    $field = $_POST['field'];
+    $occupation = $_POST['occupation'];
+    $job = $_POST['job'];
 
-    // MySQL connection parameters
-    $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-    $username = "root"; // Change to your MySQL username
-    $password = ""; // Change to your MySQL password
-    $database = "phpmyadmin"; // Change to your MySQL database name
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // SQL query to update user details
-    $sql = "UPDATE profile SET user_name='$user_name', user_email='$user_email', user_contact='$user_contact', user_location='$user_location' WHERE user_id=$user_id";
-    $sql = "UPDATE job SET job_specialized_field='$job_specialized_field', job_position='$job_position', job_type='$job_type' WHERE user_id=$user_id";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "User details updated successfully";
-    } else {
-        echo "Error updating user details: " . $conn->error;
-    }
-
-    // Close connection
-    $conn->close();
+    // Prepare SQL statement
+    $stmt = $pdo->prepare("INSERT INTO user (username, email, contact, location, field, occupation, job) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    // Execute SQL statement
+    $stmt->execute([$username, $email, $contact, $location, $field, $occupation, $job]);
+    // Redirect to a success page or do something else after insertion
+    header("Location: User Manage.php");
+    exit();
 }
 ?>
 
@@ -68,99 +61,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <!-- navbar end -->
 
-<div class="main">
+    <div class="main">
         <h2 style="font-size: 3rem; margin-top: 5rem;">User Details</h2>
-        <?php
-        // MySQL connection parameters
-        $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-        $username = "root"; // Change to your MySQL username
-        $password = ""; // Change to your MySQL password
-        $database = "phpmyadmin"; // Change to your MySQL database name
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Assuming you are passing the user ID through the URL as 'user_id'
-        $user_id = $_GET['user_id'];
-
-        // SQL query to fetch user details based on user ID
-        $sql = "SELECT user_name, user_email, user_contact, user_location FROM profile WHERE user_id = $user_id";
-        $sql = "SELECT job_specialized_field, job_position, job_type, FROM job WHERE user_id = $user_id";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $user_name = $row['user_name'];
-            $user_email = $row['user_email'];
-            $user_contact = $row['user_contact'];
-            $user_location = $row['user_location'];
-            $job_specialized_field = $row['job_specialized_field'];
-            $job_position = $row['job_position'];
-            $job_type = $row['job_type'];
-
-            // Outputting the form with pre-filled values
-            echo "
-            <form method='post'>
-                <input type='hidden' name='user_id' value='$user_id'> <!-- Hidden input field to store user_id -->
-                <div class='row mb-3' style='margin-top: 30px;'>
-                    <label for='inputName3' class='col-sm-2 col-form-label'>Name</label>
-                    <div class='col-sm-8'>
-                        <input type='text' class='form-control' id='inputName3' name='user_name' value='$user_name'>
-                    </div>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="row mb-3" style="margin-top: 30px;">
+                <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputName3" name="username">
                 </div>
-                <div class='row mb-3'>
-                    <label for='inputEmail3' class='col-sm-2 col-form-label'>Email</label>
-                    <div class='col-sm-8'>
-                        <input type='email' class='form-control' id='inputEmail3' name='user_email' value='$user_email'>
-                    </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" name="email">
                 </div>
-                <div class='row mb-3'>
-                    <label for='inputContact3' class='col-sm-2 col-form-label'>Contact</label>
-                    <div class='col-sm-8'>
-                        <input type='text' class='form-control' id='inputContact3' name='user_contact' value='$user_contact'>
-                    </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputContact3" class="col-sm-2 col-form-label">Contact</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputContact3" name="contact">
                 </div>
-                <div class='row mb-3'>
-                    <label for='inputLocation3' class='col-sm-2 col-form-label'>Location</label>
-                    <div class='col-sm-8'>
-                        <input type='text' class='form-control' id='inputLocation3' name='user_location' value='$user_location'>
-                    </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputLocation3" class="col-sm-2 col-form-label">Location</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputLocation3" name="location">
                 </div>
-                <div class='row mb-3'>
-                    <label for='inputField3' class='col-form-label'>Specialized Field</label>
-                    <div class='col-sm-10'>
-                        <input type='text' class='form-control' id='inputField3' name='job_field' value='$job_specialized_field'>
-                    </div>
-                </div>
-                <div class='row mb-3'>
-                    <label for='inputPosition3' class='col-form-label'>Occupation/Desired Job Position</label>
-                    <div class='col-sm-10'>
-                        <input type='text' class='form-control' id='inputPosition3' name='job_position' value='$job_position'>
-                    </div>
-                </div>
-                <div class='row mb-3'>
-                    <label for='inputType3' class='col-form-label'>Part-Time/Full-Time/Freelance</label>
-                    <div class='col-sm-10'>
-                        <input type='text' class='form-control' id='inputType3' name='job_type' value='$job_type'>
-                    </div>
-                </div>
-                <button type='submit' class='btn-view'>Submit</button>
-            </form>";
-        } else {
-            echo "No user found.";
-        }
+            </div>
 
-        // Close connection
-        $conn->close();
-        ?>
+            <div class="mb-3 col-sm-10">
+                <label for="inputField" class="form-label">Specialized Field</label>
+                <input type="text" class="form-control" id="inputField" name="field">
+            </div>
+            <div class="mb-3 col-sm-10">
+                <label for="inputOccupation" class="form-label">Occupation/Desired Job Position</label>
+                <input type="text" class="form-control" id="inputOccupation" name="occupation">
+            </div>
+            <div class="mb-3 col-sm-10">
+                <label for="inputJob" class="form-label">Part-Time/Full-Time/Freelance</label>
+                <input type="text" class="form-control" id="inputJob" name="job">
+            </div>
+            <button type="submit" class="btn-view">Submit</button>
+        </form>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

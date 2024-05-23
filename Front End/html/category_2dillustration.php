@@ -1,5 +1,41 @@
 <?php
 include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
+//REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+session_start();
+
+if(!$_SESSION['loggedin']) {
+    header("location: login_page.php");
+}
+else if($_SESSION['role'] != "admin") {
+    header("location: /Front End/html/overview_page.php");
+}
+
+/*
+
+SELECT project.*, image.image_location FROM project 
+INNER JOIN image ON image.project_id = project.project_id
+where project.approve_status = <true/1> and project.category_id = <depends on your category>;
+
+*/
+//In this case, the user and project details can be used in this page
+
+//Put this code to all category page
+
+// Query to project data
+
+// $query = "SELECT * FROM user WHERE username = :username";
+
+// $stmt = $pdo->prepare($query);
+// $stmt->bindParam(":username", $username);
+// $stmt->execute();
+
+// $data = $stmt->fetchAll();
+
+//Debug purpose
+ //var_dump($data);
+ //die();
+
 ?>
 
 <!doctype html>
@@ -36,55 +72,38 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Aboutus.html">About
-                Us</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                data-bs-toggle="dropdown">Category</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Videography.html">Videography</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Sculpture.html">Sculpture</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Graphic Design.html">Graphic
-                    Design</a></li>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/category_digitalillustration.html">Digital
-                    Illustration</a></li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/Front End/html/Videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_2dillustration.html">2D
-                      Illustration</a></li>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_3dillustration.html">3D
-                      Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/category_animation.html">Animation</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_2danimation.html">2D
-                      Animation</a></li>
-                  <li><a class="dropdown-item"
-                      href="/Front End/html/category_3danimation.html">3D
-                      Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-                <li><a class="dropdown-item"
-                    href="/Front End/html/Photography.html">Photography</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/Job.html">Jobs</a>
-            </li>
-            <a href="/Front End/html/Upload.html" target="_blank"><button
-                type="button" class="btn-nav">Upload</button></a>
+              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
+          </li>
+          <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
+
           </ul>
         </div>
       </div>
@@ -174,140 +193,55 @@ include_once "/xampp/htdocs/Web-Programming/common/connection.php";
 
     <section id="category">
 
-      <div class="container">
-        <div class="row">
+<div class="container">
+  <div class="row">
 
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb1.jpg"
-                class="card-img" alt="...">
+  <?php
+  // Assuming you have an array where each element contains an image path and a button name
+  $image_data = array(
+      array("path" => "/Front End/images/2D Illustration/bb1.jpg", "button_name" => "France"),
+      array("path" => "/Front End/images/2D Illustration/bb2.jpg", "button_name" => "Street wear"),
+      array("path" => "/Front End/images/2D Illustration/bb3.jpg", "button_name" => "Toaster"),
+      array("path" => "/Front End/images/2D Illustration/bb4.jpg", "button_name" => "Subway Scuffle"),
+      array("path" => "/Front End/images/2D Illustration/bb5.jpg", "button_name" => "Hatred"),
+      array("path" => "/Front End/images/2D Illustration/bb6.jpg", "button_name" => "Chinese Fuuu"),
+      array("path" => "/Front End/images/2D Illustration/bb7.jpg", "button_name" => "Demon Rider"),
+      array("path" => "/Front End/images/2D Illustration/bb8.jpg", "button_name" => "Future Look"),
+      array("path" => "/Front End/images/2D Illustration/bb9.jpg", "button_name" => "Galaxy"),
+      // Add more elements as needed
+  );
+
+  // Get the total number of images
+  $total_images = count($image_data);
+
+  // Loop through the array to generate HTML for each image and button
+  foreach ($image_data as $key => $data) {
+      ?>
+      <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
+          <div class="card">
+              <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
               <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">FRANCE</button></a>
-                </h2>
+                  <h1 class="card-title"></h1>
+                  <h2 class="card-body text-center">
+                  <?php if ($key == 4) { ?>
+                          <a href="project_2dillustration.php" target="_blank">
+                              <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
+                          </a>
+                      <?php } else { ?>
+                          <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
+                      <?php } ?>
+                  </h2>
               </div>
-            </div>
           </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb2.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">STREET wear</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb3.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Toaster</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb4.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Subway Scuffle</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb5.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href="/Front End/html/project_2dillustration.html"
-                    target="_blank"><button type="button"
-                      class="btn-view mx-auto">Hatred</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb6.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Chinese Fuuu</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb7.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Demon Rider</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card">
-              <img src="/Front End/images/2D Illustration/bb8.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href target="_blank"><button type="button"
-                      class="btn-view mx-auto">Future Look</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 py-3 py-md-0 col-12">
-            <div class="card" style="margin-bottom: 5rem;">
-              <img src="/Front End/images/2D Illustration/bb9.jpg"
-                class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h1 class="card-title"></h1>
-                <h2 class="card-body text-center">
-                  <a href="/Front End/html/project_graphicdesign.html"
-                    target="_blank"><button type="button"
-                      class="btn-view mx-auto">Galaxy</button></a>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
-    </section>
+<?php
+}
+?>
+
+
+  </div>
+</div>
+</section>
     <!-- category end -->
 
     <footer class="footer">

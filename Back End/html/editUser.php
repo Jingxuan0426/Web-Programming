@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </a>
         <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
         <a href="#">Projects</a>
-        <a href="/Back End/html/Back.html">Log Out</a>
+        <a href="/Back End/html/logout.php">Log Out</a>
     </div>
     <!-- navbar end -->
 
