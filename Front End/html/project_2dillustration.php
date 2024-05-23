@@ -7,19 +7,9 @@ if(!$_SESSION['loggedin']) {
     header("location: /Back End/html/login_page.php");
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
-    $host = "localhost"; // Your host
-    $username = "root"; // Your database username
-    $password = ""; // Your database password
-    $dbname = "project_database"; // Your database name
-  
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
-    }
+
+// Database connection
+include "../../common/connection.php";
   
   // Define the SQL query
   $query = "SELECT project.*, image.image_location 
@@ -48,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // die();
   
   // Now you can use $data to display project details and associated images on your category page
-  }
   
 ?>
 
