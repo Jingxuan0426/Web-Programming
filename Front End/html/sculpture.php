@@ -16,31 +16,24 @@ $query = "SELECT project.*, image.image_location, image.image_type
           INNER JOIN image ON image.project_id = project.project_id
           WHERE project.category_id = :category_id AND image.image_type = :image_type";
 
-// Prepare the statement
-$stmt = $pdo->prepare($query);
-
-// Bind parameters
-$category_id = 3;
-$image_type = "category";
-$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
-$stmt->bindParam(":image_type", $image_type, PDO::PARAM_INT);
-
-// Execute the query
-$stmt->execute();
+$sth = $pdo->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+$sth->execute(['category_id' => 3, 'image_type' => 'category']);
 
 // Fetch all the results
-$data = $stmt->fetchAll();
+$data = $sth->fetchAll();
 
 // Debug purpose
 // var_dump($data);
 // die();
 
 // foreach($data as $child_data) {
-//   var_dump($child_data['image_location']);
+//   var_dump($child_data);
 //   die();
 // }
 
 // Now you can use $data to display project details and associated images on your category page
+
+
 
 ?>
 
