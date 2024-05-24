@@ -3,8 +3,9 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
     $username = $_POST['username'];
-    $user_email = $_POST['user_email'];
+    $email = $_POST['email'];
     $user_contact = $_POST['user_contact'];
+
     $user_location = $_POST['user_location'];
     $user_id = $_POST['user_id'];
     $job_specialized_field = $_POST['job_specialized_field'];
@@ -27,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // SQL query to update user details
     $sql = "UPDATE user SET 
-    username=?, user_email=?, user_contact=?, user_location=?, job_specialized_field=?, job_position=?, job_type=?
+    username=?, email=?, user_contact=?, user_location=?, job_specialized_field=?, job_position=?, job_type=?
     WHERE user_id=?";
 
     // Prepare and bind
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("sssssssi", $username, $user_email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type, $user_id);
+        $stmt->bind_param("sssssssi", $username, $email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type, $user_id);
 
         // Execute the query
         if ($stmt->execute()) {
@@ -111,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $username = $row['username'];
-            $user_email = $row['user_email'];
+            $email = $row['email'];
             $user_contact = $row['user_contact'];
             $user_location = $row['user_location'];
             $job_specialized_field = $row['job_specialized_field'];
@@ -131,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class='row mb-3'>
                     <label for='inputEmail3' class='col-sm-2 col-form-label'>Email</label>
                     <div class='col-sm-8'>
-                        <input type='email' class='form-control' id='inputEmail3' name='user_email' value='$user_email'>
+                        <input type='email' class='form-control' id='inputEmail3' name='email' value='$email'>
                     </div>
                 </div>
                 <div class='row mb-3'>

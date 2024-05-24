@@ -41,7 +41,7 @@
 
     <div class="main3">
         <div class="row">
-            <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:30px;">Projects
+            <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:80px;">Projects
                 <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add px-md-4"> Add </button></a>
             </h2>
         </div>
@@ -71,7 +71,7 @@
             while ($row = $result->fetch_assoc()) {
                 // Display project information
                 echo '<div>
-                        <div class="row" style="align-items: center; margin-bottom: 90px; margin-left:20px">
+                        <div class="row" style="align-items: center; margin-bottom: 90px; margin-left:80px">
                             <img src="/Front End/images/Upload/' . $row["project_cover_pic"] . '" style="max-width: 1000px;" class="col-md-5">
                             <span class="col-md-7">
                                 <h1 class="prtitle">' . $row["project_title"] . '</h1>

@@ -66,7 +66,7 @@
                 echo "<div class='card-body'>";
                 echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
                 echo "<p class='card-text'>Name: " . $row['username'] . "</p>";
-                echo "<p>Email: " . $row['user_email'] . "</p>";
+                echo "<p>Email: " . $row['email'] . "</p>";
                 echo "<p>Contact: " . $row['user_contact'] . "</p>";
                 echo "</div>";
                 echo "</div>";

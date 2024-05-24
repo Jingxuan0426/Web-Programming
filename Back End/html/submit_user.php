@@ -16,7 +16,7 @@ try {
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $user_email = $_POST['user_email'];
+    $email = $_POST['email'];
     $user_contact = $_POST['user_contact'];
     $user_location = $_POST['user_location'];
     $user_id = $_POST['user_id'];
@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job_position = $_POST['job_position'];
     $job_type = $_POST['job_type'];
     // Prepare SQL statement
-    $stmt = $pdo->prepare("INSERT INTO user (username, user_email, user_contact, user_location, job_specialized_field, job_position, job_type) 
+    $stmt = $pdo->prepare("INSERT INTO user (username, email, user_contact, user_location, job_specialized_field, job_position, job_type) 
     VALUES (?, ?, ?, ?, ?, ?, ?)");
     // Execute SQL statement
-    $stmt->execute([$username, $user_email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type]);
+    $stmt->execute([$username, $email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type]);
     // Redirect to a success page or do something else after insertion
     header("Location: User Manage.php");
     exit();
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="inputEmail3" name="user_email">
+                    <input type="email" class="form-control" id="inputEmail3" name="email">
                 </div>
             </div>
             <div class="row mb-3">
