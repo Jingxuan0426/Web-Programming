@@ -82,7 +82,7 @@
   <div class="carousel-indicators"></div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/Front End/images/Upload/firebird.jpg"
+      <img src="/Front End/images/fire-kirin-wallpaper-preview.jpg"
         class="d-block w-100 col-12" alt="...">
       <div class="carousel-caption justify-content-center d-flex">
         <h1 class="d-block"
@@ -100,10 +100,7 @@
     <div class="middle">UPLOAD</div>
   </div>
 </div>                
- -->                
-<div class="container">
-<p class="project-meta-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-</div>           
+ -->                         
 
  <div class="main" style="text-align: center ;">
         <h2 style="font-size: 3rem; margin-top: 5rem;">DETAILS</h2>
