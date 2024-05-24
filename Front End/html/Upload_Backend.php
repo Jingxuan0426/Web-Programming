@@ -25,7 +25,7 @@ $query = "UPDATE user SET
         job_position = :job_position,
         job_type = :job_type,
         name = :name,
-        email = :email,
+        email = :email
         WHERE user_id = :user_id
     ";
 
