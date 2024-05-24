@@ -175,6 +175,32 @@ include "../../common/connection.php";
 
     </div>
 
+    <div class="container">
+        <div class="project-intro">
+          <div class="ss-list">
+            <div class="ss-items" role="list">
+              <div class="ss-item" role="listitem">
+                <div class="ss-item" role="listitem">
+                  <div class="project-video-block">
+                    <div class="project-video-large">
+                      <a href="/Front End/images/Videography/seasons_project/v1.mp4" target="_blank"><video width="100%" height="100%" controls
+                        style="align-items: center;" id="project-video-border">
+                        <source
+                          src="/Front End/images/Videography/seasons_project/v1.mp4"
+                          type="video/mp4">
+                      </video></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     <footer class="footer">
       <div class="container">
         <div class="row">
