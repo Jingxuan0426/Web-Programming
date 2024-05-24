@@ -8,48 +8,39 @@
  }
  
 
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Database connection
-  $host = "localhost"; // Your host
-  $username = "root"; // Your database username
-  $password = ""; // Your database password
-  $dbname = "project_database"; // Your database name
+// Database connection
+include "../../common/connection.php";
+  
+  // Define the SQL query
+  $query = "SELECT image.*, project.*, user.username, category.category_name
+            FROM image 
+            INNER JOIN project ON image.project_id = project.project_id
+            INNER JOIN user ON project.user_id = user.user_id
+            INNER JOIN category ON category.category_id = project.category_id
+            WHERE project.project_id = :project_id";
+  
+  // Prepare the statement
+  $stmt = $pdo->prepare($query);
+  
+  // Bind parameters
+  $project_id = $_GET['id'];
+  $stmt->bindParam(":project_id", $project_id, PDO::PARAM_INT);
+  
+  // Execute the query
+  $stmt->execute();
+  
+  // Fetch all the results
+  $data = $stmt->fetchAll();
+  
+  // Debug purpose
+//   foreach($data as $child_data){
+//     var_dump($data);
+//     die();
+//   }
 
-  try {
-      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-      die("Connection failed: " . $e->getMessage());
-  }
-
-// Define the SQL query
-$query = "SELECT project.*, image.image_location 
-          FROM project 
-          INNER JOIN image ON image.project_id = project.project_id
-          WHERE project.approve_status = :approve_status
-          AND project.category_id = :category_id";
-
-// Prepare the statement
-$stmt = $pdo->prepare($query);
-
-// Bind parameters
-$approve_status = true; // Change to 1 if approval status is stored as integer
-$category_id = 2;
-$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
-$stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
-
-// Execute the query
-$stmt->execute();
-
-// Fetch all the results
-$data = $stmt->fetchAll();
-
-// Debug purpose
-// var_dump($data);
-// die();
-
-// Now you can use $data to display project details and associated images on your category page
-}
+  
+  // Now you can use $data to display project details and associated images on your category page
+  
 
  ?>
 
