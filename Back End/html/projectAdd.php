@@ -26,7 +26,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: #rgb(161, 13, 60);
             padding-top: 20px;
             z-index: 1;
         }

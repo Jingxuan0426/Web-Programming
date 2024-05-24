@@ -18,19 +18,19 @@
 
 <body class="overflow-x-hidden" style="background-color: black;">
 
-    <!-- <div class="sidenav">
+    <div class="sidenav">
         <a class="navbar-brand" href="#">
             <img src="/Back End/images/new logo red.png" alt="" width="90" height="90">
         </a>
         <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
         <a href="/Back End/html/project.php">Projects</a>
         <a href="/Back End/html/Back.html">Log Out</a>
-    </div> -->
+    </div>
     <!-- navbar end -->
 
     <div class="main3">
         <div class="row">
-            <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:4px;">Projects
+            <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem; margin-left:30px;">Projects
                 <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add px-md-4"> Add </button></a>
             </h2>
         </div>
@@ -60,7 +60,7 @@
             while ($row = $result->fetch_assoc()) {
                 // Display project information
                 echo '<div>
-                        <div class="row" style="align-items: center; margin-bottom: 90px;">
+                        <div class="row" style="align-items: center; margin-bottom: 90px; margin-left:20px">
                             <img src="/Front End/images/Upload/' . $row["project_cover_pic"] . '" style="max-width: 1000px;" class="col-md-5">
                             <span class="col-md-7">
                                 <h1 class="prtitle">' . $row["project_title"] . '</h1>
@@ -80,9 +80,7 @@
         $conn->close();
         ?>
 
-        <div class="bottom-right">
-            This is at the bottom right corner.
-        </div>
+        
     </div>
 
 </body>
