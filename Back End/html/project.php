@@ -68,7 +68,7 @@
                                 <h3 class="byyear" style="margin-bottom: 40px;">Year: ' . $row["year_created"] . '</h3>
                                 <h4>
                                     <a href="/Back End/html/projectEdit.php?project_id=' .$row['project_id'] . '"><button type="submit" class="btn-add"> Edit </button></a>
-                                    <a href="/Back End/html/projectAdd.php"><button type="submit" class="btn-add"> Delete </button></a>
+                                    <a href="/Back End/html/projectDelete.php?project_id=' . $row['project_id'] . '"><button type="submit" class="btn-add"> Delete </button></a>
                                 </h4>
                             </span>
                         </div>

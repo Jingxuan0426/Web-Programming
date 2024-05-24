@@ -32,7 +32,7 @@
             <img src="/Back End/images/new logo red.png" alt="" width="90" height="90">
         </a>
         <a href="/Back End/html/User Manage.php" style="margin-top: 60px;">User Management</a>
-        <a href="#">Projects</a>
+        <a href="/Back End/html/project.php">Projects</a>
         <a href="/Back End/html/logout.php">Log Out</a>
     </div>
     <!-- navbar end -->
@@ -65,7 +65,7 @@
                 echo "<div class='card' style='width: 75rem;'>";
                 echo "<div class='card-body'>";
                 echo "<h1 class='card-title'>User " . $row['user_id'] . "</h1>";
-                echo "<p class='card-text'>Name: " . $row['user_name'] . "</p>";
+                echo "<p class='card-text'>Name: " . $row['username'] . "</p>";
                 echo "<p>Email: " . $row['user_email'] . "</p>";
                 echo "<p>Contact: " . $row['user_contact'] . "</p>";
                 echo "</div>";
