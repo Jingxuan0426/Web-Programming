@@ -7,21 +7,6 @@
      header("location: /Back End/html/login_page.php");
  }
 
-//SELECT * FROM project INNER JOIN user ON project.user_id = user.user_id where project.approve_status = <true/1> and project.category_id = <depends on your category>;
-//In this case, the user and project details can be used in this page
-
-//Put this code to all category page
-
-// Query to all the project data
-
-// $query = "SELECT * FROM user WHERE username = :username";
-
-//  $stmt = $pdo->prepare($query);
-//  $stmt->bindParam(":username", $username);
-//  $stmt->execute();
-
-//  $data = $stmt->fetchAll();
-
 ?>
 
 <!doctype html>

@@ -11,18 +11,19 @@ if (!$_SESSION['loggedin']) {
 include "../../common/connection.php";
 
 // Define the SQL query
-$query = "SELECT project.*, image.image_location 
+$query = "SELECT project.*, image.image_location, image.image_type 
           FROM project 
           INNER JOIN image ON image.project_id = project.project_id
-          WHERE project.category_id = :category_id
-          GROUP BY project.project_id";
+          WHERE project.category_id = :category_id AND image.image_type = :image_type";
 
 // Prepare the statement
 $stmt = $pdo->prepare($query);
 
 // Bind parameters
 $category_id = 5;
+$image_type = "category";
 $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+$stmt->bindParam(":image_type", $image_type, PDO::PARAM_INT);
 
 // Execute the query
 $stmt->execute();
