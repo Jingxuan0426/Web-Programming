@@ -169,6 +169,22 @@ include "../../common/connection.php";
                     </div>
                 <?php }} ?>
             </div>
+
+            <div class="ss-item" role="listitem">
+                                <div class="project-video-block">
+                                    <div class="project-video-large">
+                                        <a href="/Front End/images/Sculpture/dragon_project/s12.mp4" target="_blank"><video width="100%" height="100%"
+                                            controls
+                                            style="align-items: center;"
+                                            id="project-video-border">
+                                            <source
+                                                src="/Front End/images/Sculpture/dragon_project/s12.mp4"
+                                                type="video/mp4">
+                                        </video></a>
+                                    </div>
+                                </div>
+                            </div>
+
         </div>
 
     </div>
