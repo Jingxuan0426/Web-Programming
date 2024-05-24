@@ -35,7 +35,7 @@
         </a>
         <a href="/Back End/html/User Manage.php" style="margin-top: 60px;">User Management</a>
         <a href="/Back End/html/project.php">Projects</a>
-        <a href="/Back End/html/Back.html">Log Out</a>
+        <a href="/Back End/html/logout.php">Log Out</a>
     </div>
     <!-- navbar end -->
 
