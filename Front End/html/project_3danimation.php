@@ -78,16 +78,16 @@ include "../../common/connection.php";
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
+          <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/Front End/html/Videography.php">Videography</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/sculpture.php">Sculpture</a></li>
               <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
               <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
@@ -103,10 +103,10 @@ include "../../common/connection.php";
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
-          </li>
+            <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
+          </li>x
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
-                                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
+                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
 
                     </ul>
                 </div>

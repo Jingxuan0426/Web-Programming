@@ -81,8 +81,8 @@ $data = $sth->fetchAll();
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/Front End/html/Videography.php">Videography</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/sculpture.php">Sculpture</a></li>
               <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
               <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
@@ -94,11 +94,11 @@ $data = $sth->fetchAll();
                   <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
                   <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/photography.php">Photography</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Job.php">Jobs</a>
+            <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
           </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
                 <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>

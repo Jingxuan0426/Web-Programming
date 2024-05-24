@@ -1,3 +1,15 @@
+<?php
+
+//REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+session_start();
+
+if (!$_SESSION['loggedin']) {
+  header("location: /Back End/html/login_page.php");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +38,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
+          <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
@@ -37,27 +49,24 @@
               <li><a class="dropdown-item" href="/Front End/html/videography.php">Videography</a></li>
               <li><a class="dropdown-item" href="/Front End/html/sculpture.php">Sculpture</a></li>
               <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
-              <li>
-                <a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a>
+              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
                   <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
                   <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
                   <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
                   <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-              </li>
-              <li><a class="dropdown-item" href="/Front End/html/photography.php">Photography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
-          </li>
-          <a href="/Front End/html/Upload.html" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+          </li>x
+          <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
