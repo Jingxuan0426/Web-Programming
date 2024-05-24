@@ -115,52 +115,58 @@ include "../../common/connection.php";
 
     <div style="opacity: 1;" class="fade-page-in">
 
-      <div style="margin-bottom: 5rem; background-color: black;">
-        <img src="/Front End/images/Videography/Project/v_cover.jpg"
-          class="img-fluid"
-          style="max-width: 100%; opacity: 0.5;">
-      </div>
+    <div style="margin-bottom: 5rem; background-color: black;">
+    <img
+        src="<?php
+          foreach($data as $child_data) {
+            if($child_data['image_type'] == "cover")
+              echo $child_data['image_location'];
+          } 
+        ?>"
+        class="img-fluid"
+        style="max-width: 100%; opacity: 0.5;">
+</div>
 
-      <div class="container" style="color: whitesmoke;">
-        <div class="flex-row project-meta-container">
-          <div class="item-bordered project-meta-item">
-            <h3 class="project-meta-header">PROJECT TITLE</h3>
+<!-- Loop -->
+<!-- Replace Hardcode -->
+
+<div class="container" style="color: whitesmoke;">
+    <div class="flex-row project-meta-container">
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
             <div class="project-meta-content"
-              style="padding-bottom: 3rem;">Seasons</div>
+                style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
             <h3 class="project-meta-header">CREATOR</h3>
-            <div class="project-meta-content">Noel Fenez</div>
-          </div>
-          <div class="item-bordered project-meta-item">
-            <h3 class="project-meta-header">YEAR</h3>
-            <div class="project-meta-content">2022</div>
-          </div>
-          <div class="item-bordered project-meta-item">
-            <h3 class="project-meta-header">TAGS</h3>
-            <div class="project-meta-content">Videography, Motion Graphics</div>
-          </div>
+            <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
         </div>
-      </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">YEAR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">TAGS</h3>
+            <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
+        </div>
+    </div>
+</div>
 
-      <div class="container">
-        <div class="project-intro">
-          <div class="ss-list">
+<div class="container">
+    <div class="project-intro">
+        <div class="ss-list">
             <div class="ss-items" role="list">
-              <div class="ss-item" role="listitem">
-                <div class="ss-item" role="listitem">
-                  <div class="project-video-block">
-                    <div class="project-video-large">
-                      <a href="/Front End/images/Videography/Project/v1.mp4" target="_blank"><video width="100%" height="100%" controls
-                        style="align-items: center;" id="project-video-border">
-                        <source
-                          src="/Front End/images/Videography/Project/v1.mp4"
-                          type="video/mp4">
-                      </video></a>
+                <?php foreach ($data as $key => $child_data) { 
+                  if($child_data['image_type'] != "cover" && $child_data['image_type'] != "category") {  
+                ?>
+                    <div class="ss-item" role="listitem">
+                        <div class="project-image-block">
+                            <div class="project-image-large">
+                                <img
+                                    src="<?php echo $child_data["image_location"] ?>"
+                                    id="project-image-border">
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+                <?php }} ?>
           </div>
 
         </div>

@@ -116,7 +116,12 @@ include "../../common/connection.php";
 
 <div style="margin-bottom: 5rem; background-color: black;">
     <img
-        src="<?php echo $data[0]['image_location'] ?>"
+        src="<?php
+          foreach($data as $child_data) {
+            if($child_data['image_type'] == "cover")
+              echo $child_data['image_location'];
+          } 
+        ?>"
         class="img-fluid"
         style="max-width: 100%; opacity: 0.5;">
 </div>
@@ -148,7 +153,9 @@ include "../../common/connection.php";
     <div class="project-intro">
         <div class="ss-list">
             <div class="ss-items" role="list">
-                <?php foreach ($data as $key => $child_data) { ?>
+                <?php foreach ($data as $key => $child_data) { 
+                  if($child_data['image_type'] != "cover" && $child_data['image_type'] != "category") {  
+                ?>
                     <div class="ss-item" role="listitem">
                         <div class="project-image-block">
                             <div class="project-image-large">
@@ -158,7 +165,7 @@ include "../../common/connection.php";
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }} ?>
             </div>
         </div>
 

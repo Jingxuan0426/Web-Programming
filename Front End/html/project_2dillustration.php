@@ -116,51 +116,58 @@ include "../../common/connection.php";
 
         <div style="opacity: 1;" class="fade-page-in">
 
-            <div style="margin-bottom: 5rem; background-color: black;">
-                <img
-                    src="<?php echo $data[0]['image_location'] ?>"
-                    class="img-fluid"
-                    style="max-width: 100%; opacity: 0.5;">
-            </div>
+        <div style="margin-bottom: 5rem; background-color: black;">
+    <img
+        src="<?php
+          foreach($data as $child_data) {
+            if($child_data['image_type'] == "cover")
+              echo $child_data['image_location'];
+          } 
+        ?>"
+        class="img-fluid"
+        style="max-width: 100%; opacity: 0.5;">
+</div>
 
-            <!-- Loop -->
-            <!-- Replace Hardcode -->
+<!-- Loop -->
+<!-- Replace Hardcode -->
 
-            <div class="container" style="color: whitesmoke;">
-                <div class="flex-row project-meta-container">
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
-                        <div class="project-meta-content"
-                            style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
-                        <h3 class="project-meta-header">CREATOR</h3>
-                        <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">YEAR</h3>
-                        <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">TAGS</h3>
-                        <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
-                    </div>
-                </div>
-            </div>
+<div class="container" style="color: whitesmoke;">
+    <div class="flex-row project-meta-container">
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
+            <div class="project-meta-content"
+                style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
+            <h3 class="project-meta-header">CREATOR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">YEAR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">TAGS</h3>
+            <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
+        </div>
+    </div>
+</div>
 
-            <div class="container">
-                <div class="project-intro">
-                    <div class="ss-list">
-                        <div class="ss-items" role="list">
-                            <?php foreach ($data as $key => $child_data) { ?>
-                                <div class="ss-item" role="listitem">
-                                    <div class="project-image-block">
-                                        <div class="project-image-large">
-                                            <img
-                                                src="<?php echo $child_data["image_location"] ?>"
-                                                id="project-image-border">
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
+<div class="container">
+    <div class="project-intro">
+        <div class="ss-list">
+            <div class="ss-items" role="list">
+                <?php foreach ($data as $key => $child_data) { 
+                  if($child_data['image_type'] != "cover" && $child_data['image_type'] != "category") {  
+                ?>
+                    <div class="ss-item" role="listitem">
+                        <div class="project-image-block">
+                            <div class="project-image-large">
+                                <img
+                                    src="<?php echo $child_data["image_location"] ?>"
+                                    id="project-image-border">
+                            </div>
+                        </div>
+                    </div>
+                <?php }} ?>
                         </div>
                     </div>
 
