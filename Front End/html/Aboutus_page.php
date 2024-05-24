@@ -88,9 +88,9 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Front End/html/jobCopy.php">Jobs</a>
+              <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
             </li>
-            <a href="/Front End/html/Upload.html" target  ="_blank"><button
+            <a href="/Front End/html/Upload.php" target  ="_blank"><button
                 type="button" class="btn-nav">Upload</button></a>
             <a href="/Back End/html/logout.php" target="_blank"><button
                 type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a> 

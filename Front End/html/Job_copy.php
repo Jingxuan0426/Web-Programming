@@ -1,3 +1,15 @@
+<?php
+
+//REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+session_start();
+
+if (!$_SESSION['loggedin']) {
+  header("location: /Back End/html/login_page.php");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,38 +38,35 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Overview.html">Home</a>
+          <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.html">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/Front End/html/Videography.html">Videography</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Sculpture.html">Sculpture</a></li>
-              <li><a class="dropdown-item" href="/Front End/html/Graphic Design.html">Graphic Design</a></li>
-              <li>
-                <a class="dropdown-item" href="/Front End/html/category_digitalillustration.html">Digital Illustration</a>
+              <li><a class="dropdown-item" href="/Front End/html/videography.php">Videography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/sculpture.php">Sculpture</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/graphic_design.php">Graphic Design</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/category_digitalillustration.php">Digital Illustration</a></li>
                 <ul>
-                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.html">2D Illustration</a></li>
-                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.html">3D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2dillustration.php">2D Illustration</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3dillustration.php">3D Illustration</a></li>
                 </ul>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/Front End/html/category_animation.html">Animation</a>
+              <li><a class="dropdown-item" href="/Front End/html/category_animation.php">Animation</a></li>
                 <ul>
-                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.html">2D Animation</a></li>
-                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.html">3D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_2danimation.php">2D Animation</a></li>
+                  <li><a class="dropdown-item" href="/Front End/html/category_3danimation.php">3D Animation</a></li>
                 </ul>
-              </li>
-              <li><a class="dropdown-item" href="/Front End/html/Photography.html">Photography</a></li>
+              <li><a class="dropdown-item" href="/Front End/html/Photography.php">Photography</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Job.html">Jobs</a>
-          </li>
-          <a href="/Front End/html/Upload.html" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+            <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
+          </li>x
+          <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
+                <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
         </ul>
       </div>
     </div>
@@ -187,6 +196,7 @@
           <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=100092615201359" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/chill_cafe_97/" target="_blank"><i class="fab fa-instagram"></i></a>
+            
             <h5 style="margin-top: 2rem;">@ spectrumstudio</h5>
             <h5>169 Jalan ABC
             53300 Kuala Lumpur.</h5>
