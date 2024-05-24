@@ -16,17 +16,18 @@ try {
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $location = $_POST['location'];
-    $field = $_POST['field'];
-    $occupation = $_POST['occupation'];
-    $job = $_POST['job'];
-
+    $user_email = $_POST['user_email'];
+    $user_contact = $_POST['user_contact'];
+    $user_location = $_POST['user_location'];
+    $user_id = $_POST['user_id'];
+    $job_specialized_field = $_POST['job_specialized_field'];
+    $job_position = $_POST['job_position'];
+    $job_type = $_POST['job_type'];
     // Prepare SQL statement
-    $stmt = $pdo->prepare("INSERT INTO user (username, email, contact, location, field, occupation, job) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO user (username, user_email, user_contact, user_location, job_specialized_field, job_position, job_type) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)");
     // Execute SQL statement
-    $stmt->execute([$username, $email, $contact, $location, $field, $occupation, $job]);
+    $stmt->execute([$username, $user_email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type]);
     // Redirect to a success page or do something else after insertion
     header("Location: User Manage.php");
     exit();
@@ -73,33 +74,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="inputEmail3" name="email">
+                    <input type="email" class="form-control" id="inputEmail3" name="user_email">
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="inputContact3" class="col-sm-2 col-form-label">Contact</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputContact3" name="contact">
+                    <input type="text" class="form-control" id="inputContact3" name="user_contact">
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="inputLocation3" class="col-sm-2 col-form-label">Location</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputLocation3" name="location">
+                    <input type="text" class="form-control" id="inputLocation3" name="user_location">
                 </div>
             </div>
 
             <div class="mb-3 col-sm-10">
                 <label for="inputField" class="form-label">Specialized Field</label>
-                <input type="text" class="form-control" id="inputField" name="field">
+                <input type="text" class="form-control" id="inputField" name="job_specialized_field">
             </div>
             <div class="mb-3 col-sm-10">
                 <label for="inputOccupation" class="form-label">Occupation/Desired Job Position</label>
-                <input type="text" class="form-control" id="inputOccupation" name="occupation">
+                <input type="text" class="form-control" id="inputOccupation" name="job_position">
             </div>
             <div class="mb-3 col-sm-10">
                 <label for="inputJob" class="form-label">Part-Time/Full-Time/Freelance</label>
-                <input type="text" class="form-control" id="inputJob" name="job">
+                <input type="text" class="form-control" id="inputJob" name="job_type">
             </div>
             <button type="submit" class="btn-view">Submit</button>
         </form>
