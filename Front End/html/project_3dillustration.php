@@ -139,7 +139,7 @@ include "../../common/connection.php";
             <div class="project-meta-content"
                 style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
             <h3 class="project-meta-header">CREATOR</h3>
-            <div class="project-meta-content"><?php echo $data[0]['name'] ?></div>
+            <div class="project-meta-content"><?php echo $data[0]['name'] ?></div> <!-- Please edit to all project -->
         </div>
         <div class="item-bordered project-meta-item">
             <h3 class="project-meta-header">YEAR</h3>
