@@ -10,7 +10,7 @@
 include "../../common/connection.php";
   
   // Define the SQL query
-  $query = "SELECT image.*, project.*, user.username, category.category_name
+  $query = "SELECT image.*, project.*, user.name, category.category_name
             FROM image 
             INNER JOIN project ON image.project_id = project.project_id
             INNER JOIN user ON project.user_id = user.user_id
