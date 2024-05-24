@@ -1,8 +1,9 @@
 <?php
     session_start();
 
-    if($_SESSION['loggedin']) {
-        header("location:javascript://history.go(-1)");
+    if(isset($_SESSION['loggedin'])) {
+        if($_SESSION['loggedin'])
+            header("location:javascript://history.go(-1)");
     }
 ?>
 

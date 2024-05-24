@@ -7,35 +7,24 @@ if(!$_SESSION['loggedin']) {
     header("location: /Back End/html/login_page.php");
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
-    $host = "localhost"; // Your host
-    $username = "root"; // Your database username
-    $password = ""; // Your database password
-    $dbname = "project_database"; // Your database name
-  
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
-    }
+
+// Database connection
+include "../../common/connection.php";
   
   // Define the SQL query
-  $query = "SELECT project.*, image.image_location 
-            FROM project 
-            INNER JOIN image ON image.project_id = project.project_id
-            WHERE project.approve_status = :approve_status
-            AND project.category_id = :category_id";
+  $query = "SELECT image.*, project.*, user.username, category.category_name
+            FROM image 
+            INNER JOIN project ON image.project_id = project.project_id
+            INNER JOIN user ON project.user_id = user.user_id
+            INNER JOIN category ON category.category_id = project.category_id
+            WHERE project.project_id = :project_id";
   
   // Prepare the statement
   $stmt = $pdo->prepare($query);
   
   // Bind parameters
-  $approve_status = true; // Change to 1 if approval status is stored as integer
-  $category_id = 2;
-  $stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
-  $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+  $project_id = $_GET['id'];
+  $stmt->bindParam(":project_id", $project_id, PDO::PARAM_INT);
   
   // Execute the query
   $stmt->execute();
@@ -44,11 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $data = $stmt->fetchAll();
   
   // Debug purpose
-  // var_dump($data);
-  // die();
+//   foreach($data as $child_data){
+//     var_dump($data);
+//     die();
+//   }
+
   
   // Now you can use $data to display project details and associated images on your category page
-  }
   
 ?>
 
@@ -127,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div style="margin-bottom: 5rem; background-color: black;">
                 <img
-                    src="/Front End/images/2D Illustration/Project/2dill_cover.jpg"
+                    src="<?php echo $data[0]['image_location'] ?>"
                     class="img-fluid"
                     style="max-width: 100%; opacity: 0.5;">
             </div>
@@ -138,19 +129,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container" style="color: whitesmoke;">
                 <div class="flex-row project-meta-container">
                     <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">PROJECT TITLE</h3> <!-- $project title -->
+                        <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
                         <div class="project-meta-content"
-                            style="padding-bottom: 3rem;">Hatred</div>
+                            style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
                         <h3 class="project-meta-header">CREATOR</h3>
-                        <div class="project-meta-content">SILLY CHAOTIC</div>
+                        <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
                     </div>
                     <div class="item-bordered project-meta-item">
                         <h3 class="project-meta-header">YEAR</h3>
-                        <div class="project-meta-content">2023</div>
+                        <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
                     </div>
                     <div class="item-bordered project-meta-item">
                         <h3 class="project-meta-header">TAGS</h3>
-                        <div class="project-meta-content">2D Illustration</div>
+                        <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
                     </div>
                 </div>
             </div>
@@ -159,70 +150,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="project-intro">
                     <div class="ss-list">
                         <div class="ss-items" role="list">
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill1.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill1.png"
-                                            id="project-image-border"></a>
+                            <?php foreach ($data as $key => $child_data) { ?>
+                                <div class="ss-item" role="listitem">
+                                    <div class="project-image-block">
+                                        <div class="project-image-large">
+                                            <img
+                                                src="<?php echo $child_data["image_location"] ?>"
+                                                id="project-image-border">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill2.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill2.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill3.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill3.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill4.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill4.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill5.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill5.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill6.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill6.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Illustration/Project/2dill7.png" target="_blank"><img
-                                            src="/Front End/images/2D Illustration/Project/2dill7.png"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <?php } ?>
                         </div>
                     </div>
 

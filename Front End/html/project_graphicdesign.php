@@ -1,42 +1,30 @@
 <?php
 
- //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
- session_start();
+//REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+session_start();
 
- if(!$_SESSION['loggedin']) {
-     header("location: /Back End/html/login_page.php");
- }
- 
+if(!$_SESSION['loggedin']) {
+    header("location: /Back End/html/login_page.php");
+}
 
- if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection
-    $host = "localhost"; // Your host
-    $username = "root"; // Your database username
-    $password = ""; // Your database password
-    $dbname = "project_database"; // Your database name
-  
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
-    }
+
+// Database connection
+include "../../common/connection.php";
   
   // Define the SQL query
-  $query = "SELECT project.*, image.image_location 
-            FROM project 
-            INNER JOIN image ON image.project_id = project.project_id
-            WHERE project.approve_status = :approve_status
-            AND project.category_id = :category_id";
+  $query = "SELECT image.*, project.*, user.username, category.category_name
+            FROM image 
+            INNER JOIN project ON image.project_id = project.project_id
+            INNER JOIN user ON project.user_id = user.user_id
+            INNER JOIN category ON category.category_id = project.category_id
+            WHERE project.project_id = :project_id";
   
   // Prepare the statement
   $stmt = $pdo->prepare($query);
   
   // Bind parameters
-  $approve_status = true; // Change to 1 if approval status is stored as integer
-  $category_id = 2;
-  $stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
-  $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
+  $project_id = $_GET['id'];
+  $stmt->bindParam(":project_id", $project_id, PDO::PARAM_INT);
   
   // Execute the query
   $stmt->execute();
@@ -45,13 +33,15 @@
   $data = $stmt->fetchAll();
   
   // Debug purpose
-  // var_dump($data);
-  // die();
+//   foreach($data as $child_data){
+//     var_dump($data);
+//     die();
+//   }
+
   
   // Now you can use $data to display project details and associated images on your category page
-  }
   
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +81,7 @@
             <a class="nav-link" href="/Front End/html/overview_page.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Front End/html/Aboutus.php">About Us</a>
+            <a class="nav-link" href="/Front End/html/Aboutus_page.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Category</a>
@@ -125,132 +115,60 @@
 
         <div style="opacity: 1;" class="fade-page-in">
 
-            <div style="margin-bottom: 5rem; background-color: black;">
-                <img src="/Front End/images/Graphic Design/Project/gd_cover.jpg"
-                    class="img-fluid"
-                    style="max-width: 100%; opacity: 0.5;">
-            </div>
+<div style="margin-bottom: 5rem; background-color: black;">
+    <img
+        src="<?php echo $data[0]['image_location'] ?>"
+        class="img-fluid"
+        style="max-width: 100%; opacity: 0.5;">
+</div>
 
-            <div class="container" style="color: whitesmoke;">
-                <div class="flex-row project-meta-container">
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">PROJECT TITLE</h3>
-                        <div class="project-meta-content"
-                            style="padding-bottom: 3rem;">Detroit.Design.</div>
-                        <h3 class="project-meta-header">CREATOR</h3>
-                        <div class="project-meta-content">Karl Nilsson</div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">YEAR</h3>
-                        <div class="project-meta-content">2023</div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">TAGS</h3>
-                        <div class="project-meta-content">Illustration, Graphic
-                            Design, Branding</div>
-                    </div>
-                </div>
-            </div>
+<!-- Loop -->
+<!-- Replace Hardcode -->
 
-            <div class="container">
-                <div class="project-intro">
-                    <div class="ss-list">
-                        <div class="ss-items" role="list">
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd1.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd1.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd2.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd2.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd3.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd3.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd4.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd4.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd5.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd5.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd6.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd6.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd7.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd7.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd8.jpg" target="_blank"><img
-                                            src="/Front End/images/Graphic Design/Project/gd8.jpg"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-video-block">
-                                    <div class="project-video-large">
-                                        <a href="/Front End/images/Graphic Design/Project/gd9.mp4" target="_blank"><video width="100%" height="100%"
-                                            controls
-                                            style="align-items: center;"
-                                            id="project-video-border">
-                                            <source
-                                                src="/Front End/images/Graphic Design/Project/gd9.mp4"
-                                                type="video/mp4">
-                                        </video></a>
-                                    </div>
-                                </div>
-                            </div>
+<div class="container" style="color: whitesmoke;">
+    <div class="flex-row project-meta-container">
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
+            <div class="project-meta-content"
+                style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
+            <h3 class="project-meta-header">CREATOR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">YEAR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">TAGS</h3>
+            <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
+        </div>
+    </div>
+</div>
 
+<div class="container">
+    <div class="project-intro">
+        <div class="ss-list">
+            <div class="ss-items" role="list">
+                <?php foreach ($data as $key => $child_data) { ?>
+                    <div class="ss-item" role="listitem">
+                        <div class="project-image-block">
+                            <div class="project-image-large">
+                                <img
+                                    src="<?php echo $child_data["image_location"] ?>"
+                                    id="project-image-border">
+                            </div>
                         </div>
                     </div>
-
-                </div>
-
+                <?php } ?>
             </div>
-
         </div>
+
+    </div>
+
+</div>
+
+
+</div>
 
         <footer class="footer">
             <div class="container">

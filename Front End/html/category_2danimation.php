@@ -7,34 +7,21 @@ if(!$_SESSION['loggedin']) {
     header("location: /Back End/html/login_page.php");
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Database connection
-  $host = "localhost"; // Your host
-  $username = "root"; // Your database username
-  $password = ""; // Your database password
-  $dbname = "project_database"; // Your database name
-
-  try {
-      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-      die("Connection failed: " . $e->getMessage());
-  }
+// Database connection
+include "../../common/connection.php";
 
 // Define the SQL query
 $query = "SELECT project.*, image.image_location 
           FROM project 
           INNER JOIN image ON image.project_id = project.project_id
-          WHERE project.approve_status = :approve_status
-          AND project.category_id = :category_id";
+          WHERE project.category_id = :category_id
+          GROUP BY project.project_id";
 
 // Prepare the statement
 $stmt = $pdo->prepare($query);
 
 // Bind parameters
-$approve_status = true; // Change to 1 if approval status is stored as integer
-$category_id = 2;
-$stmt->bindParam(":approve_status", $approve_status, PDO::PARAM_BOOL); // Assuming approval status is boolean
+$category_id = 7;
 $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
 // Execute the query
@@ -47,8 +34,13 @@ $data = $stmt->fetchAll();
 // var_dump($data);
 // die();
 
+// foreach($data as $child_data) {
+//   var_dump($child_data['image_location']);
+//   die();
+// }
+
 // Now you can use $data to display project details and associated images on your category page
-}
+
 
 ?>
 
@@ -205,51 +197,51 @@ $data = $stmt->fetchAll();
 <div class="container">
   <div class="row">
 
-  <?php
-  // Assuming you have an array where each element contains an image path and a button name
-  $image_data = array(
-      array("path" => "/Front End/images/2D Animation/cc1.jpg", "button_name" => "Landscape"),
-      array("path" => "/Front End/images/2D Animation/cc2.jpg", "button_name" => "Work"),
-      array("path" => "/Front End/images/2D Animation/cc3.jpg", "button_name" => "little things"),
-      array("path" => "/Front End/images/2D Animation/cc4.jpg", "button_name" => "Mens' Mind"),
-      array("path" => "/Front End/images/2D Animation/cc5.jpg", "button_name" => "Traveller"),
-      array("path" => "/Front End/images/2D Animation/cc6.jpg", "button_name" => "FREEFALL"),
-      array("path" => "/Front End/images/2D Animation/cc7.jpg", "button_name" => "Mechanic"),
-      array("path" => "/Front End/images/2D Animation/cc8.jpg", "button_name" => "Light it Up"),
-      array("path" => "/Front End/images/2D Animation/cc9.jpg", "button_name" => "ORDER proto"),
-      // Add more elements as needed
-  );
+    <?php
+    // Assuming you have an array where each element contains an image path and a button name
+    // $image_data = array(
+    //     array("path" => "/Front End/images/2D Illustration/bb1.jpg", "button_name" => "France"),
+    //     array("path" => "/Front End/images/2D Illustration/bb2.jpg", "button_name" => "Street wear"),
+    //     array("path" => "/Front End/images/2D Illustration/bb3.jpg", "button_name" => "Toaster"),
+    //     array("path" => "/Front End/images/2D Illustration/bb4.jpg", "button_name" => "Subway Scuffle"),
+    //     array("path" => "/Front End/images/2D Illustration/bb5.jpg", "button_name" => "Hatred"),
+    //     array("path" => "/Front End/images/2D Illustration/bb6.jpg", "button_name" => "Chinese Fuuu"),
+    //     array("path" => "/Front End/images/2D Illustration/bb7.jpg", "button_name" => "Demon Rider"),
+    //     array("path" => "/Front End/images/2D Illustration/bb8.jpg", "button_name" => "Future Look"),
+    //     array("path" => "/Front End/images/2D Illustration/bb9.jpg", "button_name" => "Galaxy"),
+    //     // Add more elements as needed
+    // );
 
-  // Get the total number of images
-  $total_images = count($image_data);
+    // Get the total number of images
+    $total_images = count($data);
 
-  // Loop through the array to generate HTML for each image and button
-  foreach ($image_data as $key => $data) {
-      ?>
-      <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
-          <div class="card">
-              <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                  <h1 class="card-title"></h1>
-                  <h2 class="card-body text-center">
-                  <?php if ($key == 2) { ?>
-                          <a href="project_2danimation.php" target="_blank">
-                              <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
-                          </a>
-                      <?php } else { ?>
-                          <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
-                      <?php } ?>
-                  </h2>
-              </div>
-          </div>
-      </div>
+    // Loop through the array to generate HTML for each image and button
+    // Loop through the array to generate HTML for each image and button
+foreach ($data as $key => $child_data) {
+?>
+<div class="col-md-4 py-3 py-md-0 col-12 
+  <?php 
+    // echo ($key == $total_images - 1) ? 'mb-5' : '';
+    echo "mb-5"
+  ?>
+">
+    <div class="card">
+        <img src="<?php echo $child_data['image_location']; ?>" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <h1 class="card-title"></h1>
+            <h2 class="card-body text-center">
+              <a href="project_2danimation.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
+                  <button type="button" class="btn-view mx-auto"><?php echo $child_data['project_title']; ?></button>
+              </a>
+            </h2>
+        </div>
+    </div>
+</div>
 <?php
 }
 ?>
-
-
+      </div>
   </div>
-</div>
 </section>
 <!-- category end -->
 
