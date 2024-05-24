@@ -201,7 +201,7 @@ $data = $stmt->fetchAll();
                 <div class="card-img-overlay">
                     <h1 class="card-title"></h1>
                     <h2 class="card-body text-center">
-                      <a href="project_2dillustration.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
+                      <a href="project_videography.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
                           <button type="button" class="btn-view mx-auto"><?php echo $child_data['project_title']; ?></button>
                       </a>
                     </h2>
