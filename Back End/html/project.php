@@ -1,3 +1,14 @@
+<?php
+    include_once "/xampp/htdocs/Web-Programming/common/connection.php";
+
+    //REMEMBER PUT THISSSSSS TO ALL PAGEEEEEEEEEEEE
+    session_start();
+
+    if(!$_SESSION['loggedin']) {
+        header("location: login_page.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +33,7 @@
         <a class="navbar-brand" href="#">
             <img src="/Back End/images/new logo red.png" alt="" width="90" height="90">
         </a>
-        <a href="/Back End/html/User Manage.html" style="margin-top: 60px;">User Management</a>
+        <a href="/Back End/html/User Manage.php" style="margin-top: 60px;">User Management</a>
         <a href="/Back End/html/project.php">Projects</a>
         <a href="/Back End/html/Back.html">Log Out</a>
     </div>
