@@ -27,6 +27,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
     rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap"
+            rel="stylesheet">
 </head>
 
 <body class="overflow-x-hidden" style="background-color: black;">
@@ -102,15 +105,18 @@
     <!-- navbar end -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/Front End/images/3D Illustration/a1.jpg" class="d-block w-100" alt="...">
+        <img src="/Front End/images/forest.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption justify-content-center d-flex">
-          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">About Us</h1>
+          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">ABOUT US</h1>
         </div>
       </div>
     </div>
   
     <div class="container">
-      <p class="project-meta-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+      <p class="project-meta-content">Spectrum Studio is a website for exhibiting the portfolio of Creative Multimedia. It can be a portfolio 
+        from a student, an intern, or any one who is interested in showcasing their artwork to the public. This will help the users 
+        create an online portfolio making it easier for them to look for employment, internships, or possibilities for additional 
+        education.</p>
     </div> 
   
 <div class=" container">
@@ -120,19 +126,19 @@
       </div>  
 
       <div class="col-md-8 py-5 py-md-5 col-12">
-            <p class="type2 description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p class="type2 description">When displaying a portfolio, it's critical to get some public interest and comments. Both your personal 
+                artwork and the projects will benefit from this. Furthermore, it will be a chance for the users to get some 
+                acknowledgment for their accomplishments. Aside from that, the users' previous efforts can be found digitally 
+                archived on this page. It keeps the artworks safe for their use as inspiration, future references, and other things.</p>
     </div> 
   </div> 
 
     <div class="row" style="padding-bottom: 3rem;">
       <div class="col-md-8 py-5 py-md-5 col-12">
-        <p class="type4 description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p class="type4 description">Attracting the interest of prospective students, industry experts, and employers is one of the 
+          project's objectives. We achieve this by showcasing striking illustrations of multimedia content created with the application. 
+          Furthermore, the reputation of the Creative Multimedia programme will be improved by this effort. Showcasing the successes and 
+          contributions of its students to the multimedia industry will raise awareness of the Creative Multimedia programme.</p>
       </div>  
 
       <div class="col-md-4 py-5 py-md-5 col-12" style="border-left: 2px solid red;">

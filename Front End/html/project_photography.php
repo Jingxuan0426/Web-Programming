@@ -105,7 +105,7 @@ include "../../common/connection.php";
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
-          </li>x
+          </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
                 <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
 
@@ -138,7 +138,7 @@ include "../../common/connection.php";
             <div class="project-meta-content"
                 style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
             <h3 class="project-meta-header">CREATOR</h3>
-            <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
+            <div class="project-meta-content"><?php echo $data[0]['name'] ?></div>
         </div>
         <div class="item-bordered project-meta-item">
             <h3 class="project-meta-header">YEAR</h3>

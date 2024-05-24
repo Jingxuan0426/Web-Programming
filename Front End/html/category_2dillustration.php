@@ -110,7 +110,7 @@ $data = $sth->fetchAll();
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/Front End/images/2D Illustration/minfei_project/2dill_cover.jpg" class="d-block w-100 col-12" alt="...">
+        <img src="/Front End/images/2D Illustration/harted_project/2dill_cover.jpg" class="d-block w-100 col-12" alt="...">
         <div class="carousel-caption justify-content-center d-flex">
           <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">2D
             Illustration</h1>

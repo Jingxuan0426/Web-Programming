@@ -72,7 +72,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Front End/html/Job_copy.php">Jobs</a>
-          </li>x
+          </li>
           <a href="/Front End/html/Upload.php" target="_blank"><button type="button" class="btn-nav">Upload</button></a>
                 <a href="/Back End/html/logout.php" target="_blank"><button type="button" class="btn-nav" style="margin-left: 10px;">Logout</button></a>
           </ul>
@@ -85,9 +85,9 @@
     
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/Front End/images/3D Illustration/a1.jpg" class="d-block w-100" alt="...">
+        <img src="/Front End/images/mountains.png" class="d-block w-100" alt="...">
         <div class="carousel-caption justify-content-center d-flex">
-          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">Overview</h1>
+          <h1 class="d-block" style="font-size: 5rem; margin-bottom: 285px;">OVERVIEW</h1>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
           <img src="/Front End/images/3D Illustration/aa.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
-            <h1 class="card-title">Digital ILLUSTRATION</h1>
+            <h1 class="card-title">Digital Illustration</h1>
           </div>
           </a>
         </div>
@@ -139,7 +139,7 @@
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
           <a href="/Front End/html/photography.php">
-          <img src="/Front End/images/Photography/e33.jpg" class="card-img" alt="..." 
+          <img src="/Front End/images/Photography/Spices/e32.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
             <h1 class="card-title2">Photography</h1>
@@ -151,7 +151,7 @@
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
           <a href="/Front End/html/videography.php">
-          <img src="/Front End/images/Videography/e48.jpg" class="card-img" alt="..." 
+          <img src="/Front End/images/Videography/w&d/e50.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
             <h1 class="card-title2">Videography</h1>
@@ -163,7 +163,7 @@
       <div class="col-md-4 py-3 py-md-0 col-12">
         <div class="card" style="border: 3px solid #a10d3c; background-color: black;">
           <a href="/Front End/html/sculpture.php">
-          <img src="/Front End/images/Sculpture/e19.jpg" class="card-img" alt="..." 
+          <img src="/Front End/images/Sculpture/Abstrac/e16.jpg" class="card-img" alt="..." 
           style="opacity: 0.5;">
           <div class="card-img-overlay">
             <h1 class="card-title2">Sculpture</h1>
