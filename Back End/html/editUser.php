@@ -2,23 +2,23 @@
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
-    $user_name = $_POST['user_name'];
+    $username = $_POST['username'];
     $user_email = $_POST['user_email'];
     $user_contact = $_POST['user_contact'];
     $user_location = $_POST['user_location'];
-    $user_id = $_POST['user_id']; 
-    $job_specialized_field = $row['job_specialized_field'];
-    $job_position = $row['job_position'];
-    $job_type = $row['job_type']; // Assuming you pass user_id as a hidden input field in the form
+    $user_id = $_POST['user_id'];
+    $job_specialized_field = $_POST['job_specialized_field'];
+    $job_position = $_POST['job_position'];
+    $job_type = $_POST['job_type'];
 
     // MySQL connection parameters
     $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-    $username = "root"; // Change to your MySQL username
-    $password = ""; // Change to your MySQL password
-    $database = "phpmyadmin"; // Change to your MySQL database name
+    $db_username = "root"; // Change to your MySQL username
+    $db_password = ""; // Change to your MySQL password
+    $database = "project_database"; // Change to your MySQL database name
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
+    $conn = new mysqli($servername, $db_username, $db_password, $database);
 
     // Check connection
     if ($conn->connect_error) {
@@ -26,12 +26,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // SQL query to update user details
-    $sql = "UPDATE profile SET user_name='$user_name', user_email='$user_email', user_contact='$user_contact', user_location='$user_location' WHERE user_id=$user_id";
+    $sql = "UPDATE user SET 
+    username=?, user_email=?, user_contact=?, user_location=?, job_specialized_field=?, job_position=?, job_type=?
+    WHERE user_id=?";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "User details updated successfully";
+    // Prepare and bind
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sssssssi", $username, $user_email, $user_contact, $user_location, $job_specialized_field, $job_position, $job_type, $user_id);
+
+        // Execute the query
+        if ($stmt->execute()) {
+            echo "User details updated successfully";
+            header("Location: User Manage.php");
+        } else {
+            echo "Error updating user details: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();
     } else {
-        echo "Error updating user details: " . $conn->error;
+        echo "Error preparing the query: " . $conn->error;
     }
 
     // Close connection
@@ -72,12 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         // MySQL connection parameters
         $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
-        $username = "root"; // Change to your MySQL username
-        $password = ""; // Change to your MySQL password
-        $database = "phpmyadmin"; // Change to your MySQL database name
+        $db_username = "root"; // Change to your MySQL username
+        $db_password = ""; // Change to your MySQL password
+        $database = "project_database"; // Change to your MySQL database name
 
         // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
+        $conn = new mysqli($servername, $db_username, $db_password, $database);
 
         // Check connection
         if ($conn->connect_error) {
@@ -88,12 +102,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_id = $_GET['user_id'];
 
         // SQL query to fetch user details based on user ID
-        $sql = "SELECT user_name, user_email, user_contact, user_location FROM profile WHERE user_id = $user_id";
-        $result = $conn->query($sql);
+        $sql = "SELECT * FROM user WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $user_name = $row['user_name'];
+            $username = $row['username'];
             $user_email = $row['user_email'];
             $user_contact = $row['user_contact'];
             $user_location = $row['user_location'];
@@ -108,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class='row mb-3' style='margin-top: 30px;'>
                     <label for='inputName3' class='col-sm-2 col-form-label'>Name</label>
                     <div class='col-sm-8'>
-                        <input type='text' class='form-control' id='inputName3' name='user_name' value='$user_name'>
+                        <input type='text' class='form-control' id='inputName3' name='username' value='$username'>
                     </div>
                 </div>
                 <div class='row mb-3'>
@@ -132,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class='row mb-3'>
                     <label for='inputField3' class='col-form-label'>Specialized Field</label>
                     <div class='col-sm-10'>
-                        <input type='text' class='form-control' id='inputField3' name='job_field' value='$job_specialized_field'>
+                        <input type='text' class='form-control' id='inputField3' name='job_specialized_field' value='$job_specialized_field'>
                     </div>
                 </div>
                 <div class='row mb-3'>
@@ -154,6 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Close connection
+        $stmt->close();
         $conn->close();
         ?>
     </div>

@@ -39,14 +39,14 @@
 
     <div class="main3">
         <h2 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 1.5rem;">User Management</h2>
-        <a href="/Back End/html/Submit User.html"><button type="submit" class="btn-add px-md-4">Add User+</button></a>
+        <a href="/Back End/html/submit_user.php"><button type="submit" class="btn-add px-md-4">Add User+</button></a>
         <a href="/Back End/html/Ban User.html"><button type="submit" class="btn-ban px-md-4">Banned User</button></a>
     
         <?php 
             $servername = "localhost"; // Change if your MySQL server is hosted elsewhere
             $username = "root"; // Change to your MySQL username
             $password = ""; // Change to your MySQL password
-            $database = "phpmyadmin"; // Change to your MySQL database name
+            $database = "project_database"; // Change to your MySQL database name
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $database);
@@ -70,8 +70,10 @@
                 echo "<p>Contact: " . $row['user_contact'] . "</p>";
                 echo "</div>";
                 echo "</div>";
+                echo "<p>";
                 echo "<a href='/Back End/html/editUser.php?user_id=".$row['user_id']."'><button type='submit' class='btn-edit'>Edit User</button></a>";
-                echo "<button type='submit' class='btn-user'>Ban User</button>";
+                echo "<a href='/Back End/html/ban_user.php?user_id=".$row['user_id']."'><button type='submit' class='btn-user'>Ban User</button></a>";
+                echo "</p>";
             }
 
             $conn->close();
