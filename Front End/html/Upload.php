@@ -128,60 +128,60 @@
     </div>
  
  <div class="main2"  >
-      <form action="Upload_Backend.php" method="POST">
+      <form action="Upload_Backend.php" method="POST" enctype="multipart/form-data">
           <div class="row mb-3" style="margin-top: 78px;">
               <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
               <div class="col-sm-10" style="padding: auto;">
-                  <input type="email" class="form-control" id="inputName3">
-                  
+                <input type="text" class="form-control" id="inputName3" name="name">
               </div>
           </div>
           <div class="row mb-3" style="margin-top: 42px;">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-10" style="padding: auto;">
-                  <input type="password" class="form-control" id="inputEmail3">
+                  <input type="email" class="form-control" id="inputEmail3" name="email">
               </div>
           </div>
           <div class="row mb-3" style="margin-top: 42px;">
               <label for="inputContact3" class="col-sm-2 col-form-label">Contact</label>
               <div class="col-sm-10" style="padding: auto;">
-                  <input type="text" class="form-control" id="inputContact3">
+                  <input type="text" class="form-control" id="inputContact3" name="contact">
               </div>
           </div>
           <div class="row mb-3" style="margin-top: 42px;">
               <label for="inputLocation3" class="col-sm-2 col-form-label">Location</label>
               <div class="col-sm-10" style="padding: auto;">
-                  <input type="text" class="form-control" id="inputLocation3">
+                  <input type="text" class="form-control" id="inputLocation3" name="location">
               </div>
           </div>
 
           <div class="mb-3 col-sm-12" style="margin-top: 42px;">
               <label for="inputField" class="form-label">Specialized Field</label>
-              <input type="text" class="form-control" id="inputField">
+              <input type="text" class="form-control" id="inputField" name="field">
           </div>
           <div class="mb-3 col-sm-12" style="margin-top: 42px;">
               <label for="inputOccupation" class="form-label">Occupation/Desired Job Position</label>
-              <input type="text" class="form-control" id="inputOccupation">
+              <input type="text" class="form-control" id="inputOccupation" name="job_position">
           </div>
           <div class="mb-3 col-sm-12" style="margin-top: 42px;">
               <label for="inputJob" class="form-label">Part-Time/Full-Time/Freelance</label>
-              <input type="text" class="form-control" id="inputJob">
+              <input type="text" class="form-control" id="inputJob" name="job_type">
           </div>
           <div class="row mb-3" style="margin-top: 42px;">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Portfolio</label>
-            <div class="col-sm-5" style="padding: auto;">
+            <label for="files" class="col-sm-2 col-form-label">Portfolio</label>
+            <input type="file" id="files" name="files[]" multiple><br><br>
+            <!-- <div class="col-sm-5" style="padding: auto;">
                 <input type="password" class="form-control" id="inputEmail3">
             </div>
             <div class="col-sm-3">
                 <button type="browse" class="browse">Browse</button>
-            </div>
-        </div>
-        <div>
+            </div> -->
+          </div>
+        <!-- <div>
           <p style="text-align: center;padding-top:34px;font-size: 32px;">OR</p>
-        </div>
-      <div class="mb-3 col-sm-5" style="padding-top: 34px;margin: auto;">
+        </div> -->
+      <!-- <div class="mb-3 col-sm-5" style="padding-top: 34px;margin: auto;">
           <input type="text" class="form-control" id="inputJob" placeholder ="Insert file here...">
-      </div>
+      </div> -->
       <div class="col-sm-12">
         <button type="submit" class="btn-view">UPLOAD</button>
       </div>

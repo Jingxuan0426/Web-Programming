@@ -37,6 +37,7 @@ $data = $stmt->fetchAll();
 // die();
 
 // foreach($data as $child_data) {
+//   if($child_data['project_title'] == "Gerda")
 //   var_dump($child_data['image_location']);
 //   die();
 // }
