@@ -114,127 +114,57 @@ include "../../common/connection.php";
 
         <div style="opacity: 1;" class="fade-page-in">
 
-            <div style="margin-bottom: 5rem; background-color: black;">
-                <img src="/Front End/images/2D Animation/Project/2da_cover.jpg"
-                    class="img-fluid"
-                    style="max-width: 100%; opacity: 0.5;">
-            </div>
+<div style="margin-bottom: 5rem; background-color: black;">
+    <img
+        src="<?php echo $data[0]['image_location'] ?>"
+        class="img-fluid"
+        style="max-width: 100%; opacity: 0.5;">
+</div>
 
-            <div class="container" style="color: whitesmoke;">
-                <div class="flex-row project-meta-container">
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">PROJECT TITLE</h3>
-                        <div class="project-meta-content"
-                            style="padding-bottom: 3rem;">little things</div>
-                        <h3 class="project-meta-header">CREATOR</h3>
-                        <div class="project-meta-content">BERG</div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">YEAR</h3>
-                        <div class="project-meta-content">2024</div>
-                    </div>
-                    <div class="item-bordered project-meta-item">
-                        <h3 class="project-meta-header">TAGS</h3>
-                        <div class="project-meta-content">2d Illustration,
-                            Character Design, 2D Animation</div>
-                    </div>
-                </div>
-            </div>
+<!-- Loop -->
+<!-- Replace Hardcode -->
 
-            <div class="container">
-                <div class="project-intro">
-                    <div class="ss-list">
-                        <div class="ss-items" role="list">
-                            <div class="ss-item" role="listitem">
-                                <div class="ss-item" role="listitem">
-                                    <div class="project-video-block">
-                                        <div class="project-video-large">
-                                            <a href="/Front End/images/2D Animation/Project/2da2.mp4" target="_blank"><video width="100%" height="100%"
-                                                controls
-                                                style="align-items: center;"
-                                                id="project-video-border">
-                                                <source
-                                                    src="/Front End/images/2D Animation/Project/2da2.mp4"
-                                                    type="video/mp4">
-                                            </video></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-video-block">
-                                    <div class="project-video-large">
-                                        <a href="/Front End/images/2D Animation/Project/2da3.mp4" target="_blank"><video width="100%" height="100%"
-                                            controls
-                                            style="align-items: center;"
-                                            id="project-video-border">
-                                            <source
-                                                src="/Front End/images/2D Animation/Project/2da3.mp4"
-                                                type="video/mp4">
-                                        </video></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-image-block">
-                                    <div class="project-image-large">
-                                        <a href="/Front End/images/2D Animation/Project/2da1.gif" target="_blank"><img
-                                            src="/Front End/images/2D Animation/Project/2da1.gif"
-                                            id="project-image-border"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-video-block">
-                                    <div class="project-video-large">
-                                        <a href="/Front End/images/2D Animation/Project/2da4.mp4" target="_blank"><video width="100%" height="100%"
-                                            controls
-                                            style="align-items: center;"
-                                            id="project-video-border">
-                                            <source
-                                                src="/Front End/images/2D Animation/Project/2da4.mp4"
-                                                type="video/mp4">
-                                        </video></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-video-block">
-                                    <div class="project-video-large">
-                                        <a href="/Front End/images/2D Animation/Project/2da5.mp4" target="_blank"><video width="100%" height="100%"
-                                            controls
-                                            style="align-items: center;"
-                                            id="project-video-border">
-                                            <source
-                                                src="/Front End/images/2D Animation/Project/2da5.mp4"
-                                                type="video/mp4">
-                                        </video></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ss-item" role="listitem">
-                                <div class="project-video-block">
-                                    <div class="project-video-large">
-                                        <a href="/Front End/images/2D Animation/Project/2da6.mp4" target="_blank"><video width="100%" height="100%"
-                                            controls
-                                            style="align-items: center;"
-                                            id="project-video-border">
-                                            <source
-                                                src="/Front End/images/2D Animation/Project/2da6.mp4"
-                                                type="video/mp4">
-                                        </video></a>
-                                    </div>
-                                </div>
-                            </div>
+<div class="container" style="color: whitesmoke;">
+    <div class="flex-row project-meta-container">
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">Project Title</h3> <!-- $project title -->
+            <div class="project-meta-content"
+                style="padding-bottom: 3rem;"><?php echo $data[0]['project_title'] ?></div>
+            <h3 class="project-meta-header">CREATOR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['username'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">YEAR</h3>
+            <div class="project-meta-content"><?php echo $data[0]['year_created'] ?></div>
+        </div>
+        <div class="item-bordered project-meta-item">
+            <h3 class="project-meta-header">TAGS</h3>
+            <div class="project-meta-content"><?php echo $data[0]['category_name'] ?></div>
+        </div>
+    </div>
+</div>
 
+<div class="container">
+    <div class="project-intro">
+        <div class="ss-list">
+            <div class="ss-items" role="list">
+                <?php foreach ($data as $key => $child_data) { ?>
+                    <div class="ss-item" role="listitem">
+                        <div class="project-image-block">
+                            <div class="project-image-large">
+                                <img
+                                    src="<?php echo $child_data["image_location"] ?>"
+                                    id="project-image-border">
+                            </div>
                         </div>
                     </div>
-
-                </div>
-
+                <?php } ?>
             </div>
-
         </div>
+
+    </div>
+
+</div>
 
         <footer class="footer">
             <div class="container">

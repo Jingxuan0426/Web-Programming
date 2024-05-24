@@ -203,53 +203,53 @@ $data = $stmt->fetchAll();
 <div class="container">
   <div class="row">
 
-  <?php
-  // Assuming you have an array where each element contains an image path and a button name
-  $image_data = array(
-      array("path" => "/Front End/images/3D Illustration/aa1.jpg", "button_name" => "Death Forest"),
-      array("path" => "/Front End/images/3D Illustration/aa2.jpg", "button_name" => "Dino plant"),
-      array("path" => "/Front End/images/3D Illustration/aa3.jpg", "button_name" => "Majestic"),
-      array("path" => "/Front End/images/3D Illustration/aa4.jpg", "button_name" => "Golden Her"),
-      array("path" => "/Front End/images/3D Illustration/aa5.jpg", "button_name" => "Gerda"),
-      array("path" => "/Front End/images/3D Illustration/aa6.jpg", "button_name" => "Zurvival"),
-      array("path" => "/Front End/images/3D Illustration/aa7.jpg", "button_name" => "Model HOW"),
-      array("path" => "/Front End/images/3D Illustration/aa8.jpg", "button_name" => "Witchcraft"),
-      array("path" => "/Front End/images/3D Illustration/aa9.jpg", "button_name" => "Cottage"),
-      // Add more elements as needed
-  );
+    <?php
+    // Assuming you have an array where each element contains an image path and a button name
+    // $image_data = array(
+    //     array("path" => "/Front End/images/2D Illustration/bb1.jpg", "button_name" => "France"),
+    //     array("path" => "/Front End/images/2D Illustration/bb2.jpg", "button_name" => "Street wear"),
+    //     array("path" => "/Front End/images/2D Illustration/bb3.jpg", "button_name" => "Toaster"),
+    //     array("path" => "/Front End/images/2D Illustration/bb4.jpg", "button_name" => "Subway Scuffle"),
+    //     array("path" => "/Front End/images/2D Illustration/bb5.jpg", "button_name" => "Hatred"),
+    //     array("path" => "/Front End/images/2D Illustration/bb6.jpg", "button_name" => "Chinese Fuuu"),
+    //     array("path" => "/Front End/images/2D Illustration/bb7.jpg", "button_name" => "Demon Rider"),
+    //     array("path" => "/Front End/images/2D Illustration/bb8.jpg", "button_name" => "Future Look"),
+    //     array("path" => "/Front End/images/2D Illustration/bb9.jpg", "button_name" => "Galaxy"),
+    //     // Add more elements as needed
+    // );
 
-  // Get the total number of images
-  $total_images = count($image_data);
+    // Get the total number of images
+    $total_images = count($data);
 
-  // Loop through the array to generate HTML for each image and button
-  foreach ($image_data as $key => $data) {
-      ?>
-      <div class="col-md-4 py-3 py-md-0 col-12 <?php echo ($key == $total_images - 1) ? 'mb-5' : ''; ?>">
-          <div class="card">
-              <img src="<?php echo $data['path']; ?>" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                  <h1 class="card-title"></h1>
-                  <h2 class="card-body text-center">
-                  <?php if ($key == 4) { ?>
-                          <a href="project_3dillustration.php" target="_blank">
-                              <button type="button" class="btn-view mx-auto"><?php echo $data['button_name']; ?></button>
-                          </a>
-                      <?php } else { ?>
-                          <button type="button" class="btn-view mx-auto" disabled><?php echo $data['button_name']; ?></button>
-                      <?php } ?>
-                  </h2>
-              </div>
-          </div>
-      </div>
+    // Loop through the array to generate HTML for each image and button
+    // Loop through the array to generate HTML for each image and button
+foreach ($data as $key => $child_data) {
+?>
+<div class="col-md-4 py-3 py-md-0 col-12 
+  <?php 
+    // echo ($key == $total_images - 1) ? 'mb-5' : '';
+    echo "mb-5"
+  ?>
+">
+    <div class="card">
+        <img src="<?php echo $child_data['image_location']; ?>" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <h1 class="card-title"></h1>
+            <h2 class="card-body text-center">
+              <a href="project_3dillustration.php?id=<?php echo $child_data["project_id"] ?>" target="_blank">
+                  <button type="button" class="btn-view mx-auto"><?php echo $child_data['project_title']; ?></button>
+              </a>
+            </h2>
+        </div>
+    </div>
+</div>
 <?php
 }
 ?>
-
-
+      </div>
   </div>
-</div>
 </section>
-    <!-- category end -->
+<!-- category end -->
 
     <footer class="footer">
       <div class="container">
