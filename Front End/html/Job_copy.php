@@ -7,7 +7,20 @@ if (!$_SESSION['loggedin']) {
   header("location: /Back End/html/login_page.php");
 }
 
+// Database connection
+include "../../common/connection.php";
 
+// Define the SQL query
+$query = "SELECT * FROM user WHERE role='user'";
+
+$sth = $pdo->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+$sth->execute();
+
+// Fetch all the results
+$user_data = $sth->fetchAll();
+$user_total = count($user_data);
+// var_dump($image_data);
+// die();
 ?>
 
 <!DOCTYPE html>
@@ -81,20 +94,23 @@ if (!$_SESSION['loggedin']) {
     </div>
   </div>
 
+  <!-- Before open section -->
+  <?php for($i = 0; $i < $user_total; $i+=2) { ?>
   <div class="container">
     <div class="row">
+      <?php for($j = 0; $j < $user_total && $j < 2; $j++) { ?>
       <div class="button-container">
-        <button class="bordered-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <button class="bordered-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions<?php echo $user_data[$j]['user_id']?>" aria-controls="offcanvasWithBothOptions">
           <img src="/Front End/images/Jobs/kungking.png" alt="Button 1" style="max-width: 680px;">
           <div class="overlay"></div>
           <span class="button-text">
-            <h1 class="outlined-text" style="font-size:40px;color:#ff1a4d;font-weight: bold;">KungKingKingKang</h1> 
-            <h2 class="outlined-text" style="font-size: 20px;">Illustration, Character Design, Photography</h2>
-            <h3 class="outlined-text">Character Designer</h3>
-            <h4 class="outlined-text" style="color: white; margin-top: 50px;">Updated 6 Days ago</h4>
+            <h1 class="outlined-text" style="font-size:40px;color:#ff1a4d;font-weight: bold;"><?php echo $user_data[$j]['name'] ?></h1> <!-- Author Name -->
+            <h2 class="outlined-text" style="font-size: 20px;"><?php echo $user_data[$j]['job_specialized_field'] ?></h2> <!-- Field -->
+            <h3 class="outlined-text"><?php echo $user_data[$j]['job_position'] ?></h3> <!-- Job Position -->
+            <!-- <h4 class="outlined-text" style="color: white; margin-top: 50px;">Updated 6 Days ago</h4> -->
           </span>
         </button>
-        <button class="bordered-button">
+        <!-- <button class="bordered-button">
           <img src="/Front End/images/Jobs/machi.png" alt="Button 2" style="max-width: 680px;">
           <div class="overlay"></div>
           <span class="button-text">
@@ -103,12 +119,14 @@ if (!$_SESSION['loggedin']) {
             <h3 class="outlined-text">Manga Artist</h3>
             <h4 class="outlined-text" style="color: white; margin-top: 50px;">Updated 2 Hours ago</h4>
           </span>
-        </button>
+        </button> -->
       </div>
+      <?php } ?>
     </div>
   </div>
+  <?php } ?>
   
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="button-container">
         <button class="bordered-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -133,27 +151,29 @@ if (!$_SESSION['loggedin']) {
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #5d063f; overflow-y: scroll;">
-    <img src="/Front End/images/2D Illustration/Project/2dill_cover.jpg" class="job-cover" style="max-width: 100%;">
+  <!-- After open section -->
+  <?php foreach($user_data as $user) { ?>
+  <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions<?php echo $user['user_id']?>" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-color: #5d063f; overflow-y: scroll;">
+    <img src="/Front End/images/3D Illustration/Gerda_project/3dill_cover.jpg" class="job-cover" style="max-width: 100%;">
     <div class="offcanvas-header">
       <button type="button" class="btn-close overlay" data-bs-dismiss="offcanvas" aria-label="Close" style="margin-left: 700px; margin-top: 20px;"></button>
-      <h5  style="color: white; margin-left: 215px; margin-right: auto; font-size: 35px;">SILLY CHAOTIC</h5>
+      <h5  style="color: white; margin-left: 215px; margin-right: auto; font-size: 35px;"><?php echo $user['name'] ?></h5>
     </div>
-    <div class="jobcon" style="margin-top: -22px; margin-left: 280px; margin-right: auto; color: white;">Cheras, Kuala Lumpur</div>
+    <div class="jobcon" style="margin-top: -22px; margin-left: 280px; margin-right: auto; color: white;"><?php echo $user['user_location'] ?></div>
 
     <div class="container col-12" style="color: whitesmoke; margin-bottom: 20px;">
       <div class="row col-8 project-meta-container">
         <div class="project-meta-item">
           <h5 class="project-meta-header">EMAIL</h5>
-          <div class="project-meta-content jobcon" style="padding-left: 10px;">sillychaotic@gmail.com</div>
+          <div class="project-meta-content jobcon" style="padding-left: 10px;"><?php echo $user['email'] ?></div>
         </div>
       </div>
       <div class="row col-4 project-meta-container">
         <div class="project-meta-item">
           <h5 class="project-meta-header">CONTACT</h5>
-          <div class="project-meta-content jobcon" style="padding-left: 10px;">0123456789</div>
+          <div class="project-meta-content jobcon" style="padding-left: 10px;"><?php echo $user['user_contact'] ?></div>
         </div>
       </div>
     </div>
@@ -162,32 +182,22 @@ if (!$_SESSION['loggedin']) {
     <div class="col-12 row" style="padding-left: 30px;padding-bottom: 15px;">
       <div class="col-4">
         <div class="card">
-          <img src="/Front End/images/Photography/e44.jpg" class="card-img" alt="...">
-
-              <a href="/Front End/html/project_photography.html" target="_blank"></a>
-
+          <img src="/Front End/images/3D Illustration/Gerda_project/3dill1.jpg" class="card-img" alt="...">
         </div>
       </div>
-
       <div class="col-4">
         <div class="card">
-          <img src="/Front End/images/Photography/e31.jpg" class="card-img" alt="...">
-
-              <a href="" target="_blank"></a>
-
+          <img src="/Front End/images/3D Illustration/Gerda_project/3dill3.jpg" class="card-img" alt="...">
         </div>
       </div>
-
       <div class="col-4">
         <div class="card">
-          <img src="/Front End/images/Photography/e32.jpg" class="card-img" alt="...">
-
-              <a href="" target="_blank"></a>
-
+          <img src="/Front End/images/3D Illustration/Gerda_project/3dill4.jpg" class="card-img" alt="...">
         </div>
       </div>
     </div>
   </div>
+  <?php } ?>
 
   <footer class="footer">
     <div class="container">

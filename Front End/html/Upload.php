@@ -5,6 +5,15 @@
     if(!$_SESSION['loggedin']) {
         header("location: /Back End/html/login_page.php");
     }
+
+    $query = "SELECT * FROM category";
+
+    include "../../common/connection.php";
+
+    $sth = $pdo->prepare($query);
+    $sth->execute();
+
+    $category = $sth->fetchAll();
 ?>
  
  <!DOCTYPE html> 
@@ -148,29 +157,33 @@
               <label for="inputJob" class="form-label">Part-Time/Full-Time/Freelance</label>
               <input type="text" class="form-control" id="inputJob" name="job_type">
           </div>
+          <div class="mb-3 col-sm-12" style="margin-top: 42px;">
+              <label for="inputJob" class="form-label">Project Title</label>
+              <input type="text" class="form-control" id="inputJob" name="project_title">
+          </div>
+          <div class="mb-3 col-sm-12" style="margin-top: 42px;">
+              <label for="inputJob" class="form-label">Project Year Created</label>
+              <input type="text" class="form-control" id="inputJob" name="year_created">
+          </div>
+          <div class="mb-3 col-sm-12" style="margin-top: 42px;">
+              <label for="inputJob" class="form-label">Category</label>
+              <select name="category" id="category">
+                <?php foreach($category as $child_category) { ?>
+                  <option value="<?php echo $child_category['category_id'] ?>"> <?php echo $child_category['category_name'] ?> </option>
+                <?php } ?>
+              </select>
+          </div>
           <div class="row mb-3" style="margin-top: 42px;">
             <label for="files" class="col-sm-2 col-form-label">Portfolio</label>
             <input type="file" id="files" name="files[]" multiple><br><br>
-            <!-- <div class="col-sm-5" style="padding: auto;">
-                <input type="password" class="form-control" id="inputEmail3">
-            </div>
-            <div class="col-sm-3">
-                <button type="browse" class="browse">Browse</button>
-            </div> -->
           </div>
-        <!-- <div>
-          <p style="text-align: center;padding-top:34px;font-size: 32px;">OR</p>
-        </div> -->
-      <!-- <div class="mb-3 col-sm-5" style="padding-top: 34px;margin: auto;">
-          <input type="text" class="form-control" id="inputJob" placeholder ="Insert file here...">
-      </div> -->
+
       <div class="col-sm-12">
         <button type="submit" class="btn-view">UPLOAD</button>
       </div>
     </form>
   </div>
 
-  
   <footer class="footer">
     <div class="container">
       <div class="row">

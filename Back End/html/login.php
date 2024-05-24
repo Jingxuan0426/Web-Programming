@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["loggedin"] = true;
             $_SESSION["username"] = $username;
             $_SESSION["role"] = $data[0]["role"];
+            $_SESSION["user_id"] = $data[0]["user_id"];
 
             // Redirect to admin dashboard or another page
             if($data[0]["role"] == "admin")
