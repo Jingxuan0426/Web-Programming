@@ -21,7 +21,7 @@ $query = "SELECT project.*, image.image_location
 $stmt = $pdo->prepare($query);
 
 // Bind parameters
-$category_id = 1;
+$category_id = 4;
 $stmt->bindParam(":category_id", $category_id, PDO::PARAM_INT);
 
 // Execute the query
